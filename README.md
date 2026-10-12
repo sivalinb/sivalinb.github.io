@@ -1,65 +1,70 @@
 # Siva Babu — Astro portfolio
 
-A static, responsive portfolio with a dark teal visual style, a filterable project gallery, four project detail pages, documentation links, and GitHub contact links. Astro generates the HTML at build time. There is no application server, database, paid API, or external font dependency.
+A static Astro portfolio with a light editorial design, six homepage highlights, a directory of 37 original public projects, five category pages, 37 project detail pages, six technical academies, and three clearly attributed upstream forks.
+
+Public website: https://sivalinb.github.io/
+Project directory: https://sivalinb.github.io/projects/
+Learning academies: https://sivalinb.github.io/learn/
+Upstream references: https://sivalinb.github.io/references/
 
 ## Run locally
 
-Use Node.js 24 or another version supported by the installed Astro release.
+Use Node.js 24 or a version supported by the installed Astro release.
 
 ```sh
 npm ci
 npm run dev
-```
-
-Open the local URL printed by Astro. Build and preview the final website with:
-
-```sh
 npm run build
 npm run preview
 ```
 
-In a restricted environment, set `ASTRO_TELEMETRY_DISABLED=1` on the build/dev process. The package lock pins the installed dependencies.
+In a restricted environment, set `ASTRO_TELEMETRY_DISABLED=1` on the build/dev process. The lockfile pins the installed dependencies. There is no application server, paid API, database, or external font dependency.
 
-## Edit your portfolio
+## Information architecture
 
-The personal information and project content are in `src/data/portfolio.ts`.
+The October 11, 2026 scan covered metadata and README summaries for 43 owned repositories: 37 original public projects, 3 public upstream forks, this portfolio repository, and 2 private repositories. Only public project information enters this source bundle.
 
-- Update the name, introduction, and about paragraph in `profile`.
-- Add a public email and LinkedIn URL if you want those links displayed. Empty values are omitted.
-- Edit or add entries in `projects`. Each entry creates its own project page automatically.
-- Edit `notes` to change the documentation links on the homepage.
-- The homepage headline is also in `src/pages/index.astro`.
-- Colors, spacing, and responsive styles are in `src/styles/global.css`.
-- The editable vector share image is `public/social-card.svg`. Regenerate `public/social-card.png` if you change it.
+Primary areas:
 
-The first version uses Siva Babu's connected GitHub profile and summaries of these verified public READMEs:
+| Area | Projects |
+| --- | ---: |
+| Observability & Reliability | 15 |
+| AI & GPU Infrastructure | 6 |
+| Systems & Robotics | 5 |
+| Sports & Race Tools | 6 |
+| Community & Everyday Apps | 5 |
 
-- https://github.com/sivalinb/gpu-signal-atlas
-- https://github.com/sivalinb/llm-serving-observatory
-- https://github.com/sivalinb/signalops
-- https://github.com/sivalinb/fleet-kernel-workbench
+A primary area keeps grouping predictable. Tags support cross-cutting topics such as OpenTelemetry, agents, Grafana, and RAG. Format is an independent filter: 10 tools, 9 labs, 6 academies, and 12 apps. Related project pages also connect the Fleet workbenches, Runtime experiment suite, RaceTime projects, Athlete observability projects, and Zero to Hero academies.
 
-It makes no claims about employers, job titles, career dates, clients, or project performance. Illustrations are conceptual, not live dashboards or product screenshots. Review descriptions as the underlying projects change.
+Forks are kept in References, with attribution, rather than presented as original work. Private repository names and content are absent from the website. The scan is an inventory and editorial classification; it is not a source-code audit or verification of every underlying application's behavior.
 
-## Free public hosting on GitHub Pages
+## Edit the content
 
-1. Create a **public** repository named `sivalinb.github.io` in your GitHub account. If it already exists, review its current contents before replacing anything.
-2. Put this project's source files at the repository root, including `package.json`, `package-lock.json`, `astro.config.mjs`, `src`, `public`, and `.github/workflows/deploy.yml`. You do not need `node_modules`, `dist`, `.openai`, or `.git` from the private preview.
-3. Open the repository's **Settings → Pages** and choose **GitHub Actions** as the publishing source.
-4. Push the source to `main`. The included workflow builds and publishes it.
-5. Confirm that the Actions deployment succeeds, then visit **https://sivalinb.github.io/**.
+- `src/data/catalog.json`: the public project catalog, categories, tags, formats, related collections, featured order, and links.
+- `src/data/portfolio.ts`: personal introduction, about paragraph, GitHub link, and optional contact links. Empty email/LinkedIn values are omitted.
+- `src/data/project-details.ts`: longer notes and capabilities for the original four highlighted projects. Other project pages use the catalog's concise source-grounded description and scope.
+- `src/pages/index.astro`: homepage headline and section copy.
+- `src/styles/global.css`: layout, typography, colors, and mobile behavior.
+- `public/images`: optimized public repository screenshots and illustrations. Image captions retain their source context.
+- `public/social-card.svg`: editable share-image artwork; `public/social-card.png` is its raster version.
 
-This repository name uses the root of your free GitHub Pages address. If you use a different repository, set `PORTFOLIO_BASE_PATH` to `/repository-name/` and keep `PORTFOLIO_SITE_URL` at your `https://username.github.io` origin in the workflow.
+To add a project, add a public repository entry to `catalog.json` and assign a valid `categoryId`, format, tags, and scope. Counts, category pages, detail routes, related project cards, and the sitemap are derived from that catalog. Keep forked projects in `references`. Review publicly shared demo access before adding a demo URL. Re-run the build after updates.
 
-Official Astro deployment guide: https://docs.astro.build/en/guides/deploy/github/
+## Directory behavior
+
+Desktop offers a category sidebar and the Projects menu. Phones offer a native category selector and expandable navigation. Category changes start a fresh category view. Search, format, and sorting work locally; their current state is reflected in a shareable URL. Clear filters recovers from empty results. The ordinary category pages and project content are prerendered and remain available without JavaScript.
+
+## Free GitHub Pages hosting
+
+The public repository `sivalinb/sivalinb.github.io` is configured to publish through GitHub Actions. Push to `main`; `.github/workflows/deploy.yml` builds Astro and deploys the website. No manual upload of `dist` is needed. Keep the included `github.io` address for zero domain cost. Individual project backends are separate from hosting this portfolio.
+
+Official Astro guide: https://docs.astro.build/en/guides/deploy/github/
 GitHub Pages availability: https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
 
-GitHub Pages hosting is free for a public repository. Keep the included `github.io` address for zero domain cost. Live project backends and custom domains are separate from hosting this static portfolio.
+For another repository name, set `PORTFOLIO_BASE_PATH` to `/repository-name/` and `PORTFOLIO_SITE_URL` to your `https://username.github.io` origin. For another static host, build with its origin as `PORTFOLIO_SITE_URL`, then serve `dist`.
 
-## Other static hosts / private preview
+The `.openai` hosting manifest belongs only to the private Sites backup and is excluded from the public GitHub repository and downloadable source bundle.
 
-Run `npm run build` and serve `dist`. For a different host, set `PORTFOLIO_SITE_URL` to its origin before building. `PORTFOLIO_BASE_PATH` defaults to `/`. The hosting manifest in `.openai` belongs only to the private Sites preview; it is excluded from the downloadable GitHub source bundle.
+## Accessibility and verification
 
-## Accessibility and motion
-
-The site includes a skip link, visible focus states, semantic headings, a keyboard-operable mobile menu, an announced filter count, and reduced-motion styles. Navigation and project content use ordinary links. Filtering is a small client-side enhancement.
+Semantic headings, a skip link, focus indicators, native form controls, an announced result count, keyboard-operable navigation, and reduced-motion styles are included. All portfolio routes and assets were checked, along with search, empty results/reset, format filtering, sorting, category selection, and desktop/phone layouts. Project screenshots and illustrations are not evidence that every underlying app or external demo was tested during this portfolio update.

@@ -1,0 +1,13 @@
+---
+import Base from '../../../layouts/Base.astro';
+import ProjectDirectory from '../../../components/ProjectDirectory.astro';
+import { categories } from '../../../data/portfolio';
+export function getStaticPaths() {
+  return categories.map(category=>({params:{category:category.id},props:{category}}));
+}
+const { category } = Astro.props;
+---
+<Base title={category.name+" — Siva Babu"} active="projects" description={category.description}>
+  <section class="page-heading container"><p class="eyebrow">THE PROJECT DIRECTORY</p><h1>{category.name}</h1><p>{category.description}</p></section>
+  <section class="container directory-section"><ProjectDirectory selectedCategory={category.id}/></section>
+</Base>

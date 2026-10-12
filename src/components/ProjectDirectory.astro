@@ -1,0 +1,86 @@
+---
+import { projects, categories, formats, categoryUrl, academies, references } from '../data/portfolio';
+import ProjectCard from './ProjectCard.astro';
+import Arrow from './Arrow.astro';
+const { selectedCategory = '', academyOnly = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const universe = academyOnly ? projects.filter(project=>project.format==='Academy') : projects;
+const candidates = selectedCategory ? universe.filter(project=>project.categoryId===selectedCategory) : universe;
+const directoryProjects = [...candidates].sort((a,b) => (a.featuredRank??999)-(b.featuredRank??999) || a.title.localeCompare(b.title));
+---
+<div class:list={['directory-layout',{'academy-directory':academyOnly}]} data-directory data-academy={academyOnly?'true':'false'}>
+  {!academyOnly && <aside class="directory-sidebar"><p class="sidebar-title">EXPLORE BY INTEREST</p><nav aria-label="Project categories"><a href={base+'projects/'} class:list={[{'is-active':!selectedCategory}]} aria-current={!selectedCategory?'page':undefined}><span>All projects</span><span>{projects.length}</span></a>{categories.map(category=><a href={categoryUrl(base,category.id)} class:list={[{'is-active':selectedCategory===category.id}]} aria-current={selectedCategory===category.id?'page':undefined}><span>{category.name}</span><span>{category.count}</span></a>)}</nav><div class="sidebar-extra"><a href={base+'learn/'}>Technical academies <span>{academies.length}</span></a><a href={base+'references/'}>Upstream forks <span>{references.length}</span></a></div></aside>}
+  <div class="directory-content">
+    <form class="directory-controls" role="search" onsubmit="return false">
+      {!academyOnly && <label class="category-select-label">Category<select id="category-select" aria-label="Choose project category"><option value={base+'projects/'} selected={!selectedCategory}>All projects ({projects.length})</option>{categories.map(category=><option value={categoryUrl(base,category.id)} selected={selectedCategory===category.id}>{category.name} ({category.count})</option>)}</select></label>}
+      <label class="project-search-label">Find a project<div class="search-input-wrap"><span class="search-icon" aria-hidden="true"></span><input id="project-search" type="search" placeholder="Search names, topics, or tools…" autocomplete="off" /></div></label>
+      {!academyOnly && <label>Format<select id="format-select"><option value="">All formats</option>{formats.map(format=><option value={format}>{format === 'Academy' ? 'Academies' : format+'s'}</option>)}</select></label>}
+      <label>Sort by<select id="sort-select"><option value="featured">Featured first</option><option value="name">Name A–Z</option><option value="updated">Recently updated</option></select></label>
+    </form>
+    <div class="results-bar"><p id="project-results" role="status" aria-live="polite">{directoryProjects.length} {directoryProjects.length===1?'project':'projects'}</p><button id="clear-filters" type="button" class="clear-filters" hidden>Clear filters <span aria-hidden="true">×</span></button></div>
+    <div class="directory-grid">{directoryProjects.map(project=><ProjectCard project={project}/>)}</div>
+    <div class="no-results" id="no-results" hidden><h2>No projects match that search.</h2><p>Try a broader topic or choose another format.</p><button type="button" id="empty-clear" class="button button-primary">Clear filters <Arrow/></button></div>
+    <div class="directory-footnote"><span>Curated from public repositories · October 2026</span><a href={base+'references/'}>Looking for the upstream forks? <Arrow diagonal size={14}/></a></div>
+  </div>
+</div>
+<script>
+  const directory = document.querySelector<HTMLElement>('[data-directory]');
+  if (directory) {
+    const cards = Array.from(directory.querySelectorAll<HTMLElement>('.project-card'));
+    const grid = directory.querySelector<HTMLElement>('.directory-grid')!;
+    const search = directory.querySelector<HTMLInputElement>('#project-search')!;
+    const format = directory.querySelector<HTMLSelectElement>('#format-select');
+    const sort = directory.querySelector<HTMLSelectElement>('#sort-select')!;
+    const category = directory.querySelector<HTMLSelectElement>('#category-select');
+    const count = directory.querySelector<HTMLElement>('#project-results')!;
+    const clear = directory.querySelector<HTMLButtonElement>('#clear-filters')!;
+    const empty = directory.querySelector<HTMLElement>('#no-results')!;
+    function applyFilters(saveUrl = true) {
+      const query = search.value.trim().toLowerCase();
+      const tokens = query.split(/\s+/).filter(Boolean);
+      const selectedFormat = format?.value || '';
+      let visible = 0;
+      cards.forEach(card => {
+        const matchesQuery = tokens.every(token => card.dataset.search?.includes(token));
+        const matchesFormat = !selectedFormat || card.dataset.format === selectedFormat;
+        card.hidden = !(matchesQuery && matchesFormat);
+        if (!card.hidden) visible++;
+      });
+      const ordered = [...cards].sort((a,b) => {
+        if (sort.value === 'name') return (a.dataset.title||'').localeCompare(b.dataset.title||'');
+        if (sort.value === 'updated') return (b.dataset.updated||'').localeCompare(a.dataset.updated||'') || (a.dataset.title||'').localeCompare(b.dataset.title||'');
+        return Number(a.dataset.rank)-Number(b.dataset.rank) || (a.dataset.title||'').localeCompare(b.dataset.title||'');
+      });
+      ordered.forEach(card => grid.append(card));
+      count.textContent = String(visible) + (visible===1?' project':' projects');
+      clear.hidden = !query && !selectedFormat && sort.value === 'featured';
+      empty.hidden = visible !== 0;
+      if (saveUrl) {
+        const url = new URL(window.location.href);
+        if (query) url.searchParams.set('q',search.value.trim()); else url.searchParams.delete('q');
+        if (selectedFormat) url.searchParams.set('format',selectedFormat); else url.searchParams.delete('format');
+        if (sort.value !== 'featured') url.searchParams.set('sort',sort.value); else url.searchParams.delete('sort');
+        window.history.replaceState(null,'',url);
+      }
+    }
+    function restoreFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      search.value = params.get('q') || '';
+      if (format) format.value = Array.from(format.options).some(option=>option.value===params.get('format')) ? params.get('format')! : '';
+      sort.value = ['name','updated'].includes(params.get('sort')||'') ? params.get('sort')! : 'featured';
+      applyFilters(false);
+    }
+    function resetFilters() { search.value=''; if (format) format.value=''; sort.value='featured'; applyFilters(); search.focus(); }
+    search.addEventListener('input',()=>applyFilters());
+    format?.addEventListener('change',()=>applyFilters());
+    sort.addEventListener('change',()=>applyFilters());
+    clear.addEventListener('click',resetFilters);
+    directory.querySelector('#empty-clear')?.addEventListener('click',resetFilters);
+    category?.addEventListener('change',()=>{
+      const next = new URL(category.value,window.location.origin);
+      window.location.assign(next);
+    });
+    window.addEventListener('popstate',restoreFromUrl);
+    restoreFromUrl();
+  }
+</script>

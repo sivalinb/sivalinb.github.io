@@ -1,0 +1,19 @@
+---
+import Arrow from './Arrow.astro';
+import { projectUrl, type Project } from '../data/portfolio';
+const { project, featured = false } = Astro.props as { project: Project; featured?: boolean };
+const base = import.meta.env.BASE_URL;
+---
+<article class:list={['project-card', {'feature-card':featured}]} data-category={project.categoryId} data-format={project.format} data-title={project.title.toLowerCase()} data-updated={project.updatedAt} data-rank={project.featuredRank ?? 999} data-search={[project.title,project.slug,project.description,project.category,project.format,...project.tags,project.family].join(' ').toLowerCase()}>
+  {featured && <a href={projectUrl(base,project.slug)} class:list={['feature-cover','cover-'+project.categoryId]} tabindex="-1" aria-hidden="true">
+    {project.image ? <img src={base+'images/'+project.image} alt="" loading="lazy" width={project.imageWidth} height={project.imageHeight} /> :
+      <div class="incident-cover"><span class="cover-kicker">INCIDENTLENS</span><div class="trace-flow"><span>Metrics</span><span>Logs</span><span>Traces</span></div><div class="trace-connector"></div><div class="evidence-node"><span class="evidence-dot"></span> Evidence → review</div></div>}
+  </a>}
+  <div class="card-body">
+    <div class="card-meta"><span class={'category-label category-'+project.categoryId}>{project.categoryShort}</span><span>{project.format}</span></div>
+    <h3><a href={projectUrl(base,project.slug)}>{project.title}</a></h3>
+    <p class="card-description">{project.description}</p>
+    <ul class="project-tags" aria-label="Project topics">{project.tags.slice(0,3).map(tag=><li>{tag}</li>)}</ul>
+    <div class="card-actions"><a href={projectUrl(base,project.slug)} class="card-detail">Explore project <Arrow size={16}/></a><a href={project.repository} class="card-source" target="_blank" rel="noopener noreferrer" aria-label={'View '+project.title+' on GitHub'}>GitHub <Arrow diagonal size={13}/></a></div>
+  </div>
+</article>
