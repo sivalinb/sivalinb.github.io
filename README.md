@@ -1,8 +1,8 @@
 # Siva Babu — Astro portfolio
 
-A static Astro portfolio with a personal workbench homepage, six project highlights, a directory of 37 original public projects, five category pages, 37 project detail pages, six technical academies, and three clearly attributed upstream forks.
+A static Astro portfolio with a blue presentation homepage, six project highlights, a directory of 37 original public projects, five category pages, 37 project detail pages, six technical academies, and three clearly attributed upstream forks.
 
-The homepage uses a public GitHub portrait, paper tones, handwritten annotations, an original SVG signal sketch, and project-specific stories. Three projects have full editorial features; three more are concise links. The project directory retains its focused browsing design. Homepage styles are scoped to the homepage and do not alter the directory or detail pages.
+The homepage takes visual cues from https://hiview.ai/: a pale blue hero, bold typography, a circular diagram with floating panels, and a dark section of project previews. The graphics, copy, and navigation are tailored to this portfolio. It includes a keyboard-operable category selector and counts derived from the public catalog. The owner's portrait is removed from the homepage and its asset bundle. Homepage styles are scoped to the homepage and do not alter the directory or detail pages.
 
 Public website: https://sivalinb.github.io/
 Project directory: https://sivalinb.github.io/projects/
@@ -48,7 +48,8 @@ Forks are kept in References, with attribution, rather than presented as origina
 - `src/pages/index.astro`: homepage headline and section copy.
 - `src/styles/global.css`: layout, typography, colors, and mobile behavior.
 - `src/styles/home.css`: the personal homepage layout and its responsive styles.
-- `public/images`: public repository screenshots and illustrations, plus the portrait from the owner's public GitHub profile. Image captions retain their source context.
+- `src/components/PortfolioIcon.astro`: the homepage's small SVG icons.
+- `public/images`: public repository screenshots and illustrations. Image captions retain their source context. Homepage diagrams are labeled concept views rather than presented as working application screenshots.
 - `public/social-card.svg`: editable share-image artwork; `public/social-card.png` is its raster version.
 
 To add a project, add a public repository entry to `catalog.json` and assign a valid `categoryId`, format, tags, and scope. Counts, category pages, detail routes, related project cards, and the sitemap are derived from that catalog. Keep forked projects in `references`. Review publicly shared demo access before adding a demo URL. Re-run the build after updates.

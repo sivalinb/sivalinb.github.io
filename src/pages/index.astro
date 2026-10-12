@@ -1,64 +1,105 @@
 ---
 import Base from '../layouts/Base.astro';
 import Arrow from '../components/Arrow.astro';
-import { profile, projects, categories, categoryUrl, projectUrl } from '../data/portfolio';
+import PortfolioIcon from '../components/PortfolioIcon.astro';
+import { profile, projects, categories, academies, formats, categoryUrl, projectUrl } from '../data/portfolio';
 import '../styles/home.css';
 const base = import.meta.env.BASE_URL;
 const findProject = (slug: string) => projects.find(project => project.slug === slug)!;
-const atlas = findProject('gpu-signal-atlas');
-const signalstory = findProject('signalstory');
-const hatti = findProject('hatti-quest');
-const moreWork = [
-  { project: findProject('incidentlens'), note: 'Following the evidence through an incident.' },
-  { project: findProject('llm-serving-observatory'), note: 'A closer look at what happens behind a prompt.' },
-  { project: findProject('racetime-copilot'), note: 'Catching up on a race, without losing the story.' },
-];
+const categoryPicks: Record<string,string[]> = {
+  observability: ['incidentlens','signalstory','telemetry-cardinality-governor'],
+  'ai-infrastructure': ['gpu-signal-atlas','llm-serving-observatory','inference-regression-lab'],
+  systems: ['fleet-kernel-workbench','robotreplay','redfish-zero-to-hero'],
+  sports: ['racetime-copilot','athlete-living-atlas','burro-race-replay'],
+  community: ['hatti-quest','commonground-ai','nalam-tamil-wellness'],
+};
+const areaHeadings: Record<string,string> = {
+  observability: 'From signals to understanding.',
+  'ai-infrastructure': 'Look inside the infrastructure behind AI.',
+  systems: 'Explore the layers beneath the application.',
+  sports: 'Keep the evidence. Find the story.',
+  community: 'Build for the conversations that matter.',
+};
+const featured = ['signalstory','gpu-signal-atlas','incidentlens','llm-serving-observatory','racetime-copilot','hatti-quest'].map(findProject);
+const observability = categories.find(c=>c.id==='observability')!;
 ---
-<Base pageClass="homepage" themeColor="#f4efe5" title="Siva Babu — A personal workbench" description="Hi, I’m Siva. I build to figure things out: systems, observability, race stories, and language adventures. Come look around my personal workbench.">
-  <section class="personal-hero container" aria-labelledby="hello-title">
-    <div class="personal-intro">
-      <p class="hello">Hi, I’m Siva.<span class="hello-wave" aria-hidden="true">✳</span></p>
-      <h1 id="hello-title">I build to<br/>figure things <em>out.<svg viewBox="0 0 190 17" aria-hidden="true"><path d="M3 11C48 2 115 4 181 7M8 15C67 9 129 8 187 10"/></svg></em></h1>
-      <p class="personal-lede">Mostly systems and observability. Sometimes race videos, language adventures, and whatever question leads to the next experiment.</p>
-      <div class="personal-actions"><a class="ink-link" href="#selected-work">Have a look around <span aria-hidden="true">↓</span></a><a href={base+'projects/'} class="quiet-link">All {projects.length} projects <Arrow size={16}/></a></div>
-    </div>
-    <div class="portrait-composition">
-      <span class="portrait-orbit" aria-hidden="true"></span>
-      <p class="margin-note portrait-note">a face behind<br/>the repositories<svg viewBox="0 0 90 75" aria-hidden="true"><path d="M7 4C2 36 34 51 79 61M65 48L80 61L62 68"/></svg></p>
-      <figure class="portrait-paper"><div class="portrait-photo"><img src={base+'images/siva-babu.png'} width="460" height="460" alt="Siva Babu" fetchpriority="high" /></div><figcaption><span>Siva Babu</span><span>From my GitHub profile.</span></figcaption></figure>
-      <div class="question-slip"><span class="slip-label">A recurring question</span><p>What would make<br/>this easier to<br/><em>understand?</em></p><svg viewBox="0 0 170 13" aria-hidden="true"><path d="M3 8C47 1 107 1 166 6"/></svg></div>
-      <span class="small-stamp">systems ↔ stories</span>
+<Base pageClass="homepage" themeColor="#f2f7ff" title="Siva Babu — Software, systems & ideas" description="Explore Siva Babu’s tools, experiments, and learning projects across observability, AI infrastructure, systems, sport, and everyday life.">
+  <section class="blue-hero" aria-labelledby="hero-title">
+    <div class="container blue-hero-inner">
+      <div class="hero-copy">
+        <p class="blue-badge"><span aria-hidden="true"></span> SOFTWARE, SYSTEMS & IDEAS</p>
+        <h1 id="hero-title">Curious ideas.<br/><span>Practical software.</span></h1>
+        <p class="hero-description">I’m Siva Babu. I turn questions about systems, AI, learning, and everyday life into tools and experiments you can explore.</p>
+        <div class="blue-actions"><a class="blue-button" href={base+'projects/'}>Explore projects <Arrow size={17}/></a><a class="white-button" href="#selected-work">See selected work <Arrow size={17}/></a></div>
+      </div>
+      <div class="portfolio-network" aria-label="A connected view of the portfolio">
+        <div class="network-petals" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="network-ring" aria-hidden="true"><span class="ring-label ring-label-top">UNDERSTAND SYSTEMS</span><span class="ring-label ring-label-bottom">EXPLORE · BUILD · SHARE</span></div>
+        <a class="network-core" href={base+'projects/'} aria-label={'Browse all '+projects.length+' public projects'}><span class="core-symbol" aria-hidden="true"><svg viewBox="0 0 72 72" fill="none"><path d="M17 45L35 24L55 44M17 45H55M35 24V54"/><circle cx="17" cy="45" r="5"/><circle cx="35" cy="24" r="5"/><circle cx="55" cy="44" r="5"/><circle cx="35" cy="54" r="5"/></svg></span><strong>{projects.length}</strong><span>public projects</span></a>
+        <a class="floating-panel panel-signals" href={categoryUrl(base,'observability')}><span class="panel-kicker"><span class="panel-dot"></span> OBSERVABILITY <span aria-hidden="true">•••</span></span><div class="mini-wave" aria-hidden="true"><svg viewBox="0 0 155 35"><path d="M1 27L17 27L28 15L37 26L49 21L63 23L75 4L87 25L101 21L112 24L127 12L139 23L154 19"/></svg></div><div class="floating-bottom"><strong>{observability.count}</strong><span>projects to explore</span><Arrow diagonal size={14}/></div></a>
+        <a class="floating-panel panel-atlas" href={projectUrl(base,'gpu-signal-atlas')}><span class="float-icon"><PortfolioIcon name="ai-infrastructure" size={22}/></span><span class="floating-project-title">GPU Signal Atlas</span><span class="floating-caption">Signals with context.</span><span class="panel-text-link">Explore the evidence <Arrow size={12}/></span></a>
+        <a class="floating-panel panel-learning" href={base+'learn/'}><span class="learning-panel-icon"><PortfolioIcon name="learn" size={20}/></span><div><strong>{academies.length} academies</strong><span>Learn by changing things.</span></div><Arrow diagonal size={14}/></a>
+        <a class="floating-panel panel-family" href={projectUrl(base,'hatti-quest')}><span class="family-panel-icon" aria-hidden="true">Aa</span><div><strong>Hatti Quest</strong><span>Language. Family. Play.</span></div><Arrow diagonal size={14}/></a>
+      </div>
     </div>
   </section>
-  <div class="chapter-line container"><span>Code, experiments & things worth sharing.</span><a href="#selected-work">A few things I’ve made <span aria-hidden="true">↘</span></a></div>
-  <section class="personal-work container" id="selected-work" aria-labelledby="work-title">
-    <div class="work-introduction"><div><p class="page-note">From the workbench</p><h2 id="work-title">Different questions.<br/><em>Same curiosity.</em></h2></div><p>A few projects that show the range.<br/>Start with whichever catches your eye.</p></div>
-    <article class="atlas-story">
-      <a href={projectUrl(base,atlas.slug)} class="signal-sketch" aria-label="Explore GPU Signal Atlas">
-        <div class="sketch-top"><span>GPU Signal Atlas</span><span aria-hidden="true">01 / SYSTEMS</span></div>
-        <div class="sketch-question">A number.<br/><em>But what does it mean?</em></div>
-        <svg class="signal-line" viewBox="0 0 520 90" aria-hidden="true"><path class="sketch-grid-line" d="M0 70H520M0 35H520M50 0V90M150 0V90M250 0V90M350 0V90M450 0V90"/><path class="sketch-wave" d="M0 69L34 69L42 60L54 73L66 56L79 68L112 67L127 62L142 72L158 65L173 64L191 22L208 70L223 65L244 64L262 42L280 67L302 65L317 12L335 69L352 57L373 65L395 65L414 36L435 67L455 66L473 59L492 69L520 64"/></svg>
-        <div class="sketch-steps"><span>signal</span><span aria-hidden="true">→</span><span>context</span><span aria-hidden="true">→</span><span>evidence</span></div>
-        <div class="sketch-bottom"><span>A sketch of the idea</span><span class="sketch-open" aria-hidden="true"><Arrow diagonal size={22}/></span></div>
+  <section class="portfolio-facts container" aria-label="Portfolio at a glance"><div><strong>{projects.length}</strong><span>Original public projects</span></div><div><strong>{categories.length}</strong><span>Areas of exploration</span></div><div><strong>{academies.length}</strong><span>Learning academies</span></div><div><strong>{formats.length}</strong><span>Ways to explore the work</span></div></section>
+
+  <section class="area-section container" aria-labelledby="areas-title">
+    <div class="blue-section-heading"><p class="blue-badge">THE COLLECTION</p><h2 id="areas-title">One portfolio.<br class="mobile-break"/> <span>Five directions.</span></h2><p>From infrastructure to everyday apps, choose the thread that interests you.</p></div>
+    <div class="area-explorer" data-area-explorer>
+      <div class="area-tabs" role="tablist" aria-label="Project categories" aria-orientation="vertical">{categories.map((category,index)=><button type="button" role="tab" id={'tab-'+category.id} aria-controls={'area-'+category.id} aria-selected={index===0?'true':'false'} tabindex={index===0?0:-1} data-area={category.id}><span class="area-icon"><PortfolioIcon name={category.id} size={22}/></span><span>{category.name}<small>{category.count} projects</small></span><Arrow size={15}/></button>)}</div>
+      <div class="area-panels">{categories.map((category,index)=><section class={'area-panel area-'+category.id} role="tabpanel" id={'area-'+category.id} aria-labelledby={'tab-'+category.id} tabindex="0" hidden={index!==0}><div class="area-panel-top"><span class="area-panel-icon"><PortfolioIcon name={category.id} size={27}/></span><span class="area-total">{category.count} public projects</span></div><h3>{areaHeadings[category.id]}</h3><p>{category.description}</p><div class="area-project-links">{categoryPicks[category.id].map(slug=>{const project=findProject(slug);return <a href={projectUrl(base,slug)}><span><strong>{project.title}</strong><small>{project.format} · {project.tags[0]}</small></span><Arrow diagonal size={17}/></a>})}</div><a class="blue-inline-link" href={categoryUrl(base,category.id)}>Browse all {category.count} projects <Arrow size={16}/></a></section>)}</div>
+    </div>
+    <noscript><p class="category-fallback">Browse by category: {categories.map(category=><a href={categoryUrl(base,category.id)}>{category.name}</a>)}</p></noscript>
+  </section>
+
+  <section class="showcase-section" id="selected-work" aria-labelledby="selected-title"><div class="container">
+    <div class="blue-section-heading"><p class="blue-badge">SELECTED WORK</p><h2 id="selected-title">Take a closer look<br class="mobile-break"/> <span>at the ideas.</span></h2><p>Tools to investigate. Labs to experiment with. A few different ways to learn and connect.</p></div>
+    <div class="showcase-grid">{featured.map(project=><article class={'showcase-card showcase-'+project.slug}>
+      <a href={projectUrl(base,project.slug)} class={'project-scene scene-'+project.slug} aria-label={'Explore '+project.title}>
+        {project.slug==='signalstory' && <><img src={base+'images/'+project.image} width={project.imageWidth} height={project.imageHeight} alt="SignalStory’s four-part learning journey in the Python studio" loading="lazy"/><span class="scene-caption">From the Python studio</span></>}
+        {project.slug==='gpu-signal-atlas' && <div class="atlas-visual" aria-hidden="true"><span class="scene-eyebrow">A SIGNAL, WITH CONTEXT</span><span class="atlas-chip"><PortfolioIcon name="ai-infrastructure" size={48}/></span><div class="evidence-path"><span>Telemetry</span><i>→</i><span>Context</span><i>→</i><span>Evidence</span></div><span class="scene-caption">Concept view</span></div>}
+        {project.slug==='incidentlens' && <div class="incident-visual" aria-hidden="true"><div class="incident-sources"><span>Metrics</span><span>Logs</span><span>Traces</span></div><svg viewBox="0 0 250 65"><path d="M34 1v20Q34 35 60 35H125M125 1v63M215 1v20Q215 35 190 35H125"/></svg><span class="incident-evidence">Follow the evidence <Arrow size={15}/></span><span class="scene-caption">Investigation concept</span></div>}
+        {project.slug==='llm-serving-observatory' && <div class="serving-visual" aria-hidden="true"><span class="scene-eyebrow">INSIDE THE REQUEST</span><div class="serving-stages"><span>Prefill</span><i>→</i><span>Decode</span></div><div class="cache-blocks"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><small>KV cache · Memory · Telemetry</small><span class="scene-caption">Serving concept</span></div>}
+        {project.slug==='racetime-copilot' && <div class="race-visual" aria-hidden="true"><span class="scene-eyebrow">FIND THE MOMENT</span><PortfolioIcon name="sports" size={42}/><div class="race-timeline"><span></span><span></span><span></span><span></span><span></span><span></span><i></i></div><small>Coverage → Evidence → Catch-up</small><span class="scene-caption">Workflow concept</span></div>}
+        {project.slug==='hatti-quest' && <><img src={base+'images/'+project.image} width={project.imageWidth} height={project.imageHeight} alt="A language-learning adventure in Hatti Quest" loading="lazy"/><span class="scene-caption">A detail from the adventure</span></>}
+        <span class="scene-open" aria-hidden="true"><Arrow diagonal size={18}/></span>
       </a>
-      <div class="atlas-copy"><span class="story-number">01</span><p class="story-label">Understanding systems</p><h3>A metric is only<br/><em>the beginning.</em></h3><p>GPU telemetry gives you numbers. GPU Signal Atlas connects those numbers to documentation and cited explanations, so there’s a path from a signal to the evidence behind it.</p><a class="ink-link" href={projectUrl(base,atlas.slug)}>Inside GPU Signal Atlas <Arrow size={18}/></a></div>
-    </article>
-    <div class="story-pair">
-      <article class="learning-story">
-        <a class="story-image signalstory-image" href={projectUrl(base,signalstory.slug)} aria-label="Explore SignalStory"><img src={base+'images/'+signalstory.image} width={signalstory.imageWidth} height={signalstory.imageHeight} alt="SignalStory’s four-part observability learning journey" loading="lazy"/><span class="image-corner" aria-hidden="true"><Arrow diagonal size={20}/></span></a>
-        <p class="image-caption">SignalStory · a view from the Python studio</p>
-        <div class="story-copy"><span class="story-number">02</span><p class="story-label">Learning by doing</p><h3>Make it click.<br/><em>Then make it yours.</em></h3><p>Observability is easier to grasp when you can change something and see what happens. SignalStory follows one checkout story through measurements, queries, traces, and evidence.</p><a class="ink-link" href={projectUrl(base,signalstory.slug)}>Meet SignalStory <Arrow size={18}/></a></div>
-        <a class="pencil-link" href={base+'learn/'}>More ways to learn by doing <span aria-hidden="true">↗</span></a>
-      </article>
-      <article class="family-story">
-        <p class="margin-note family-note">a different kind<br/>of connection</p>
-        <a class="story-image hatti-image" href={projectUrl(base,hatti.slug)} aria-label="Explore Hatti Quest"><img src={base+'images/'+hatti.image} width={hatti.imageWidth} height={hatti.imageHeight} alt="Hatti Quest’s language adventure through the hills" loading="lazy"/><span class="image-corner" aria-hidden="true"><Arrow diagonal size={20}/></span></a>
-        <p class="image-caption">Hatti Quest · a detail from the adventure</p>
-        <div class="story-copy"><span class="story-number">03</span><p class="story-label">Language & family</p><h3>A little adventure.<br/><em>A little closer to home.</em></h3><p>Hatti Quest takes a gentler turn: small Badaga language adventures, familiar words, and family voices. Software that makes room for the things we want to pass on.</p><a class="ink-link" href={projectUrl(base,hatti.slug)}>Step into Hatti Quest <Arrow size={18}/></a></div>
-      </article>
-    </div>
-    <div class="more-work"><p class="page-note">Also on the workbench</p><div class="work-lines">{moreWork.map(({project,note})=><a href={projectUrl(base,project.slug)}><span class="work-line-title">{project.title}</span><span class="work-line-note">{note}</span><Arrow diagonal size={19}/></a>)}</div></div>
-  </section>
-  <section class="work-drawers container" aria-labelledby="drawers-title"><div><p class="page-note">Keep looking</p><h2 id="drawers-title">There’s more<br/><em>in the drawers.</em></h2><a class="ink-link" href={base+'projects/'}>The whole collection <Arrow size={18}/></a></div><nav aria-label="Browse projects by category">{categories.map((category,index)=><a href={categoryUrl(base,category.id)}><span class="drawer-index">0{index+1}</span><span>{category.name}</span><span class="drawer-count">{category.count}</span><Arrow size={17}/></a>)}</nav></section>
-  <section class="personal-note container" id="about" aria-labelledby="note-title"><div class="note-heading"><span class="note-star" aria-hidden="true">✳</span><p class="page-note">A note from Siva</p></div><div class="note-body"><h2 id="note-title">The common thread?<br/><em>Wanting to understand.</em></h2><p>My projects wander between infrastructure, visual learning, race coverage, and language. What connects them is wanting to understand something well enough to make it useful—and sharing what I build along the way.</p><p>If something here overlaps with a question you’re thinking about, I’d be glad to compare notes.</p><a class="ink-link" href={profile.github} target="_blank" rel="noopener noreferrer">Find me on GitHub <Arrow diagonal size={18}/></a><p class="sign-off">Thanks for stopping by.<br/><span>Siva</span></p></div></section>
+      <div class="showcase-copy"><p class="showcase-category"><PortfolioIcon name={project.categoryId} size={15}/>{project.categoryShort}<span>{project.format}</span></p><h3><a href={projectUrl(base,project.slug)}>{project.title}</a></h3><p class="showcase-description">{project.description}</p><a class="showcase-link" href={projectUrl(base,project.slug)}>Explore project <Arrow size={16}/></a></div>
+    </article>)}</div>
+    <div class="showcase-all"><a class="blue-button" href={base+'projects/'}>Browse all {projects.length} projects <Arrow size={17}/></a></div>
+  </div></section>
+
+  <section class="academy-section container" aria-labelledby="academy-title"><div class="academy-intro"><p class="blue-badge">LEARN BY DOING</p><h2 id="academy-title">Change something.<br/><span>See what happens.</span></h2><p>Learning projects that make technical ideas visible. Explore queries, traces, hardware, and infrastructure through practical exercises.</p><a class="blue-inline-link" href={base+'learn/'}>Explore the learning collection <Arrow size={17}/></a></div><div class="academy-links">{academies.map(project=><a href={projectUrl(base,project.slug)}><span class="academy-icon"><PortfolioIcon name="learn" size={19}/></span><span>{project.title}<small>{project.tags[0]}</small></span><Arrow diagonal size={15}/></a>)}</div></section>
+
+  <section class="blue-about" id="about" aria-labelledby="about-title"><div class="container blue-about-inner"><p class="blue-badge">THE PERSON BEHIND THE PROJECTS</p><h2 id="about-title">Hi, I’m Siva.<br/><span>Always another question to explore.</span></h2><p>My work moves between infrastructure, visual learning, sport, and language. The common thread is wanting to understand things better, build something useful, and share the work along the way.</p><a class="blue-button" href={profile.github} target="_blank" rel="noopener noreferrer">Find me on GitHub <Arrow diagonal size={17}/></a></div></section>
+  <script>
+    const explorer = document.querySelector<HTMLElement>('[data-area-explorer]');
+    if (explorer) {
+      const tabs = [...explorer.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+      const panels = [...explorer.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
+      const tablist = explorer.querySelector<HTMLElement>('[role="tablist"]');
+      function selectArea(index: number, focus = false) {
+        tabs.forEach((tab,i) => { tab.setAttribute('aria-selected', String(i === index)); tab.tabIndex = i === index ? 0 : -1; });
+        panels.forEach((panel,i) => { panel.hidden = i !== index; });
+        if (focus) tabs[index].focus();
+      }
+      tabs.forEach((tab,index) => {
+        tab.addEventListener('click',()=>selectArea(index));
+        tab.addEventListener('keydown',event=>{
+          let next = index;
+          if (event.key==='ArrowDown'||event.key==='ArrowRight') next=(index+1)%tabs.length;
+          else if (event.key==='ArrowUp'||event.key==='ArrowLeft') next=(index-1+tabs.length)%tabs.length;
+          else if (event.key==='Home') next=0;
+          else if (event.key==='End') next=tabs.length-1;
+          else return;
+          event.preventDefault();selectArea(next,true);
+        });
+      });
+      const phone = window.matchMedia('(max-width:760px)');
+      const updateOrientation = () => tablist?.setAttribute('aria-orientation', phone.matches ? 'horizontal' : 'vertical');
+      updateOrientation();phone.addEventListener('change',updateOrientation);
+    }
+  </script>
 </Base>

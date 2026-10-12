@@ -1,0 +1,12 @@
+---
+const { name = 'systems', size = 24 } = Astro.props;
+const paths: Record<string,string> = {
+  observability: 'M3 17h18M4 13l4-4 4 3 7-8M16 4h3v3',
+  'ai-infrastructure': 'M7 7h10v10H7zM10 10h4v4h-4zM9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4',
+  systems: 'M12 3L2 8l10 5 10-5-10-5zM2 12l10 5 10-5M2 16l10 5 10-5',
+  sports: 'M3 19l6-9 4 5 3-4 5 8H3zM16 4h5l-2 2 2 2h-5V3',
+  community: 'M4 4h16v12H9l-5 4V4zM8 8h8M8 12h5',
+  learn: 'M12 6C9 4 6 4 3 5v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1v14',
+};
+---
+<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={paths[name] || paths.systems}/></svg>
