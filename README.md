@@ -1,6 +1,8 @@
 # Siva Babu — Astro portfolio
 
-A static Astro portfolio with a light editorial design, six homepage highlights, a directory of 37 original public projects, five category pages, 37 project detail pages, six technical academies, and three clearly attributed upstream forks.
+A static Astro portfolio with a personal workbench homepage, six project highlights, a directory of 37 original public projects, five category pages, 37 project detail pages, six technical academies, and three clearly attributed upstream forks.
+
+The homepage uses a public GitHub portrait, paper tones, handwritten annotations, an original SVG signal sketch, and project-specific stories. Three projects have full editorial features; three more are concise links. The project directory retains its focused browsing design. Homepage styles are scoped to the homepage and do not alter the directory or detail pages.
 
 Public website: https://sivalinb.github.io/
 Project directory: https://sivalinb.github.io/projects/
@@ -45,7 +47,8 @@ Forks are kept in References, with attribution, rather than presented as origina
 - `src/data/project-details.ts`: longer notes and capabilities for the original four highlighted projects. Other project pages use the catalog's concise source-grounded description and scope.
 - `src/pages/index.astro`: homepage headline and section copy.
 - `src/styles/global.css`: layout, typography, colors, and mobile behavior.
-- `public/images`: optimized public repository screenshots and illustrations. Image captions retain their source context.
+- `src/styles/home.css`: the personal homepage layout and its responsive styles.
+- `public/images`: public repository screenshots and illustrations, plus the portrait from the owner's public GitHub profile. Image captions retain their source context.
 - `public/social-card.svg`: editable share-image artwork; `public/social-card.png` is its raster version.
 
 To add a project, add a public repository entry to `catalog.json` and assign a valid `categoryId`, format, tags, and scope. Counts, category pages, detail routes, related project cards, and the sitemap are derived from that catalog. Keep forked projects in `references`. Review publicly shared demo access before adding a demo URL. Re-run the build after updates.
