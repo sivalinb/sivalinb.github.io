@@ -1,6 +1,6 @@
 {
-  "scannedAt": "2026-10-11",
-  "publicRepositoryCount": 41,
+  "scannedAt": "2026-10-12",
+  "publicRepositoryCount": 42,
   "projects": [
     {
       "slug": "incidentlens",
@@ -376,6 +376,32 @@
       "updatedAt": "2026-10-02T00:15:37Z",
       "imageWidth": 1100,
       "imageHeight": 619
+    },
+    {
+      "slug": "redfish-observability-lab",
+      "title": "Redfish Observatory",
+      "categoryId": "observability",
+      "format": "Lab",
+      "description": "Operate a simulated server rack, practice Redfish management, and follow hardware and application signals through OpenTelemetry.",
+      "tags": [
+        "Redfish",
+        "OpenTelemetry",
+        "Gradio",
+        "Server management"
+      ],
+      "scope": "Server hardware, sensors, faults, and management effects are simulated; OpenTelemetry exports and request timings are real. The API is a teaching subset rather than a Redfish-conformant implementation. In-app management controls target the simulator, while optional hardware examples run separately. The lab is intended for local learning and uses disposable data.",
+      "repository": "https://github.com/sivalinb/redfish-observability-lab",
+      "demo": "",
+      "demoLabel": "Public demo",
+      "family": "",
+      "featuredRank": null,
+      "image": "redfish-observatory.jpg",
+      "imageKind": "Simulator screenshot",
+      "why": "A hands-on bridge from server management to metrics, logs, and traces: compare polling with pushed reports and connect hardware events to application behavior.",
+      "language": "Python",
+      "updatedAt": "2026-10-12T22:18:10Z",
+      "imageWidth": 1280,
+      "imageHeight": 1519
     },
     {
       "slug": "gpu-signal-atlas",

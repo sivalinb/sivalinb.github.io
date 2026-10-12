@@ -1,6 +1,6 @@
 # Siva Babu — Astro portfolio
 
-A static Astro portfolio with a blue presentation homepage, six project highlights, a directory of 37 original public projects, five category pages, 37 project detail pages, six technical academies, and three clearly attributed upstream forks.
+A static Astro portfolio with a blue presentation homepage, six project highlights, a directory of 38 original public projects, five category pages, 38 project detail pages, six technical academies, and three clearly attributed upstream forks.
 
 The homepage takes visual cues from https://hiview.ai/: a pale blue hero, bold typography, a circular diagram with floating panels, and a dark section of project previews. The graphics, copy, and navigation are tailored to this portfolio. It includes a keyboard-operable category selector and counts derived from the public catalog. The owner's portrait is removed from the homepage and its asset bundle. Homepage styles are scoped to the homepage and do not alter the directory or detail pages.
 
@@ -24,19 +24,21 @@ In a restricted environment, set `ASTRO_TELEMETRY_DISABLED=1` on the build/dev p
 
 ## Information architecture
 
-The October 11, 2026 scan covered metadata and README summaries for 43 owned repositories: 37 original public projects, 3 public upstream forks, this portfolio repository, and 2 private repositories. Only public project information enters this source bundle.
+The public inventory was refreshed on October 12, 2026: 42 public repositories, comprising 38 original projects, 3 upstream forks, and this portfolio repository. Redfish Observatory was added after reviewing its README, architecture notes, and telemetry implementation. Its entry includes the repository's simulator screenshot and links to the 100-use-case catalog and API guide. It appears in the homepage's Observability category panel, directory, search, and generated detail page.
+
+The original October 11 scan covered 43 owned repositories, including 2 private repositories that were excluded. Only public project information enters this source bundle.
 
 Primary areas:
 
 | Area | Projects |
 | --- | ---: |
-| Observability & Reliability | 15 |
+| Observability & Reliability | 16 |
 | AI & GPU Infrastructure | 6 |
 | Systems & Robotics | 5 |
 | Sports & Race Tools | 6 |
 | Community & Everyday Apps | 5 |
 
-A primary area keeps grouping predictable. Tags support cross-cutting topics such as OpenTelemetry, agents, Grafana, and RAG. Format is an independent filter: 10 tools, 9 labs, 6 academies, and 12 apps. Related project pages also connect the Fleet workbenches, Runtime experiment suite, RaceTime projects, Athlete observability projects, and Zero to Hero academies.
+A primary area keeps grouping predictable. Tags support cross-cutting topics such as OpenTelemetry, agents, Grafana, and RAG. Format is an independent filter: 10 tools, 10 labs, 6 academies, and 12 apps. Related project pages also connect the Fleet workbenches, Runtime experiment suite, RaceTime projects, Athlete observability projects, and Zero to Hero academies.
 
 Forks are kept in References, with attribution, rather than presented as original work. Private repository names and content are absent from the website. The scan is an inventory and editorial classification; it is not a source-code audit or verification of every underlying application's behavior.
 
@@ -44,7 +46,7 @@ Forks are kept in References, with attribution, rather than presented as origina
 
 - `src/data/catalog.json`: the public project catalog, categories, tags, formats, related collections, featured order, and links.
 - `src/data/portfolio.ts`: personal introduction, about paragraph, GitHub link, and optional contact links. Empty email/LinkedIn values are omitted.
-- `src/data/project-details.ts`: longer notes and capabilities for the original four highlighted projects. Other project pages use the catalog's concise source-grounded description and scope.
+- `src/data/project-details.ts`: longer notes and capabilities for selected projects, including Redfish Observatory. Other project pages use the catalog's concise source-grounded description and scope.
 - `src/pages/index.astro`: homepage headline and section copy.
 - `src/styles/global.css`: layout, typography, colors, and mobile behavior.
 - `src/styles/home.css`: the personal homepage layout and its responsive styles.

@@ -1,5 +1,31 @@
 export const details = [
   {
+    slug: "redfish-observability-lab",
+    title: "Redfish Observatory",
+    category: "Observability",
+    number: "05",
+    accent: "teal",
+    motif: "rack",
+    subtitle: "From server hardware to observable signals.",
+    description: "Operate a simulated server rack, practice Redfish management, and follow hardware and application signals through OpenTelemetry.",
+    tags: ["Redfish", "OpenTelemetry", "Gradio"],
+    repository: "https://github.com/sivalinb/redfish-observability-lab",
+    demo: "",
+    overview: "A fan failure, a warming CPU, and a slower checkout request become one experiment you can follow. Redfish Observatory brings a simulated server, a Redfish-shaped HTTP API, and real OpenTelemetry SDK providers into a Python and Gradio learning lab. It makes the connection between hardware management, collection delays, and application behavior visible.",
+    capabilities: [
+      { title: "Operate the simulated rack", text: "Inject fan, power-supply, disk, and OS failures, then watch sensor readings, hardware health, and measured checkout timings change." },
+      { title: "Practice server management", text: "Work through ten management lessons covering inventory, remote power, BIOS settings, firmware tasks, virtual media, storage, and accounts." },
+      { title: "Follow all three signals", text: "Compare polling with pushed reports and events. Inspect real SDK metrics, logs, and spans locally, or use the optional Collector and Grafana stack with Prometheus, Loki, and Tempo." },
+      { title: "Explore 100 use cases", text: "Search the Redfish recipe library, inspect explanations and official schema links, and download Python samples. Compatible examples can use the simulator; advanced workflows require supported hardware." },
+    ],
+    scope: "Server hardware, sensors, faults, and management effects are simulated; OpenTelemetry exports and request timings are real. The API is a teaching subset rather than a Redfish-conformant implementation. In-app management controls target the simulator, while optional hardware examples run separately. The lab is intended for local learning and uses disposable data.",
+    notes: [
+      { title: "Architecture & signal flow", text: "Simulation, collection modes, SDK providers, and the optional backend.", url: "https://github.com/sivalinb/redfish-observability-lab/blob/main/docs/ARCHITECTURE.md" },
+      { title: "100 Redfish use cases", text: "The complete learning catalog and its Python examples.", url: "https://github.com/sivalinb/redfish-observability-lab/blob/main/docs/USE_CASES.md" },
+      { title: "Simulator API guide", text: "Management requests, tasks, event callbacks, and telemetry reports.", url: "https://github.com/sivalinb/redfish-observability-lab/blob/main/docs/API.md" },
+    ],
+  },
+  {
     slug: "gpu-signal-atlas",
     title: "GPU Signal Atlas",
     category: "AI infrastructure",
@@ -95,4 +121,3 @@ export const details = [
     ],
   },
 ];
-

@@ -7,7 +7,7 @@ import '../styles/home.css';
 const base = import.meta.env.BASE_URL;
 const findProject = (slug: string) => projects.find(project => project.slug === slug)!;
 const categoryPicks: Record<string,string[]> = {
-  observability: ['incidentlens','signalstory','telemetry-cardinality-governor'],
+  observability: ['redfish-observability-lab','incidentlens','signalstory'],
   'ai-infrastructure': ['gpu-signal-atlas','llm-serving-observatory','inference-regression-lab'],
   systems: ['fleet-kernel-workbench','robotreplay','redfish-zero-to-hero'],
   sports: ['racetime-copilot','athlete-living-atlas','burro-race-replay'],
