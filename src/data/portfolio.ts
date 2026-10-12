@@ -1,0 +1,117 @@
+export const profile = {
+  name: "Siva Babu",
+  initials: "SB",
+  label: "Software & systems",
+  headline: "Complex systems. Clear signals.",
+  introduction: "A collection of projects exploring observability, GPU infrastructure, and LLM serving. Built to make the moving parts easier to understand.",
+  github: "https://github.com/sivalinb",
+  email: "",
+  linkedin: "",
+  about: "I’m Siva Babu. My public projects explore how systems behave, how we observe them, and how we turn those observations into useful tools. This portfolio brings together interactive workbenches, evidence-based analysis, and hands-on learning.",
+};
+
+export const categories = ["All projects", "AI infrastructure", "Observability", "Systems"];
+
+export const projects = [
+  {
+    slug: "gpu-signal-atlas",
+    title: "GPU Signal Atlas",
+    category: "AI infrastructure",
+    number: "01",
+    accent: "teal",
+    motif: "atlas",
+    subtitle: "From GPU telemetry to cited evidence.",
+    description: "A GPU observability workbench that connects NVIDIA Xid events and DCGM metrics with reviewed documentation, retrieval traces, and cited signal cards.",
+    tags: ["GPU telemetry", "Hybrid retrieval", "Evaluation"],
+    repository: "https://github.com/sivalinb/gpu-signal-atlas",
+    demo: "",
+    overview: "GPU telemetry can be difficult to interpret without the right context. GPU Signal Atlas organizes official documentation and demonstration runbooks into a retrieval system, then makes the evidence behind each result visible.",
+    capabilities: [
+      { title: "Follow the evidence", text: "Explore hybrid dense and sparse retrieval, rank fusion, reranking, and citations attached to signal cards." },
+      { title: "Compare inference runs", text: "Inspect benchmark baselines and candidates through latency, throughput, memory, and capacity views." },
+      { title: "Evaluate the boundaries", text: "Review retrieval ablations, a frozen evaluation dataset, and refusal behavior for unsupported questions." },
+    ],
+    scope: "The project supports interpretation and review. It does not query production infrastructure or execute recovery actions. Benchmark examples and imported evidence retain their source context.",
+    notes: [
+      { title: "Architecture & design", text: "Corpus, retrieval, evidence, and integration boundaries.", url: "https://github.com/sivalinb/gpu-signal-atlas/blob/main/docs/ARCHITECTURE.md" },
+      { title: "Project README", text: "Implementation details, setup, and evaluation workflows.", url: "https://github.com/sivalinb/gpu-signal-atlas" },
+    ],
+  },
+  {
+    slug: "llm-serving-observatory",
+    title: "LLM Serving Observatory",
+    category: "AI infrastructure",
+    number: "02",
+    accent: "blue",
+    motif: "serving",
+    subtitle: "See the journey behind every token.",
+    description: "An interactive serving laboratory and learning portfolio covering prefill, decode, KV caches, memory planning, and observability.",
+    tags: ["LLM serving", "Memory planning", "Learning lab"],
+    repository: "https://github.com/sivalinb/llm-serving-observatory",
+    demo: "https://llm-serving-observatory.siva-babu.chatgpt.site",
+    overview: "LLM serving combines request handling, model execution, memory, and operations. This project makes those layers visible through an animated request journey, architecture diagrams, a structured academy, and bounded experiments.",
+    capabilities: [
+      { title: "Trace a request", text: "Follow prefill, optional KV handoff, first output, decode, and observability in the animated tour." },
+      { title: "Learn the system", text: "Explore the public Serving Academy, architecture diagrams, and browser exercises." },
+      { title: "Inspect the lab", text: "Use the source laboratory to explore timings, memory budgets, token accounting, and process telemetry." },
+    ],
+    scope: "The public learning site is a static portfolio. Its analytical and simulated exercises are labeled; private inference and operational services remain separate. The public site does not offer AI chat.",
+    notes: [
+      { title: "Portfolio walkthrough", text: "A guided route through the learning lab and its evidence.", url: "https://github.com/sivalinb/llm-serving-observatory/blob/main/docs/portfolio-walkthrough.md" },
+      { title: "System architecture", text: "Serving components, boundaries, and operating modes.", url: "https://github.com/sivalinb/llm-serving-observatory/blob/main/docs/architecture.md" },
+    ],
+  },
+  {
+    slug: "signalops",
+    title: "SignalOps",
+    category: "Observability",
+    number: "03",
+    accent: "amber",
+    motif: "signal",
+    subtitle: "Find useful opportunities in telemetry.",
+    description: "An observability analysis tool for Prometheus metrics, Splunk events, and logs, with deterministic findings and verification queries.",
+    tags: ["Prometheus", "Splunk", "Telemetry analysis"],
+    repository: "https://github.com/sivalinb/signalops",
+    demo: "",
+    overview: "SignalOps turns imported telemetry into findings that can be inspected. Each finding connects a deterministic rule with measured evidence, a suggested next step, and a query for verification.",
+    capabilities: [
+      { title: "Bring your signals", text: "Import supported metric responses, exported logs, CSV, JSON, or collector bundles." },
+      { title: "Inspect a finding", text: "Filter by category, service, or priority, then review the evidence and its limitations." },
+      { title: "Take the report", text: "Export a Markdown analysis report from the browser session." },
+    ],
+    scope: "The initial dashboard uses labeled sample data. Findings are review candidates; the tool does not change infrastructure or estimate monetary savings. Imported data stays in browser memory.",
+    notes: [
+      { title: "Rules & evidence", text: "Supported inputs, rule thresholds, and interpretation limits.", url: "https://github.com/sivalinb/signalops" },
+    ],
+  },
+  {
+    slug: "fleet-kernel-workbench",
+    title: "Fleet Kernel Workbench",
+    category: "Systems",
+    number: "04",
+    accent: "violet",
+    motif: "kernel",
+    subtitle: "Connect kernel events to service context.",
+    description: "A Python and Gradio learning workbench connecting Linux eBPF observations, service ownership, and telemetry delivery experiments.",
+    tags: ["Python", "eBPF", "OpenTelemetry"],
+    repository: "https://github.com/sivalinb/fleet-kernel-workbench",
+    demo: "",
+    overview: "A failed connection, an unknown service owner, and a missing observation are different problems. Fleet Kernel Workbench separates those questions, links observations to a catalog, and tests whether evidence survives telemetry failures.",
+    capabilities: [
+      { title: "Observe a workload", text: "Capture bounded connect-syscall outcomes from a workload owned by the tool on compatible Linux hosts." },
+      { title: "Find the service context", text: "Explore ownership provenance and service dependencies through the catalog package." },
+      { title: "Test delivery", text: "Compare buffering, persistent queue recovery, and memory queue loss in isolated Collector experiments." },
+    ],
+    scope: "This is a bounded learning system. Replay scenarios are synthetic and catalog metadata is fictional. Actual eBPF capture requires compatible Linux support; the tool is not a fleet monitoring agent.",
+    notes: [
+      { title: "Package architecture", text: "How the probe, catalog, and telemetry packages fit together.", url: "https://github.com/sivalinb/fleet-kernel-workbench/blob/main/docs/architecture.md" },
+      { title: "Verification results", text: "Recorded checks and the boundaries of each test suite.", url: "https://github.com/sivalinb/fleet-kernel-workbench/blob/main/docs/verification.md" },
+    ],
+  },
+];
+
+export const notes = [
+  { title: "Inside a GPU evidence pipeline", topic: "GPU SIGNAL ATLAS", text: "How corpus design, retrieval, and citations connect.", url: projects[0].notes[0].url },
+  { title: "An eight-minute serving walkthrough", topic: "LLM SERVING OBSERVATORY", text: "A guided introduction to the moving parts of serving.", url: projects[1].notes[0].url },
+  { title: "When telemetry delivery fails", topic: "FLEET KERNEL WORKBENCH", text: "Package boundaries, experiments, and verification.", url: projects[3].notes[0].url },
+];

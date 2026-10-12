@@ -1,0 +1,46 @@
+---
+const { motif = "atlas", compact = false } = Astro.props;
+---
+<div class:list={["project-art", "art-" + motif, { compact }]} aria-hidden="true">
+  <div class="art-grid"></div>
+  {motif === "atlas" && (
+    <svg viewBox="0 0 540 260" fill="none">
+      <path d="M56 142H166L204 98H326L365 142H488M166 142l38 44h122l39-44" class="art-line" />
+      <path d="M204 98V58M326 186v32M263 98v88" class="art-faint" />
+      {[56,166,365,488].map((x) => <circle cx={x} cy="142" r="5" class="art-dot" />)}
+      <rect x="214" y="108" width="99" height="67" rx="12" class="art-panel" />
+      {[0,1,2,3].map((i) => <path d={"M" + (231+i*17) + " 122v40"} class="art-line" />)}
+      {[0,1,2].map((i) => <path d={"M223 " + (132+i*12) + "h80"} class="art-line" />)}
+      <rect x="24" y="84" width="98" height="30" rx="6" class="art-panel" /><text x="73" y="103" text-anchor="middle">TELEMETRY</text>
+      <rect x="419" y="173" width="98" height="30" rx="6" class="art-panel" /><text x="468" y="192" text-anchor="middle">EVIDENCE</text>
+      <circle cx="263" cy="141" r="88" class="art-orbit" />
+    </svg>
+  )}
+  {motif === "serving" && (
+    <svg viewBox="0 0 540 260" fill="none">
+      <path d="M40 134h460" class="art-faint" />
+      {[0,1,2,3,4].map((i) => <g><rect x={52+i*93} y={107-i%2*20} width="65" height={54+i%2*40} rx="8" class="art-panel" /><path d={"M" + (65+i*93) + " 126h39m-39 14h24"} class="art-line" /></g>)}
+      <text x="82" y="189" text-anchor="middle">INPUT</text><text x="268" y="207" text-anchor="middle">DECODE</text><text x="454" y="189" text-anchor="middle">OUTPUT</text>
+      <path d="M110 70c55-44 284-44 340 0" class="art-orbit" /><path d="m442 65 8 5-4-9" class="art-line" />
+    </svg>
+  )}
+  {motif === "signal" && (
+    <svg viewBox="0 0 540 260" fill="none">
+      <path d="M38 191h464M38 67v124" class="art-faint" />
+      <path d="m38 164 36-4 29 10 31-73 28 40 31-17 28 30 35-92 30 99 30-39 31 20 28-11 30 30 31-45 37 24" class="art-wave" />
+      <path d="M254 42v162" class="art-orbit" /><circle cx="254" cy="58" r="7" class="art-dot" />
+      <rect x="303" y="55" width="147" height="31" rx="6" class="art-panel" /><text x="376" y="74" text-anchor="middle">SIGNAL / CONTEXT</text>
+    </svg>
+  )}
+  {motif === "kernel" && (
+    <svg viewBox="0 0 540 260" fill="none">
+      <path d="M119 80h143v102h152M119 182h143M262 131h152" class="art-line" />
+      {[80,182].map((y) => <g><rect x="59" y={y-19} width="111" height="38" rx="8" class="art-panel" /><path d={"M77 "+(y-4)+"h61m-61 9h40"} class="art-line" /></g>)}
+      {[80,131,182].map((y) => <circle cx="414" cy={y} r="13" class="art-panel" />)}
+      <circle cx="262" cy="131" r="31" class="art-panel" /><path d="m250 131 8 8 16-18" class="art-line" />
+      <circle cx="262" cy="131" r="64" class="art-orbit" />
+      <text x="120" y="229" text-anchor="middle">OBSERVE</text><text x="262" y="229" text-anchor="middle">CORRELATE</text><text x="414" y="229" text-anchor="middle">VERIFY</text>
+    </svg>
+  )}
+  <span class="art-caption">Concept illustration</span>
+</div>

@@ -1,0 +1,34 @@
+---
+import Base from "../../layouts/Base.astro";
+import Arrow from "../../components/Arrow.astro";
+import ProjectArt from "../../components/ProjectArt.astro";
+import { projects } from "../../data/portfolio";
+export function getStaticPaths() {
+  return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+}
+const { project } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const currentIndex = projects.findIndex(p => p.slug === project.slug);
+const nextProject = projects[(currentIndex + 1) % projects.length];
+---
+<Base title={project.title + " — Siva Babu"} description={project.description}>
+  <section class:list={["detail-hero", "accent-" + project.accent]}>
+    <div class="container">
+      <a class="back-link" href={base + "#work"}>← All projects</a>
+      <div class="detail-heading"><div><p class="eyebrow">{project.category} / PROJECT {project.number}</p><h1>{project.title}</h1><p class="detail-subtitle">{project.subtitle}</p><ul class="tags" aria-label="Project topics">{project.tags.map(tag => <li>{tag}</li>)}</ul></div><div class="detail-actions"><a class="button button-primary" href={project.repository} target="_blank" rel="noopener noreferrer">View source <Arrow diagonal /></a>{project.demo && <a class="button button-quiet" href={project.demo} target="_blank" rel="noopener noreferrer">Open learning site <Arrow diagonal /></a>}</div></div>
+      <ProjectArt motif={project.motif} />
+    </div>
+  </section>
+  <section class="section detail-content">
+    <div class="container detail-columns">
+      <aside><p class="eyebrow">IN THIS PROJECT</p><nav aria-label="Project sections"><a href="#overview">Overview</a><a href="#explore">What to explore</a><a href="#scope">Project scope</a><a href="#documentation">Documentation</a></nav><a class="aside-source" href={project.repository} target="_blank" rel="noopener noreferrer">GitHub repository <Arrow diagonal size={15} /></a></aside>
+      <div>
+        <section id="overview" class="detail-section"><p class="eyebrow">01 / OVERVIEW</p><h2>{project.subtitle}</h2><p class="detail-lead">{project.overview}</p></section>
+        <section id="explore" class="detail-section"><p class="eyebrow">02 / WHAT TO EXPLORE</p><h2>Inside the project.</h2><div class="capability-list">{project.capabilities.map((capability, i) => <div><span>0{i+1}</span><div><h3>{capability.title}</h3><p>{capability.text}</p></div></div>)}</div></section>
+        <section id="scope" class="detail-section"><p class="eyebrow">03 / PROJECT SCOPE</p><h2>Context matters.</h2><p class="detail-lead">{project.scope}</p></section>
+        <section id="documentation" class="detail-section"><p class="eyebrow">04 / DOCUMENTATION</p><h2>Follow the details.</h2><div class="detail-notes">{project.notes.map(note => <a href={note.url} target="_blank" rel="noopener noreferrer"><div><h3>{note.title}</h3><p>{note.text}</p></div><Arrow diagonal /></a>)}</div><p class="source-note">Project summary based on the public repository README. See the source for current implementation details.</p></section>
+      </div>
+    </div>
+  </section>
+  <div class="container next-project"><span class="eyebrow">EXPLORE ANOTHER PROJECT</span><a href={base + "projects/" + nextProject.slug + "/"}>{nextProject.title}<Arrow size={30} /></a></div>
+</Base>

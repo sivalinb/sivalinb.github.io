@@ -1,0 +1,40 @@
+name: Deploy Astro portfolio
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the portfolio
+        uses: actions/checkout@v7
+      - name: Build and upload Astro website
+        uses: withastro/action@v6
+        with:
+          node-version: 24
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+          PORTFOLIO_SITE_URL: https://sivalinb.github.io
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish on GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
