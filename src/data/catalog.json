@@ -1,6 +1,6 @@
 {
-  "scannedAt": "2026-10-12",
-  "publicRepositoryCount": 42,
+  "scannedAt": "2026-10-13",
+  "publicRepositoryCount": 43,
   "projects": [
     {
       "slug": "incidentlens",
@@ -904,6 +904,32 @@
       "imageHeight": 1
     },
     {
+      "slug": "nanga-hatti",
+      "title": "Nanga Hatti",
+      "categoryId": "community",
+      "format": "App",
+      "description": "Keep Nilgiris memories in their original words, explore the landscape, and review source-linked context before saving.",
+      "tags": [
+        "LangGraph",
+        "Braintrust",
+        "Grafana",
+        "Community memory"
+      ],
+      "scope": "The public explorer contains fictional starter memories and recorded engineering evidence. Contribution, clarification, review and private saving run in the local Python app. Engineering evals do not certify language or cultural accuracy.",
+      "repository": "https://github.com/sivalinb/nanga-hatti",
+      "demo": "https://sivalinb.github.io/nanga-hatti/",
+      "demoLabel": "Read-only public explorer",
+      "family": "Nilgiris community projects",
+      "featuredRank": 7,
+      "image": "nanga-hatti.jpg",
+      "imageKind": "Application screenshot",
+      "why": "A follow-on to Hatti Quest that connects people and place with a bounded agent, contributor review and inspectable execution evidence.",
+      "language": "Python",
+      "updatedAt": "2026-10-13T17:34:00Z",
+      "imageWidth": 1280,
+      "imageHeight": 2164
+    },
+    {
       "slug": "hatti-quest",
       "title": "Hatti Quest",
       "categoryId": "community",
@@ -918,7 +944,7 @@
       "repository": "https://github.com/sivalinb/hatti-quest",
       "demo": "",
       "demoLabel": "Public demo",
-      "family": "",
+      "family": "Nilgiris community projects",
       "featuredRank": 5,
       "image": "hatti-quest.webp",
       "imageKind": "Application screenshot",

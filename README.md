@@ -1,6 +1,6 @@
 # Siva Babu — Astro portfolio
 
-A static Astro portfolio with a blue presentation homepage, six project highlights, a directory of 38 original public projects, five category pages, 38 project detail pages, six technical academies, and three clearly attributed upstream forks.
+A static Astro portfolio with a blue presentation homepage, seven project highlights, a directory of 39 original public projects, five category pages, 39 project detail pages, six technical academies, and three clearly attributed upstream forks.
 
 The homepage takes visual cues from https://hiview.ai/: a pale blue hero, bold typography, a circular diagram with floating panels, and a dark section of project previews. The graphics, copy, and navigation are tailored to this portfolio. It includes a keyboard-operable category selector and counts derived from the public catalog. The owner's portrait is removed from the homepage and its asset bundle. Homepage styles are scoped to the homepage and do not alter the directory or detail pages.
 
@@ -24,7 +24,9 @@ In a restricted environment, set `ASTRO_TELEMETRY_DISABLED=1` on the build/dev p
 
 ## Information architecture
 
-The public inventory was refreshed on October 12, 2026: 42 public repositories, comprising 38 original projects, 3 upstream forks, and this portfolio repository. Redfish Observatory was added after reviewing its README, architecture notes, and telemetry implementation. Its entry includes the repository's simulator screenshot and links to the 100-use-case catalog and API guide. It appears in the homepage's Observability category panel, directory, search, and generated detail page.
+The public inventory was refreshed on October 13, 2026: 43 public repositories, comprising 39 original projects, 3 upstream forks, and this portfolio repository. Redfish Observatory was added after reviewing its README, architecture notes, and telemetry implementation. Its entry includes the repository's simulator screenshot and links to the 100-use-case catalog and API guide. It appears in the homepage's Observability category panel, directory, search, and generated detail page.
+
+Nanga Hatti was added after its repository, read-only GitHub Pages explorer and Python 3.12/3.13 CI passed. Its entry appears in Community & Everyday Apps, the homepage's selected work, directory/search and a dedicated detail page. The entry uses an actual app screenshot and links to LangGraph architecture, Braintrust evaluations and measured performance. Full contribution/review runs locally; the public demo is clearly labeled read-only.
 
 The original October 11 scan covered 43 owned repositories, including 2 private repositories that were excluded. Only public project information enters this source bundle.
 
@@ -36,9 +38,9 @@ Primary areas:
 | AI & GPU Infrastructure | 6 |
 | Systems & Robotics | 5 |
 | Sports & Race Tools | 6 |
-| Community & Everyday Apps | 5 |
+| Community & Everyday Apps | 6 |
 
-A primary area keeps grouping predictable. Tags support cross-cutting topics such as OpenTelemetry, agents, Grafana, and RAG. Format is an independent filter: 10 tools, 10 labs, 6 academies, and 12 apps. Related project pages also connect the Fleet workbenches, Runtime experiment suite, RaceTime projects, Athlete observability projects, and Zero to Hero academies.
+A primary area keeps grouping predictable. Tags support cross-cutting topics such as OpenTelemetry, agents, Grafana, and RAG. Format is an independent filter: 10 tools, 10 labs, 6 academies, and 13 apps. Related project pages also connect the Fleet workbenches, Runtime experiment suite, RaceTime projects, Athlete observability projects, and Zero to Hero academies.
 
 Forks are kept in References, with attribution, rather than presented as original work. Private repository names and content are absent from the website. The scan is an inventory and editorial classification; it is not a source-code audit or verification of every underlying application's behavior.
 

@@ -100,3 +100,11 @@
   .panel-learning strong,.panel-family strong { font-size:11px; }
 }
 @media print { .portfolio-network,.project-scene { display:none; }.blue-hero-inner,.area-explorer,.academy-section { display:block; }.showcase-section { background:#fff; color:#000; }.showcase-grid { display:block; }.showcase-card { background:#fff; color:#000; margin-block:20px; break-inside:avoid; }.showcase-description { color:#333; }.area-tabs { display:none; }.area-panel[hidden] { display:block!important; }.area-panel { margin-block:20px; }.blue-badge { border:0; }.homepage h1>span,.homepage h2>span { -webkit-text-fill-color:currentColor; color:#000; } }
+
+.showcase-nanga-hatti { grid-column:span 12; display:grid; grid-template-columns:1.1fr 1fr; }
+.scene-nanga-hatti { height:310px; border-bottom:0; border-right:1px solid #29364a; background:#f5f2e9; }
+.scene-nanga-hatti img { object-fit:cover; object-position:top; }
+.showcase-nanga-hatti .showcase-copy { padding:31px 34px; justify-content:center; }
+.showcase-nanga-hatti h3 { font-size:29px; }
+.showcase-nanga-hatti .showcase-link { margin-top:0; padding-top:23px; }
+@media(max-width:760px) { .showcase-nanga-hatti { display:flex; grid-column:auto; } .scene-nanga-hatti { height:250px; border-right:0; border-bottom:1px solid #29364a; } .showcase-nanga-hatti .showcase-copy { padding:23px; } .showcase-nanga-hatti h3 { font-size:23px; } }

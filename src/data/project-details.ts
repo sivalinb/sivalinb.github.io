@@ -1,5 +1,21 @@
 export const details = [
   {
+    slug: "nanga-hatti",
+    overview: "Nanga Hatti keeps a small memory of home in the contributor's own words. It brings Nilgiris people, places and landscapes into a source-linked collection, with a real LangGraph workflow that pauses for place clarification and contributor review. It follows Hatti Quest's interest in language and family, while exploring how ordinary memories and their context can be kept with care.",
+    capabilities: [
+      { title: "Explore people and place", text: "Browse fictional starter memories by town, theme or text on a bundled OpenStreetMap geometry snapshot. Each card separates the account from attributed landscape and community context." },
+      { title: "Review a memory before saving", text: "Run the local studio to enter a memory, keep browser-only audio/photos, clarify its town, edit the title, remove context and approve or reject the draft. Waiting reviews survive a server restart." },
+      { title: "Inspect a bounded agent", text: "Compare authored and opted-in live model execution. LangGraph limits source searches, validates known fact IDs and preserves the original memory. Redacted Braintrust traces record stage outcomes and actual usage." },
+      { title: "Check the measured evidence", text: "Explore 50 authored workflow fixtures, 20 retrieval queries, eight fully live evaluation cases, and preparation benchmarks. Two Grafana dashboards contain 16 panels for latency, usage, decisions and eval scores." },
+    ],
+    notes: [
+      { title: "Architecture and contributor review", url: "https://github.com/sivalinb/nanga-hatti/blob/main/docs/ARCHITECTURE.md" },
+      { title: "Evaluation evidence and methodology", url: "https://github.com/sivalinb/nanga-hatti/blob/main/docs/EVALS.md" },
+      { title: "Performance benchmarks", url: "https://github.com/sivalinb/nanga-hatti/blob/main/docs/BENCHMARKS.md" },
+      { title: "Recorded engineering explorer", url: "https://sivalinb.github.io/nanga-hatti/lab/" },
+    ],
+  },
+  {
     slug: "redfish-observability-lab",
     title: "Redfish Observatory",
     category: "Observability",
