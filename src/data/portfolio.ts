@@ -4,13 +4,13 @@ import { details } from './project-details';
 export const profile = {
   name: 'Siva Babu',
   initials: 'SB',
-  label: 'Software, systems & curious ideas',
-  headline: 'Things I build. Ideas I explore.',
-  introduction: 'Tools for understanding complex systems. Experiments in AI, observability, sport, and everyday life. A place to explore the work and the thinking behind it.',
+  label: 'AI infrastructure & observability',
+  headline: 'Building reliable AI infrastructure.',
+  introduction: 'Senior software engineer with 20+ years across production infrastructure, observability and fleet operations. Explore Siva Babu’s independent engineering projects and the skills behind them.',
   github: 'https://github.com/sivalinb',
   email: '',
   linkedin: '',
-  about: 'I’m Siva Babu. I build tools that make complex systems easier to understand, and explore how software can support learning, sport, and everyday life. My public repositories bring together practical workbenches, interactive explanations, and experiments you can inspect.',
+  about: 'I’m Siva Babu, a software engineer working across AI infrastructure, observability and reliability. My experience spans Apple, Oracle and earlier production systems. My independent projects make architecture, signals and failure behavior inspectable. Outside engineering, I’m an ultramarathon runner, running coach and trained restorative-justice facilitator.',
 };
 
 export const categories = catalog.categories.map(category => ({

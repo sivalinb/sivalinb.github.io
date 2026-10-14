@@ -1,8 +1,8 @@
-# Siva Babu — Astro portfolio
+# Siva Babu — AI infrastructure & observability portfolio
 
-A static Astro portfolio with a blue presentation homepage, seven project highlights, a directory of 39 original public projects, five category pages, 39 project detail pages, six technical academies, and three clearly attributed upstream forks.
+A static Astro portfolio shaped around Siva's supplied engineering résumé: production infrastructure, observability, fleet systems and reliability. The homepage presents six selected independent projects with explicit skill connections, a four-area skills section, production experience, personal projects, and technical academies. The shared design uses navy, blue and neutral surfaces across the homepage, directories and project pages. No portrait is included.
 
-The homepage takes visual cues from https://hiview.ai/: a pale blue hero, bold typography, a circular diagram with floating panels, and a dark section of project previews. The graphics, copy, and navigation are tailored to this portfolio. It includes a keyboard-operable category selector and counts derived from the public catalog. The owner's portrait is removed from the homepage and its asset bundle. Homepage styles are scoped to the homepage and do not alter the directory or detail pages.
+The catalog contains 42 original public projects, five category pages, 42 project detail pages, six academies and three attributed upstream forks. The project directory supports category selection, search, format filters and sorting. Everything is prerendered and stays on free GitHub Pages hosting.
 
 Public website: https://sivalinb.github.io/
 Project directory: https://sivalinb.github.io/projects/
@@ -22,36 +22,46 @@ npm run preview
 
 In a restricted environment, set `ASTRO_TELEMETRY_DISABLED=1` on the build/dev process. The lockfile pins the installed dependencies. There is no application server, paid API, database, or external font dependency.
 
-## Information architecture
+## Information architecture and review
 
-The public inventory was refreshed on October 13, 2026: 43 public repositories, comprising 39 original projects, 3 upstream forks, and this portfolio repository. Redfish Observatory was added after reviewing its README, architecture notes, and telemetry implementation. Its entry includes the repository's simulator screenshot and links to the 100-use-case catalog and API guide. It appears in the homepage's Observability category panel, directory, search, and generated detail page.
+The October 14, 2026 inventory contains 48 owned repositories: 46 public and two private. The public set is 42 original projects, three upstream forks, and this portfolio repository. Private repositories remain excluded from the website and downloadable source.
 
-Nanga Hatti was added after its repository, read-only GitHub Pages explorer and Python 3.12/3.13 CI passed. Its entry appears in Community & Everyday Apps, the homepage's selected work, directory/search and a dedicated detail page. The entry uses an actual app screenshot and links to LangGraph architecture, Braintrust evaluations and measured performance. Full contribution/review runs locally; the public demo is clearly labeled read-only.
+Four recently added repositories were reviewed: GPU FleetOps, AI Factory Observability Lab, Data Center Explorer and Nanga Hatti. The review covered their authored code, documentation, configuration, tests and recorded evidence. Generated definitions were checked against their source; binary assets and vendored/geographic data were inventoried separately. The underlying applications and hardware were not rerun during this portfolio refresh. Repository-recorded test outcomes are labeled as recorded evidence.
 
-The original October 11 scan covered 43 owned repositories, including 2 private repositories that were excluded. Only public project information enters this source bundle.
-
-Primary areas:
+The existing Nanga Hatti changes on the public portfolio were preserved before the refresh. Its public explorer uses fictional starter memories; contribution and review run locally. It remains visible as a personal/community project with engineering detail and a read-only public explorer link.
 
 | Area | Projects |
 | --- | ---: |
-| Observability & Reliability | 16 |
-| AI & GPU Infrastructure | 6 |
+| Observability & Reliability | 17 |
+| AI & GPU Infrastructure | 8 |
 | Systems & Robotics | 5 |
 | Sports & Race Tools | 6 |
 | Community & Everyday Apps | 6 |
 
-A primary area keeps grouping predictable. Tags support cross-cutting topics such as OpenTelemetry, agents, Grafana, and RAG. Format is an independent filter: 10 tools, 10 labs, 6 academies, and 13 apps. Related project pages also connect the Fleet workbenches, Runtime experiment suite, RaceTime projects, Athlete observability projects, and Zero to Hero academies.
+Formats are independent of category: 11 tools, 12 labs, six academies and 13 apps. Tags connect cross-cutting topics. Forks stay in References with attribution.
 
-Forks are kept in References, with attribution, rather than presented as original work. Private repository names and content are absent from the website. The scan is an inventory and editorial classification; it is not a source-code audit or verification of every underlying application's behavior.
+The featured selection follows the Staff/Principal engineering résumé's strongest themes:
+
+| Featured project | Skills demonstrated |
+| --- | --- |
+| GPU FleetOps | Inventory provenance, ownership, SLO policy, telemetry delivery and reviewed recovery |
+| AI Factory Observability Lab | GPU/fabric correlation, source contracts, data coverage and alert ownership |
+| LLM Serving Observatory | Inference architecture, serving telemetry and bounded measurements |
+| Telemetry Cardinality Governor | Durable Temporal execution, measured canaries, idempotent changes and rollback |
+| Fleet Kernel Workbench | Linux/eBPF, package boundaries, provenance and telemetry recovery |
+| Data Center Explorer | Grafana dashboards as code, hierarchy modeling and contextual visualization |
+
+Résumé summaries omit personal phone/address details and unverified employer-scale claims. Employer experience and independent projects have separate sections. Public project pages keep real measurements, simulations and planned integration limits explicit.
 
 ## Edit the content
 
 - `src/data/catalog.json`: the public project catalog, categories, tags, formats, related collections, featured order, and links.
-- `src/data/portfolio.ts`: personal introduction, about paragraph, GitHub link, and optional contact links. Empty email/LinkedIn values are omitted.
-- `src/data/project-details.ts`: longer notes and capabilities for selected projects, including Redfish Observatory. Other project pages use the catalog's concise source-grounded description and scope.
+- `src/data/portfolio.ts`: professional introduction, about paragraph, GitHub link and optional contact links. Empty email/LinkedIn values are omitted.
+- `src/data/career.ts`: featured-project selection, skill connections and résumé-based experience summaries.
+- `src/data/project-details.ts`: longer source-grounded project notes, capabilities and documentation links.
 - `src/pages/index.astro`: homepage headline and section copy.
 - `src/styles/global.css`: layout, typography, colors, and mobile behavior.
-- `src/styles/home.css`: the personal homepage layout and its responsive styles.
+- `src/styles/home.css`: the professional homepage layout and responsive styles.
 - `src/components/PortfolioIcon.astro`: the homepage's small SVG icons.
 - `public/images`: public repository screenshots and illustrations. Image captions retain their source context. Homepage diagrams are labeled concept views rather than presented as working application screenshots.
 - `public/social-card.svg`: editable share-image artwork; `public/social-card.png` is its raster version.

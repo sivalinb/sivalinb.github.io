@@ -2,7 +2,7 @@
 import { profile, categories, categoryUrl } from '../data/portfolio';
 import Arrow from '../components/Arrow.astro';
 import '../styles/global.css';
-const { title = 'Siva Babu — Projects, systems & curious ideas', description = profile.introduction, active = '', pageClass = '', themeColor = '#f6f7f2' } = Astro.props;
+const { title = 'Siva Babu — AI Infrastructure & Observability', description = profile.introduction, active = '', pageClass = '', themeColor = '#f7f9fc' } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const canonical = new URL(Astro.url.pathname, Astro.site || 'https://sivalinb.github.io');
 const contactHref = profile.email ? 'mailto:' + profile.email : profile.github;
@@ -30,22 +30,22 @@ const contactHref = profile.email ? 'mailto:' + profile.email : profile.github;
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="container header-inner">
-        <a href={base} class="brand" aria-label="Siva Babu — Home"><span class="brand-mark">SB<span></span></span><span class="brand-name">Siva Babu<span class="brand-sub">Building. Learning. Sharing.</span></span></a>
+        <a href={base} class="brand" aria-label="Siva Babu — Home"><span class="brand-mark">SB</span><span class="brand-name">Siva Babu<span class="brand-sub">AI infrastructure & observability</span></span></a>
         <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation"><span></span><span></span></button>
         <nav id="site-nav" class="site-nav" aria-label="Main navigation">
           <details class="nav-menu">
             <summary class:list={[{ current: active === 'projects' }]}>Projects <span class="chevron" aria-hidden="true"></span></summary>
             <div class="category-popover"><a href={base + 'projects/'} class="all-projects-link">All projects <span>{categories.reduce((total,category)=>total+category.count,0)}</span></a><div class="popover-divider"></div>{categories.map(category => <a href={categoryUrl(base,category.id)}><span>{category.name}</span><span>{category.count}</span></a>)}</div>
           </details>
-          <a href={base + 'learn/'} class:list={[{current:active === 'learn'}]}>Learning</a>
-          <a href={base + '#about'}>About</a>
+          <a href={base + '#skills'}>Skills</a>
+          <a href={base + '#experience'}>Experience</a>
           <a href={contactHref} class="nav-contact" target={profile.email ? undefined : '_blank'} rel={profile.email ? undefined : 'noopener noreferrer'}>Let’s connect <Arrow diagonal size={15} /></a>
         </nav>
       </div>
     </header>
     <main id="main"><slot /></main>
     <footer id="contact" class="site-footer">
-      <div class="container footer-main"><div><a href={base} class="footer-name">Siva Babu<span class="brand-dot"></span></a><p>Building things. Asking better questions.</p></div><div class="footer-navigation"><a href={base + 'projects/'}>Projects</a><a href={base + 'learn/'}>Learning</a><a href={base + 'references/'}>References & forks</a><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub <Arrow diagonal size={14} /></a>{profile.linkedin && <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>}</div></div>
+      <div class="container footer-main"><div><a href={base} class="footer-name">Siva Babu<span class="brand-dot"></span></a><p>AI infrastructure. Observability. Reliability.</p></div><div class="footer-navigation"><a href={base + 'projects/'}>Projects</a><a href={base + 'learn/'}>Learning</a><a href={base + '#about'}>About</a><a href={base + 'references/'}>References & forks</a><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub <Arrow diagonal size={14} /></a>{profile.linkedin && <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>}</div></div>
       <div class="container footer-bottom"><span>© 2026 Siva Babu</span><a href="https://github.com/sivalinb/sivalinb.github.io" target="_blank" rel="noopener noreferrer">Website source <Arrow diagonal size={13} /></a><a href="#main">Back to top ↑</a></div>
     </footer>
     <script>

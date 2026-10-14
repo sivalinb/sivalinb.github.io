@@ -1,5 +1,67 @@
 export const details = [
   {
+    slug: "gpu-fleetops",
+    overview: "GPU FleetOps connects the questions an operator needs to answer: what is deployed, who owns it, which service is failing, and whether a proposed recovery actually helped. Its Python reference implementation joins inventory provenance, telemetry, request-based SLOs and incident state in one inspectable workflow.",
+    capabilities: [
+      { title: "Reconcile a fleet", text: "Inspect stable asset identities, ownership provenance, desired versus observed drivers, stale inventory, conflicts and service dependencies." },
+      { title: "Connect signals to policy", text: "Follow CPU probes, Prometheus metrics, structured logs and OpenTelemetry traces into request-based latency and availability budgets. Historical failures remain visible after recovery." },
+      { title: "Review and verify a recovery", text: "Investigations use scoped read tools and cited evidence. Allowlisted simulation changes require approval, reject stale proposals, and need passing probes before an incident resolves." },
+      { title: "Inspect the verification record", text: "The repository records 176 tests, a seven-scenario rules baseline, durable-outbox recovery and full observability-stack CI. These are documented lab results rather than a live-model or physical-GPU benchmark." },
+    ],
+    notes: [
+      { title: "Architecture and system boundaries", url: "https://github.com/sivalinb/gpu-fleetops/blob/main/docs/ARCHITECTURE.md" },
+      { title: "SLO policy", url: "https://github.com/sivalinb/gpu-fleetops/blob/main/docs/SLO.md" },
+      { title: "Bounded investigation and approval", url: "https://github.com/sivalinb/gpu-fleetops/blob/main/docs/AGENT.md" },
+      { title: "Recorded verification", url: "https://github.com/sivalinb/gpu-fleetops/blob/main/docs/VERIFICATION.md" },
+    ],
+  },
+  {
+    slug: "ai-factory-observability-lab",
+    overview: "A workload slowdown often spans several layers. This lab brings GPU, fabric, scheduling and inference signals together, then correlates evidence by node and source origin. Real Prometheus, Grafana and Alertmanager services support 14 source contracts, 68 signal definitions and ten controlled scenarios.",
+    capabilities: [
+      { title: "Trace a gray failure", text: "Relate fabric errors and collective timing to workload symptoms, then inspect the hypothesis, responsible owner and linked runbook." },
+      { title: "Make telemetry coverage explicit", text: "Each source has naming, units, availability, origin and freshness metadata. Missing coverage produces an unknown state instead of a healthy assumption." },
+      { title: "Measure useful work", text: "Explore training progress, first-token latency, successful generations, queues, cache occupancy and scheduling waits through four Grafana dashboards." },
+      { title: "Inspect integration contracts", text: "Review live-input adapters, optional measured PyTorch/NIM tools, alert ownership and the repository's recorded validation. Default scenarios use simulated feeds." },
+    ],
+    notes: [
+      { title: "Source contracts and signal atlas", url: "https://github.com/sivalinb/ai-factory-observability-lab/blob/main/docs/signals.md" },
+      { title: "Native integration guide", url: "https://github.com/sivalinb/ai-factory-observability-lab/blob/main/docs/native-integrations.md" },
+      { title: "Alert ownership and runbooks", url: "https://github.com/sivalinb/ai-factory-observability-lab/blob/main/docs/alerts.md" },
+      { title: "Recorded validation", url: "https://github.com/sivalinb/ai-factory-observability-lab/blob/main/docs/validation.md" },
+    ],
+  },
+  {
+    slug: "grafana-data-center-explorer",
+    overview: "Data Center Explorer turns infrastructure hierarchy into a navigable operational view. Six Grafana Business Text dashboards follow the same simulated dataset from a campus to an individual GPU, carrying scope in the URL and keeping the cooling incident visible at every parent level.",
+    capabilities: [
+      { title: "Navigate six infrastructure levels", text: "Click through data center, hall, row, rack, chassis and GPU views. Contextual links preserve the selected path and support return navigation and healthy-sibling comparison." },
+      { title: "Understand the rollups", text: "Inspect weighted utilization, summed board power plus chassis overhead, and maximum GPU temperature across the same hierarchy." },
+      { title: "Build dashboards as code", text: "A shared JavaScript/SVG renderer and responsive stylesheet generate six editable Grafana definitions. SQLite supplies the local synthetic telemetry." },
+      { title: "Follow the recorded evidence", text: "The repository includes cardinality and metric-bound checks, six successful Grafana query/save records, browser drill-down evidence and actual screenshots." },
+    ],
+    notes: [
+      { title: "Shared visual renderer", url: "https://github.com/sivalinb/grafana-data-center-explorer/blob/main/visuals/render.js" },
+      { title: "Dashboard definitions", url: "https://github.com/sivalinb/grafana-data-center-explorer/tree/main/dashboards" },
+      { title: "Model verification", url: "https://github.com/sivalinb/grafana-data-center-explorer/blob/main/evidence/model-verification.json" },
+      { title: "Browser drill-down evidence", url: "https://github.com/sivalinb/grafana-data-center-explorer/blob/main/evidence/browser-drilldown.json" },
+    ],
+  },
+  {
+    slug: "telemetry-cardinality-governor",
+    overview: "A cardinality alert is only the beginning of a change. This lab collects bounded evidence, proposes an exact optional-metric drop, pauses for review, and uses durable Temporal execution to deploy and measure a canary. Promotion and restoration have explicit guardrails and an operation journal.",
+    capabilities: [
+      { title: "Review an exact change", text: "Inspect budgets, protected metric coverage and a named approval decision. Rejection or expiry leaves configuration unchanged." },
+      { title: "Measure before promoting", text: "Compare contemporaneous control and canary scrapes, series reduction, protected-signal coverage and an error guardrail. Promote only after consecutive passing observations." },
+      { title: "Make effects recoverable", text: "Stable operation IDs, a before/after journal, atomic writes and configuration ownership support retry, compensation and worker-crash recovery." },
+    ],
+    notes: [
+      { title: "Architecture and durable workflow design", url: "https://github.com/sivalinb/telemetry-cardinality-governor#temporal-design" },
+      { title: "Recorded lab verification", url: "https://github.com/sivalinb/telemetry-cardinality-governor/blob/main/docs/evidence/VERIFICATION.md" },
+      { title: "Workflow implementation", url: "https://github.com/sivalinb/telemetry-cardinality-governor/blob/main/src/governor/workflow.py" },
+    ],
+  },
+  {
     slug: "nanga-hatti",
     overview: "Nanga Hatti keeps a small memory of home in the contributor's own words. It brings Nilgiris people, places and landscapes into a source-linked collection, with a real LangGraph workflow that pauses for place clarification and contributor review. It follows Hatti Quest's interest in language and family, while exploring how ordinary memories and their context can be kept with care.",
     capabilities: [

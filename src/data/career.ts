@@ -1,0 +1,31 @@
+// Professional background is summarized from Siva's supplied résumé.
+// Project descriptions refer to independent public implementations.
+export const featuredWork = [
+  { slug: 'gpu-fleetops', focus: 'Fleet reliability', summary: 'From asset ownership to a verified recovery.', demonstrates: 'Inventory reconciliation, request-based SLOs, durable telemetry and bounded operational tools.', stack: ['Python', 'SQLAlchemy', 'OpenTelemetry'], caption: 'Implementation flow · simulated fleet conditions' },
+  { slug: 'ai-factory-observability-lab', focus: 'Infrastructure observability', summary: 'Find the connection between a slow workload and its infrastructure.', demonstrates: 'Source contracts, GPU and fabric correlation, coverage checks and owned alert rules.', stack: ['Prometheus', 'Grafana', 'Python'], caption: 'Actual Grafana capture · simulated feeds' },
+  { slug: 'llm-serving-observatory', focus: 'Inference systems', summary: 'Make the serving path and its measurements visible.', demonstrates: 'Serving architecture, TTFT and decode telemetry, memory budgets and clearly scoped experiments.', stack: ['FastAPI', 'llama.cpp', 'Prometheus'], caption: 'Project architecture diagram' },
+  { slug: 'telemetry-cardinality-governor', focus: 'Durable automation', summary: 'A telemetry change needs evidence, a canary and a way back.', demonstrates: 'Temporal workflows, idempotent effects, human approval, measured validation and rollback.', stack: ['Temporal', 'Prometheus', 'Python'], caption: 'Architecture diagram · Temporal and Prometheus lab' },
+  { slug: 'fleet-kernel-workbench', focus: 'Linux & telemetry reliability', summary: 'Follow a kernel observation all the way to its owner.', demonstrates: 'Process-scoped eBPF, provenance, package boundaries and Collector crash recovery.', stack: ['Linux / eBPF', 'Python', 'OpenTelemetry'], caption: 'Project architecture diagram' },
+  { slug: 'grafana-data-center-explorer', focus: 'Operational visualization', summary: 'One connected view, from the campus to the GPU.', demonstrates: 'Dashboards as code, hierarchy modeling, contextual drill-down and data-driven SVG.', stack: ['Grafana', 'JavaScript', 'SQLite'], caption: 'Actual Grafana capture · synthetic telemetry' },
+];
+
+export const strengths = [
+  { icon: 'ai-infrastructure', title: 'AI infrastructure', text: 'Inference serving, fleet inventory, hardware context and capacity planning.', tools: 'Python · Go · SQL · Linux', proof: ['gpu-fleetops', 'llm-serving-observatory'] },
+  { icon: 'observability', title: 'Observability', text: 'Signals that explain behavior: metric contracts, useful dashboards and source-aware telemetry.', tools: 'Prometheus · Grafana · OpenTelemetry', proof: ['ai-factory-observability-lab', 'grafana-data-center-explorer'] },
+  { icon: 'systems', title: 'Reliability engineering', text: 'Failure experiments, durable delivery, release validation and recoverable changes.', tools: 'SLOs · Temporal · CI · eBPF', proof: ['telemetry-cardinality-governor', 'fleet-kernel-workbench'] },
+  { icon: 'community', title: 'Evidence-grounded AI', text: 'Scoped retrieval and agent tools, evaluation traces and review before action.', tools: 'LangGraph · MCP · Retrieval · Evals', proof: ['gpu-signal-atlas', 'nanga-hatti'] },
+];
+
+export const experience = [
+  { company: 'Apple', role: 'Senior Software Engineer', period: '2022–present', context: 'Private Cloud Compute · Observability', text: 'Inference telemetry, fleet inventory, capacity planning, metric governance and automated release validation.' },
+  { company: 'Oracle', role: 'Principal Member of Technical Staff', period: '2013–2022', context: 'Exalogic Elastic Cloud', text: 'Enterprise infrastructure architecture, rack deployment planning, production escalation and provisioning software.' },
+  { company: 'Telenav & Brocade', role: 'Operations & engineering', period: '2005–2013', context: 'Deployment, networks & production systems', text: 'Deployment tooling, on-call operations, capacity automation, and network fault and performance management.' },
+];
+
+export const categoryPicks: Record<string,string[]> = {
+  observability: ['grafana-data-center-explorer', 'telemetry-cardinality-governor', 'incidentlens'],
+  'ai-infrastructure': ['gpu-fleetops', 'ai-factory-observability-lab', 'llm-serving-observatory'],
+  systems: ['fleet-kernel-workbench', 'fleet-infrastructure-catalog', 'robotreplay'],
+  sports: ['racetime-copilot', 'athlete-living-atlas', 'burro-race-replay'],
+  community: ['nanga-hatti', 'commonground-ai', 'hatti-quest'],
+};
