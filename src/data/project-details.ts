@@ -1,5 +1,27 @@
 export const details = [
   {
+    slug: "badaga-care-circle",
+    overview: "Badaga Care Circle brings general health education, practical caregiver support and family preparedness into one small English/Tamil application. Designed as a discussion demo for one hatti in the Nilgiris, it connects source-based answers to persistent review, shared tasks and a rehearsed family backup plan. The engineering focus is on visible boundaries and verifiable behavior.",
+    capabilities: [
+      { title: "Make evidence visible", text: "Retrieve twelve versioned bilingual source cards with BM25 and character TF-IDF. Optional OpenAI embeddings and structured drafts sit behind explicit consent; fixed warning and medication boundaries run first." },
+      { title: "Keep a human decision in the loop", text: "Withhold template or generated education drafts until a reviewer records a decision. Release checks household scope, language, source version and expiry again. The demo role controls exercise the workflow rather than verify a person's identity." },
+      { title: "Share the practical work", text: "Record consented check-ins, move a care task from requested to accepted to completed, and choose two adults to rehearse a family backup. SQLite persists the fictional workflows and review queue." },
+      { title: "Inspect the software evidence", text: "Review 53 passing Python tests and 46 bilingual synthetic cases. Actual UI captures show six guide requests, redacted traces, stage timings, status counts and a consent fallback. Optional provider contracts use an in-memory transport, not a live OpenAI call." },
+    ],
+    evidence: [
+      { title: "46/46 local evaluation cases", image: "badaga-care-circle-evals.jpg", width: 531, height: 500, alt: "Actual Gradio evaluation report with 46 passing cases, no critical failures and clinical release false", caption: "The suite was run from the Gradio interface. The screenshot and complete export preserve the actual values and timestamp. Synthetic software checks leave clinical release blocked.", url: "https://github.com/sivalinb/badaga-care-circle/blob/main/evaluation_report.json", linkLabel: "Read the evaluation report" },
+      { title: "Trace the route and fallback", image: "badaga-care-circle-traces.jpg", width: 531, height: 602, alt: "Actual redacted Gradio request trace showing local fallback, source IDs, rule version and stage timings", caption: "Six fictional guide interactions exercised retrieval, fixed guidance, abstention, pending review and no-consent fallback. Traces omit raw questions, BP readings and household identifiers.", url: "https://github.com/sivalinb/badaga-care-circle/blob/main/docs/evidence/live-demo.json", linkLabel: "Inspect the captured records" },
+      { title: "Measure the local session", image: "badaga-care-circle-metrics.jpg", width: 531, height: 552, alt: "Actual Gradio operational metrics showing six requests, provider and status counts, p95 latency and zero external token usage", caption: "Request, provider and status counts match the recorded traces. Token usage is zero because the session used local processing. The small local latency sample is not a production benchmark.", url: "https://github.com/sivalinb/badaga-care-circle/actions/runs/38635247833", linkLabel: "View the passing GitHub checks" },
+    ],
+    notes: [
+      { title: "Illustrated system architecture", url: "https://github.com/sivalinb/badaga-care-circle/blob/main/docs/architecture.md" },
+      { title: "RAG and human-review design", url: "https://github.com/sivalinb/badaga-care-circle/blob/main/docs/ai-and-rag.md" },
+      { title: "Live screenshots and reproduction steps", url: "https://github.com/sivalinb/badaga-care-circle/blob/main/docs/evidence.md" },
+      { title: "Observability schema and limits", url: "https://github.com/sivalinb/badaga-care-circle/blob/main/docs/observability.md" },
+      { title: "One-hatti pilot roadmap", url: "https://github.com/sivalinb/badaga-care-circle/blob/main/ROADMAP.md" },
+    ],
+  },
+  {
     slug: "gpu-fleetops",
     overview: "GPU FleetOps connects the questions an operator needs to answer: what is deployed, who owns it, which service is failing, and whether a proposed recovery actually helped. Its Python reference implementation joins inventory provenance, telemetry, request-based SLOs and incident state in one inspectable workflow.",
     capabilities: [

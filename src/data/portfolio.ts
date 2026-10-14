@@ -28,6 +28,7 @@ export const projects = catalog.projects.map(project => {
     overview: detail?.overview || project.description,
     capabilities: detail?.capabilities || [],
     notes: detail?.notes || [],
+    evidence: detail?.evidence || [],
     number: String(catalog.projects.indexOf(project) + 1).padStart(2, '0'),
   };
 });

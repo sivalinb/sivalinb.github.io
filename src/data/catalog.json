@@ -1,6 +1,6 @@
 {
   "scannedAt": "2026-10-14",
-  "publicRepositoryCount": 46,
+  "publicRepositoryCount": 47,
   "projects": [
     {
       "slug": "grafana-data-center-explorer",
@@ -1057,6 +1057,34 @@
       "updatedAt": "2026-10-03T12:45:38Z",
       "imageWidth": 1,
       "imageHeight": 1
+    },
+    {
+      "slug": "badaga-care-circle",
+      "title": "Badaga Care Circle",
+      "categoryId": "community",
+      "format": "App",
+      "description": "Explore English/Tamil community-care education, human-reviewed drafts, shared caregiving and family backup plans.",
+      "tags": [
+        "Python",
+        "Gradio",
+        "Bilingual RAG",
+        "Human review",
+        "Evaluations",
+        "SQLite"
+      ],
+      "scope": "A local fictional-data demonstration for one Badaga hatti. Medical content and Tamil wording await clinical and native-language approval. Demo role selectors are not authentication. Optional OpenAI adapters are contract-tested; no live model call or clinical field validation has been performed. The app does not send messages, book care or place emergency calls.",
+      "repository": "https://github.com/sivalinb/badaga-care-circle",
+      "demo": "",
+      "demoLabel": "Local Gradio demo",
+      "family": "Nilgiris community projects",
+      "featuredRank": null,
+      "image": "badaga-care-circle-architecture.svg",
+      "imageKind": "Architecture illustration for the fictional-data demo",
+      "why": "Turns concern about caretaker burden and family continuity into explicit handovers, reviewable education and inspectable software evidence.",
+      "language": "Python",
+      "updatedAt": "2026-10-14T20:49:08Z",
+      "imageWidth": 1320,
+      "imageHeight": 1100
     }
   ],
   "categories": [
@@ -1097,21 +1125,24 @@
       "title": "Grafana",
       "repository": "https://github.com/sivalinb/grafana",
       "description": "The open and composable observability and data visualization platform. Visualize metrics, logs, and traces from multiple sources like Prometheus, Loki, Elasticsearch, InfluxDB, Postgres and many more. ",
-      "format": "Upstream fork"
+      "format": "Upstream fork",
+      "updatedAt": "2026-08-29T03:46:12Z"
     },
     {
       "slug": "opentelemetry-demo",
       "title": "OpenTelemetry Demo",
       "repository": "https://github.com/sivalinb/opentelemetry-demo",
       "description": "This repository contains the OpenTelemetry Astronomy Shop, a microservice-based distributed system intended to illustrate the implementation of OpenTelemetry in a near real-world environment.",
-      "format": "Upstream fork"
+      "format": "Upstream fork",
+      "updatedAt": "2026-08-29T03:44:43Z"
     },
     {
       "slug": "Redfish-Interface-Emulator",
       "title": "Redfish Interface Emulator",
       "repository": "https://github.com/sivalinb/Redfish-Interface-Emulator",
       "description": "The Redfish Interface Emulator can emulate a Redfish-based interface statically (GET) or dynamically (POST, PATCH, DELETE)",
-      "format": "Upstream fork"
+      "format": "Upstream fork",
+      "updatedAt": "2026-09-06T22:44:56Z"
     }
   ]
 }

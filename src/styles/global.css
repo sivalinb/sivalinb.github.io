@@ -48,6 +48,18 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,su
 }
 @media(max-width:360px) { .container { width:calc(100% - 32px); }.home-hero h1 { font-size:45px; }.hero-actions { gap:19px; }.hero-actions .text-link { font-size:12px; }.interest-map { padding-inline:16px; }.interest-map nav>a { font-size:12px; }.interest-end { gap:10px; }.page-heading h1 { font-size:32px; }.card-body { padding:21px; }.detail-header h1 { font-size:35px; } }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; }*,*::before,*::after { transition:none!important; animation:none!important; } }
+.project-evidence { padding-block:25px 65px; }
+.project-evidence h2 { font-size:34px; }
+.evidence-context { font-size:12px; color:var(--muted); }
+.project-evidence-list { display:grid; gap:26px; margin-top:28px; }
+.project-evidence-list figure { display:grid; grid-template-columns:minmax(0,531px) minmax(0,1fr); gap:34px; align-items:center; margin:0; padding:22px; border:1px solid var(--line); border-radius:12px; background:#fff; }
+.evidence-shot { display:block; border-radius:7px; overflow:hidden; background:#1e2939; }
+.evidence-shot img { width:100%; height:auto; display:block; }
+.project-evidence-list h3 { font-size:26px; line-height:1.25; margin-top:12px; }
+.project-evidence-list figcaption>p:not(.eyebrow) { font-size:15px; line-height:1.8; color:var(--muted); margin-top:18px; }
+.project-evidence-list .text-link { margin-top:23px; font-size:13px; }
+.project-evidence-list small { display:block; font-size:11px; color:var(--muted); margin-top:15px; }
+@media(max-width:760px) { .project-evidence-list figure { grid-template-columns:1fr; gap:22px; padding:16px; }.project-evidence h2 { font-size:29px; }.project-evidence .section-heading { align-items:start; flex-direction:column; gap:14px; }.project-evidence-list h3 { font-size:23px; }.project-evidence-list figcaption>p:not(.eyebrow) { font-size:14px; } }
 @media print { .site-header,.site-footer,.directory-controls,.directory-sidebar,.hero-actions,.feature-cover,.card-actions { display:none; }body { background:white; color:black; }.container { width:100%; }.home-hero,.directory-layout,.detail-body { display:block; }.project-card { break-inside:avoid; }.featured-grid,.directory-grid { grid-template-columns:1fr 1fr; } }
 @media(max-width:760px) { .site-nav.is-open { max-height:calc(100dvh - 73px); overflow-y:auto; overscroll-behavior:contain; } }
 

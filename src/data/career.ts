@@ -27,5 +27,5 @@ export const categoryPicks: Record<string,string[]> = {
   'ai-infrastructure': ['gpu-fleetops', 'ai-factory-observability-lab', 'llm-serving-observatory'],
   systems: ['fleet-kernel-workbench', 'fleet-infrastructure-catalog', 'robotreplay'],
   sports: ['racetime-copilot', 'athlete-living-atlas', 'burro-race-replay'],
-  community: ['nanga-hatti', 'commonground-ai', 'hatti-quest'],
+  community: ['badaga-care-circle', 'nanga-hatti', 'hatti-quest'],
 };

@@ -2,7 +2,7 @@
 
 A static Astro portfolio shaped around Siva's supplied engineering résumé: production infrastructure, observability, fleet systems and reliability. The homepage presents six selected independent projects with explicit skill connections, a four-area skills section, production experience, personal projects, and technical academies. The shared design uses navy, blue and neutral surfaces across the homepage, directories and project pages. No portrait is included.
 
-The catalog contains 42 original public projects, five category pages, 42 project detail pages, six academies and three attributed upstream forks. The project directory supports category selection, search, format filters and sorting. Everything is prerendered and stays on free GitHub Pages hosting.
+The catalog contains 43 original public projects, five category pages, 43 project detail pages, six academies and three attributed upstream forks. The project directory supports category selection, search, format filters and sorting. Everything is prerendered and stays on free GitHub Pages hosting.
 
 Public website: https://sivalinb.github.io/
 Project directory: https://sivalinb.github.io/projects/
@@ -24,11 +24,13 @@ In a restricted environment, set `ASTRO_TELEMETRY_DISABLED=1` on the build/dev p
 
 ## Information architecture and review
 
-The October 14, 2026 inventory contains 48 owned repositories: 46 public and two private. The public set is 42 original projects, three upstream forks, and this portfolio repository. Private repositories remain excluded from the website and downloadable source.
+The public inventory refreshed on October 14, 2026 contains 47 repositories: 43 original projects, three upstream forks, and this portfolio repository. Only public project information enters the website and downloadable source.
 
 Four recently added repositories were reviewed: GPU FleetOps, AI Factory Observability Lab, Data Center Explorer and Nanga Hatti. The review covered their authored code, documentation, configuration, tests and recorded evidence. Generated definitions were checked against their source; binary assets and vendored/geographic data were inventoried separately. The underlying applications and hardware were not rerun during this portfolio refresh. Repository-recorded test outcomes are labeled as recorded evidence.
 
 The existing Nanga Hatti changes on the public portfolio were preserved before the refresh. Its public explorer uses fictional starter memories; contribution and review run locally. It remains visible as a personal/community project with engineering detail and a read-only public explorer link.
+
+Badaga Care Circle is the latest community addition. Its homepage highlight and dedicated case study present English/Tamil education, persistent human review, shared caregiving and family backup. The case study includes unmodified screenshots of 46/46 local evaluation cases, six-request traces and operational metrics, plus architecture, source, exported evidence and the passing 53-test CI run. Medical/Tamil review and real-pilot gates remain explicit. Its local Gradio app is not presented as a hosted clinical service. The six infrastructure flagship projects and résumé-based career positioning are retained.
 
 | Area | Projects |
 | --- | ---: |
@@ -36,9 +38,9 @@ The existing Nanga Hatti changes on the public portfolio were preserved before t
 | AI & GPU Infrastructure | 8 |
 | Systems & Robotics | 5 |
 | Sports & Race Tools | 6 |
-| Community & Everyday Apps | 6 |
+| Community & Everyday Apps | 7 |
 
-Formats are independent of category: 11 tools, 12 labs, six academies and 13 apps. Tags connect cross-cutting topics. Forks stay in References with attribution.
+Formats are independent of category: 11 tools, 12 labs, six academies and 14 apps. Tags connect cross-cutting topics. Forks stay in References with attribution.
 
 The featured selection follows the Staff/Principal engineering résumé's strongest themes:
 
