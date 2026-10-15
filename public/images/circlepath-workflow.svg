@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="960" viewBox="0 0 1320 960" role="img" aria-labelledby="title desc">
+  <title id="title">CirclePath — restorative case coordination</title>
+  <desc id="desc">A human-led workflow from case review to reintegration. Approved context passes through Gemini, source and owner validation, and human review. OpenTelemetry metadata connects to Arize, Grafana, Prometheus and Tempo.</desc>
+  <defs>
+    <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#f1f7f2"/><stop offset="1" stop-color="#e2efe8"/></linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M1 1 6 4 1 7" fill="none" stroke="#64887b" stroke-width="1.4"/></marker>
+  </defs>
+  <rect width="1320" height="960" rx="24" fill="url(#paper)"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#173f34">
+    <circle cx="83" cy="85" r="25" fill="none" stroke="#30735e" stroke-width="7"/>
+    <text x="127" y="100" font-size="49" font-weight="700" letter-spacing="-1.5">CirclePath</text>
+    <rect x="916" y="55" width="344" height="43" rx="21" fill="#d3e8dd"/>
+    <text x="1088" y="82" font-size="15" text-anchor="middle" font-weight="700" letter-spacing="1.2">FICTIONAL-CASE LOCAL DEMO</text>
+    <text x="58" y="177" font-size="38" font-weight="700" letter-spacing="-.8">A prepared team. A clear next step.</text>
+    <text x="58" y="218" font-size="21" fill="#526e62">People lead the restorative process. Software supports the follow-through.</text>
+
+    <text x="58" y="283" font-size="14" font-weight="700" letter-spacing="2.2" fill="#52766a">THE HUMAN-LED PROCESS</text>
+    <g fill="#fff" stroke="#c2d9cd" stroke-width="2">
+      <rect x="58" y="309" width="216" height="137" rx="14"/>
+      <rect x="305" y="309" width="216" height="137" rx="14"/>
+      <rect x="552" y="309" width="216" height="137" rx="14"/>
+      <rect x="799" y="309" width="216" height="137" rx="14"/>
+      <rect x="1046" y="309" width="216" height="137" rx="14"/>
+    </g>
+    <g font-size="14" fill="#64887b" font-weight="700"><text x="79" y="340">01</text><text x="326" y="340">02</text><text x="573" y="340">03</text><text x="820" y="340">04</text><text x="1067" y="340">05</text></g>
+    <g font-size="22" font-weight="700"><text x="79" y="375">Case &amp; team</text><text x="326" y="375">Preparation</text><text x="573" y="375">Conference</text><text x="820" y="375">Repair support</text><text x="1067" y="375">Reintegration</text></g>
+    <g font-size="16" fill="#617c70"><text x="79" y="412">Review · role approval</text><text x="326" y="412">Consent · readiness</text><text x="573" y="412">Facilitated dialogue</text><text x="820" y="412">Check-ins · evidence</text><text x="1067" y="412">Reflect · close · learn</text></g>
+    <g fill="none" stroke="#64887b" stroke-width="2" marker-end="url(#arrow)"><path d="M279 377h20"/><path d="M526 377h20"/><path d="M773 377h20"/><path d="M1020 377h20"/></g>
+
+    <rect x="58" y="486" width="1204" height="248" rx="18" fill="#174e41"/>
+    <text x="86" y="526" font-size="14" font-weight="700" letter-spacing="2.2" fill="#b2d8c6">BOUNDED AI COORDINATOR</text>
+    <g fill="#25604f" stroke="#4f8773" stroke-width="1.4"><rect x="86" y="553" width="244" height="92" rx="10"/><rect x="387" y="553" width="244" height="92" rx="10"/><rect x="688" y="553" width="244" height="92" rx="10"/><rect x="989" y="553" width="244" height="92" rx="10"/></g>
+    <g fill="#f1fbf5" font-size="22" font-weight="700"><text x="107" y="590">Approved context</text><text x="408" y="590">Gemini draft</text><text x="709" y="590">Validate</text><text x="1010" y="590">Human review</text></g>
+    <g fill="#c2dfd0" font-size="15"><text x="107" y="620">Briefing · shared records</text><text x="408" y="620">Questions · suggested tasks</text><text x="709" y="620">Source IDs · allowed owners</text><text x="1010" y="620">Edit · approve · reject</text></g>
+    <g fill="none" stroke="#a8ccba" stroke-width="2" marker-end="url(#arrow)"><path d="M340 599h34"/><path d="M641 599h34"/><path d="M942 599h34"/></g>
+    <text x="87" y="695" font-size="17" fill="#d1e7db">Drafts pause for review. Consent, readiness and repair agreements remain human decisions.</text>
+
+    <text x="58" y="789" font-size="14" font-weight="700" letter-spacing="2.2" fill="#52766a">INSPECTABLE OPERATIONS</text>
+    <g fill="#fff" stroke="#c2d9cd" stroke-width="1.5"><rect x="58" y="812" width="367" height="76" rx="12"/><rect x="445" y="812" width="402" height="76" rx="12"/><rect x="867" y="812" width="395" height="76" rx="12"/></g>
+    <g font-size="21" font-weight="700"><text x="79" y="843">Gradio + SQLite</text><text x="466" y="843">OpenTelemetry → Arize</text><text x="888" y="843">Grafana + Prometheus + Tempo</text></g>
+    <g font-size="15" fill="#617c70"><text x="79" y="868">Authenticated roles · persistent workflow</text><text x="466" y="868">Operational metadata · narrative capture off</text><text x="888" y="868">Metrics · workflow state · traces</text></g>
+    <text x="58" y="930" font-size="13" fill="#6a8678">WORKFLOW &amp; ARCHITECTURE ILLUSTRATION · Actual application captures appear in the case study.</text>
+  </g>
+</svg>

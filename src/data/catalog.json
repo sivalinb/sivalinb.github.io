@@ -1,6 +1,6 @@
 {
   "scannedAt": "2026-10-14",
-  "publicRepositoryCount": 47,
+  "publicRepositoryCount": 48,
   "projects": [
     {
       "slug": "grafana-data-center-explorer",
@@ -1085,6 +1085,35 @@
       "updatedAt": "2026-10-14T20:49:08Z",
       "imageWidth": 1320,
       "imageHeight": 1100
+    },
+    {
+      "slug": "circlepath-rj",
+      "title": "CirclePath",
+      "categoryId": "community",
+      "format": "App",
+      "description": "Coordinate restorative-justice volunteers from case review to reintegration, with reviewed AI drafts and clear follow-through.",
+      "tags": [
+        "Gemini",
+        "Gradio",
+        "Arize",
+        "OpenTelemetry",
+        "Grafana",
+        "Human review",
+        "SQLite"
+      ],
+      "scope": "A password-authenticated local demonstration using fictional cases. Live Gemini drafting, Arize export and the local Grafana stack were exercised. People decide consent, readiness, repair agreements and case outcomes. Google Calendar synchronization needs a separate OAuth connection and has not been live-tested; personal .ics exports work locally. Email is disabled. This is not a deployed juvenile case-management service.",
+      "why": "Connects the scheduling and preparation work behind a restorative process: a qualified team, participant choices, meeting check-ins, repair support and reviewed learning.",
+      "image": "circlepath-workflow.svg",
+      "imageKind": "Workflow and architecture illustration for the local demo",
+      "imageWidth": 1320,
+      "imageHeight": 960,
+      "family": "Restorative justice",
+      "repository": "https://github.com/sivalinb/circlepath-rj",
+      "demo": "",
+      "demoLabel": "Local Gradio demo",
+      "featuredRank": null,
+      "language": "Python",
+      "updatedAt": "2026-10-14T20:21:01-06:00"
     }
   ],
   "categories": [

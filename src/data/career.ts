@@ -13,7 +13,7 @@ export const strengths = [
   { icon: 'ai-infrastructure', title: 'AI infrastructure', text: 'Inference serving, fleet inventory, hardware context and capacity planning.', tools: 'Python · Go · SQL · Linux', proof: ['gpu-fleetops', 'llm-serving-observatory'] },
   { icon: 'observability', title: 'Observability', text: 'Signals that explain behavior: metric contracts, useful dashboards and source-aware telemetry.', tools: 'Prometheus · Grafana · OpenTelemetry', proof: ['ai-factory-observability-lab', 'grafana-data-center-explorer'] },
   { icon: 'systems', title: 'Reliability engineering', text: 'Failure experiments, durable delivery, release validation and recoverable changes.', tools: 'SLOs · Temporal · CI · eBPF', proof: ['telemetry-cardinality-governor', 'fleet-kernel-workbench'] },
-  { icon: 'community', title: 'Evidence-grounded AI', text: 'Scoped retrieval and agent tools, evaluation traces and review before action.', tools: 'LangGraph · MCP · Retrieval · Evals', proof: ['gpu-signal-atlas', 'nanga-hatti'] },
+  { icon: 'community', title: 'Evidence-grounded AI', text: 'Scoped retrieval and agent tools, evaluation traces and review before action.', tools: 'Gemini · LangGraph · Retrieval · Evals', proof: ['gpu-signal-atlas', 'nanga-hatti', 'circlepath-rj'] },
 ];
 
 export const experience = [
@@ -27,5 +27,5 @@ export const categoryPicks: Record<string,string[]> = {
   'ai-infrastructure': ['gpu-fleetops', 'ai-factory-observability-lab', 'llm-serving-observatory'],
   systems: ['fleet-kernel-workbench', 'fleet-infrastructure-catalog', 'robotreplay'],
   sports: ['racetime-copilot', 'athlete-living-atlas', 'burro-race-replay'],
-  community: ['badaga-care-circle', 'nanga-hatti', 'hatti-quest'],
+  community: ['circlepath-rj', 'badaga-care-circle', 'nanga-hatti'],
 };

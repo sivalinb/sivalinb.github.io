@@ -1,5 +1,26 @@
 export const details = [
   {
+    slug: "circlepath-rj",
+    overview: "A restorative process needs a prepared team and dependable follow-through. CirclePath brings the coordination around that process into an authenticated Python application: approved case briefings, volunteer role requests, preparation, conferences, repair support and reintegration. A bounded AI coordinator proposes questions, language and next steps; practitioners retain the decisions.",
+    capabilities: [
+      { title: "Form a prepared team", text: "Volunteers request facilitator, co-facilitator, community-member or support-liaison roles. Training, confidentiality, manager approval and case-review attestations gate participation. Office-only reports and private debriefs stay outside AI context." },
+      { title: "Turn context into a reviewed draft", text: "The coordinator retrieves permitted context, calls Gemini for structured output, validates source IDs and task owners, and holds the result for human review. An approved coordination draft can create tasks; participant-agreed repair commitments follow a separate workflow." },
+      { title: "Support the whole process", text: "Intersect team availability, schedule meetings, export personal calendars, collect debriefs and record repair evidence. Idempotent reminders surface check-ins and barriers. Consent withdrawal pauses a case; approved summaries and de-identified lessons preserve the learning." },
+      { title: "Observe behavior without recording narratives", text: "OpenTelemetry spans follow retrieval, generation, validation and review. Arize receives operational metadata; Prometheus and Grafana expose draft counts, review decisions, tokens and workflow state, with Tempo for traces. The working demo exercised live Gemini and Arize export; 15 integration tests and CI verify workflow and privacy rules." },
+    ],
+    evidence: [
+      { title: "A live Gemini draft, reviewed by a person", image: "circlepath-preparation.png", width: 1032, height: 3057, alt: "Actual CirclePath Gradio screen with a fictional Cedar case, approved Gemini preparation draft, source references, suggested questions and human-review controls", caption: "This unmodified local-app capture shows the live-tested Gemini model, approved draft provenance, editable questions, source references and proposed task ownership. The case and all participant context are fictional.", url: "https://github.com/sivalinb/circlepath-rj#demonstration-walkthrough", linkLabel: "Reproduce the local walkthrough" },
+      { title: "See the coordination signals in Grafana", image: "circlepath-grafana.png", width: 595, height: 898, alt: "Actual CirclePath Grafana dashboard showing one AI draft, one human approval and zero overdue tasks for the local demo process", caption: "The running local dashboard reads real Prometheus metrics from fictional workflows. These counters describe the captured process session; they are not program outcomes or a production performance benchmark. Metadata-only traces also export to Arize and Tempo.", url: "https://github.com/sivalinb/circlepath-rj#signals-and-evaluations", linkLabel: "Inspect the telemetry design" },
+    ],
+    notes: [
+      { title: "Coordinator and architecture", url: "https://github.com/sivalinb/circlepath-rj#architecture" },
+      { title: "Workflow, authorization and privacy tests", url: "https://github.com/sivalinb/circlepath-rj/tree/main/tests" },
+      { title: "Passing integration checks", url: "https://github.com/sivalinb/circlepath-rj/actions/runs/38670518573" },
+      { title: "Grafana, OpenTelemetry and Arize", url: "https://github.com/sivalinb/circlepath-rj#grafana-and-opentelemetry" },
+      { title: "Calendar and reminder behavior", url: "https://github.com/sivalinb/circlepath-rj#calendar-and-reminders" },
+    ],
+  },
+  {
     slug: "badaga-care-circle",
     overview: "Badaga Care Circle brings general health education, practical caregiver support and family preparedness into one small English/Tamil application. Designed as a discussion demo for one hatti in the Nilgiris, it connects source-based answers to persistent review, shared tasks and a rehearsed family backup plan. The engineering focus is on visible boundaries and verifiable behavior.",
     capabilities: [
