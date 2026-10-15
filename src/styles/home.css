@@ -190,4 +190,4 @@
 @media print { .pro-hero { background:#fff; color:#000; }.pro-hero h1>span { color:#000; }.pro-hero::before,.hero-system,.pro-actions,.hero-bottom,.system-visual,.personal-image { display:none; }.pro-hero-grid,.experience-grid,.learning-grid,.pro-contact,.area-explorer { display:block; }.pro-intro { color:#333; }.systems-grid,.strength-grid,.personal-grid { grid-template-columns:1fr 1fr; }.system-card { break-inside:avoid; }.area-tabs { display:none; }.area-panel[hidden] { display:block!important; } }
 
 .visual-gpu-fleetops img { object-fit:contain; background:#fff; padding-bottom:28px; }
-.hero-system img[src*="gpu-fleet-reliability"] { object-fit:contain; background:#fff; aspect-ratio:1.5; }
+.hero-system img[src*="grafana-data-hall"] { aspect-ratio:1280 / 1010; object-fit:cover; object-position:top; background:#0b1422; }
