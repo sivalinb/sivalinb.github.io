@@ -1,5 +1,77 @@
 export const details = [
   {
+  "slug": "ai-incident-investigator",
+  "overview": "A dashboard panel stops showing data after a metric-label migration. This project follows the investigation from actual Grafana queries and a failing screenshot through a real local model call, a tested repair proposal, exact review and verified recovery. OpenInference and Phoenix expose the execution; Gradio makes the evidence and decision inspectable.",
+  "capabilities": [
+    {
+      "title": "Run a complete failure and repair workflow",
+      "text": "Start the local Gradio, Grafana, Prometheus and Phoenix stack. Simulate the label migration, inspect the original panel, review the exact query change and verify the recovered measurement."
+    },
+    {
+      "title": "Inspect the investigator itself",
+      "text": "Follow actual tool, model and evaluation spans. Record provider-reported tokens and measured durations, then link the later review trace back to the investigation."
+    },
+    {
+      "title": "Evaluate actual local inference",
+      "text": "Compare six authored evidence cases against actual Ollama outputs. The recorded Qwen3 run passes three of six cases; the evidence rules pass six. The published result preserves the failures and the model’s advisory boundary."
+    },
+    {
+      "title": "Keep the operational evidence",
+      "text": "Retain before/after panel images, proposal and dashboard hashes, review decisions, current query evaluations and an RCA. The public walkthrough replays saved evidence without running a hosted model."
+    }
+  ],
+  "notes": [
+    {
+      "title": "Full workflow and screenshot tour",
+      "url": "https://github.com/sivalinb/ai-incident-investigator/blob/main/docs/WORKFLOW.md"
+    },
+    {
+      "title": "Architecture and approval decisions",
+      "url": "https://github.com/sivalinb/ai-incident-investigator/blob/main/docs/ARCHITECTURE.md"
+    },
+    {
+      "title": "OpenInference spans and Prometheus metrics",
+      "url": "https://github.com/sivalinb/ai-incident-investigator/blob/main/docs/TELEMETRY.md"
+    },
+    {
+      "title": "Evaluation method and measured failures",
+      "url": "https://github.com/sivalinb/ai-incident-investigator/blob/main/docs/EVALUATIONS.md"
+    }
+  ],
+  "evidence": [
+    {
+      "title": "An exact repair and a recovered panel",
+      "image": "ai-incident-investigator.jpg",
+      "width": 1280,
+      "height": 720,
+      "alt": "Actual Gradio workspace showing the original empty Grafana panel, a local model explanation, exact query diff and recovered data",
+      "caption": "Actual Gradio and Grafana captures from the synthetic checkout workflow. The model advises; the repair engine independently validates the proposal and verifies recovery.",
+      "url": "https://github.com/sivalinb/ai-incident-investigator/blob/main/docs/WORKFLOW.md",
+      "linkLabel": "Follow the complete workflow"
+    },
+    {
+      "title": "Measured behavior of the investigator",
+      "image": "ai-incident-investigator-grafana.jpg",
+      "width": 1280,
+      "height": 1703,
+      "alt": "Actual Grafana investigator reliability dashboard showing monitoring contracts, operation latency and actual model usage",
+      "caption": "Real Prometheus measurements connect tool and model timing to workflow state. Fixtures never create model-token usage, and local hardware cost remains unmeasured.",
+      "url": "https://github.com/sivalinb/ai-incident-investigator/blob/main/docs/TELEMETRY.md",
+      "linkLabel": "Inspect the telemetry contract"
+    },
+    {
+      "title": "A live model benchmark with failures retained",
+      "image": "ai-incident-investigator-evaluation.jpg",
+      "width": 1280,
+      "height": 720,
+      "alt": "Actual Gradio evaluation table showing local Qwen3 results on six authored evidence cases",
+      "caption": "The recorded local model passes three of six cases. Expected answers are withheld; the published outputs preserve incorrect classifications and explain the benchmark’s limits.",
+      "url": "https://github.com/sivalinb/ai-incident-investigator/blob/main/docs/EVALUATIONS.md",
+      "linkLabel": "Read the evaluation method"
+    }
+  ]
+},
+  {
     slug: "circlepath-rj",
     overview: "A restorative process needs a prepared team and dependable follow-through. CirclePath brings the coordination around that process into an authenticated Python application: approved case briefings, volunteer role requests, preparation, conferences, repair support and reintegration. A bounded AI coordinator proposes questions, language and next steps; practitioners retain the decisions.",
     capabilities: [
