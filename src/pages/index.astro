@@ -5,6 +5,7 @@ import PortfolioIcon from '../components/PortfolioIcon.astro';
 import { profile, projects, categories, academies, categoryUrl, projectUrl } from '../data/portfolio';
 import { featuredWork, strengths, experience, categoryPicks } from '../data/career';
 import '../styles/home.css';
+import '../styles/redesign.css';
 const base = import.meta.env.BASE_URL;
 const findProject = (slug: string) => projects.find(project => project.slug === slug)!;
 const work = featuredWork.map(item => ({ ...item, project: findProject(item.slug) }));
