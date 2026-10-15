@@ -2,9 +2,11 @@
 import Base from '../layouts/Base.astro';
 import Arrow from '../components/Arrow.astro';
 import PortfolioIcon from '../components/PortfolioIcon.astro';
+import SignalJourney from '../components/SignalJourney.astro';
 import { profile, projects, categories, academies, categoryUrl, projectUrl } from '../data/portfolio';
 import { featuredWork, strengths, experience, categoryPicks } from '../data/career';
 import '../styles/home.css';
+import '../styles/redesign.css';
 const base = import.meta.env.BASE_URL;
 const findProject = (slug: string) => projects.find(project => project.slug === slug)!;
 const work = featuredWork.map(item => ({ ...item, project: findProject(item.slug) }));
@@ -38,6 +40,8 @@ const learning = ['promql-zero-to-hero', 'opentelemetry-zero-to-hero', 'gpu-infr
     <div><strong>{academies.length}<span>academies</span></strong><p>Technical ideas<br/>made tangible</p></div>
     <p class="strip-note">My work lives at the intersection of <b>AI infrastructure, observability and reliability.</b></p>
   </section>
+
+  <SignalJourney />
 
   <section class="container selected-systems" id="selected-work" aria-labelledby="work-title">
     <div class="pro-section-heading"><div><p class="pro-eyebrow">SELECTED INDEPENDENT PROJECTS</p><h2 id="work-title">The work behind the skills.</h2></div><p>Systems you can inspect, experiments you can reproduce, and engineering decisions you can follow.</p></div>

@@ -1,0 +1,34 @@
+<section class="signal-journey container" aria-labelledby="signal-journey-title">
+  <div class="journey-heading"><p class="pro-eyebrow">INTERACTIVE SYSTEM EXPLORER</p><h2 id="signal-journey-title">From signal to decision.</h2><p>Explore how infrastructure evidence becomes actionable intelligence. This is an illustrative workflow, not live production telemetry.</p></div>
+  <div class="journey-steps" role="group" aria-label="Explore observability workflow">
+    <button type="button" class="is-active" aria-pressed="true" data-step="0"><span>01</span>Infrastructure</button>
+    <button type="button" aria-pressed="false" data-step="1"><span>02</span>Telemetry</button>
+    <button type="button" aria-pressed="false" data-step="2"><span>03</span>Investigation</button>
+    <button type="button" aria-pressed="false" data-step="3"><span>04</span>Action</button>
+  </div>
+  <div class="journey-stage" aria-live="polite"><div class="journey-graphic" aria-hidden="true"><span class="journey-node">HW</span><span class="journey-connector"></span><span class="journey-node">OTel</span><span class="journey-connector"></span><span class="journey-node">AI</span><span class="journey-connector"></span><span class="journey-node">RCA</span></div><div><p class="journey-count" id="journey-count">STAGE 01 / 04</p><h3 id="journey-stage-title">Infrastructure signals</h3><p id="journey-stage-description">Hardware health, Linux, GPU and application signals provide the raw evidence for understanding a complex fleet.</p></div></div>
+  <p class="journey-disclaimer">Illustrative architecture · No production systems or confidential telemetry connected</p>
+</section>
+<script>
+  const stages = [
+    ['Infrastructure signals','Hardware health, Linux, GPU and application signals provide the raw evidence for understanding a complex fleet.'],
+    ['Trusted telemetry','Prometheus, OpenTelemetry, logs and traces transform raw signals into correlated evidence with quality and cardinality controls.'],
+    ['Evidence-led investigation','Engineers and AI-assisted tools correlate signals, test hypotheses and make uncertainty visible instead of guessing.'],
+    ['Human-owned action','Clear findings support diagnosis, remediation and long-term design improvements with humans accountable for decisions.']
+  ];
+  document.querySelectorAll<HTMLElement>('.signal-journey').forEach(root => {
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-step]')];
+    const title = root.querySelector<HTMLElement>('#journey-stage-title');
+    const desc = root.querySelector<HTMLElement>('#journey-stage-description');
+    const count = root.querySelector<HTMLElement>('#journey-count');
+    const nodes = [...root.querySelectorAll<HTMLElement>('.journey-node')];
+    buttons.forEach((button, index) => button.addEventListener('click', () => {
+      buttons.forEach((b,i) => { b.classList.toggle('is-active',i===index); b.setAttribute('aria-pressed',String(i===index)); });
+      nodes.forEach((n,i) => n.classList.toggle('is-active',i===index));
+      if(title) title.textContent = stages[index][0];
+      if(desc) desc.textContent = stages[index][1];
+      if(count) count.textContent = 'STAGE 0'+(index+1)+' / 04';
+    }));
+    nodes[0]?.classList.add('is-active');
+  });
+</script>
