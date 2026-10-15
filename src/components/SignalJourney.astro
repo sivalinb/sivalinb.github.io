@@ -1,34 +1,172 @@
-<section class="signal-journey container" aria-labelledby="signal-journey-title">
-  <div class="journey-heading"><p class="pro-eyebrow">INTERACTIVE SYSTEM EXPLORER</p><h2 id="signal-journey-title">From signal to decision.</h2><p>Explore how infrastructure evidence becomes actionable intelligence. This is an illustrative workflow, not live production telemetry.</p></div>
-  <div class="journey-steps" role="group" aria-label="Explore observability workflow">
-    <button type="button" class="is-active" aria-pressed="true" data-step="0"><span>01</span>Infrastructure</button>
-    <button type="button" aria-pressed="false" data-step="1"><span>02</span>Telemetry</button>
-    <button type="button" aria-pressed="false" data-step="2"><span>03</span>Investigation</button>
-    <button type="button" aria-pressed="false" data-step="3"><span>04</span>Action</button>
+---
+import Arrow from './Arrow.astro';
+import { projects, projectUrl } from '../data/portfolio';
+
+const base = import.meta.env.BASE_URL;
+const stages = [
+  {
+    id: 'infrastructure', label: 'Infrastructure', node: 'Fleet',
+    title: 'Start with a signal. Keep its context.',
+    description: 'Hardware health, Linux, GPU and application signals become useful when you can trace them to a source, a workload and an owner.',
+    inputs: ['Host & GPU inventory', 'Linux observations', 'Workload ownership'],
+    output: 'Owned, scoped signals',
+    projects: ['gpu-fleetops', 'fleet-kernel-workbench'],
+  },
+  {
+    id: 'telemetry', label: 'Telemetry', node: 'OTel',
+    title: 'Turn measurements into trusted evidence.',
+    description: 'Connect metrics, logs and traces through source contracts. Check coverage and cardinality before interpreting a dashboard.',
+    inputs: ['Prometheus metrics', 'OpenTelemetry traces', 'Source & coverage checks'],
+    output: 'Correlated, bounded evidence',
+    projects: ['ai-factory-observability-lab', 'llm-serving-observatory'],
+  },
+  {
+    id: 'investigation', label: 'Investigation', node: 'Trace',
+    title: 'Follow a hypothesis through the evidence.',
+    description: 'Engineers and AI-assisted tools inspect signals, compare explanations and expose uncertainty. Traces and evaluations make the investigation reviewable.',
+    inputs: ['Incident context', 'Tool & inference traces', 'Evaluation outcomes'],
+    output: 'A finding you can inspect',
+    projects: ['ai-incident-investigator', 'gpu-signal-atlas'],
+  },
+  {
+    id: 'action', label: 'Action', node: 'Review',
+    title: 'Review the change. Verify recovery.',
+    description: 'An accountable person approves a scoped action. A canary and explicit recovery checks determine whether to keep the change or roll it back.',
+    inputs: ['Human approval', 'A measured canary', 'Recovery & rollback checks'],
+    output: 'Verified recovery or rollback',
+    projects: ['telemetry-cardinality-governor', 'ai-incident-investigator'],
+  },
+];
+---
+<section class="signal-journey container" aria-labelledby="signal-journey-title" data-signal-journey>
+  <div class="journey-heading">
+    <p class="pro-eyebrow">INTERACTIVE SYSTEM EXPLORER</p>
+    <h2 id="signal-journey-title">From signal to decision.</h2>
+    <p>Follow the path from infrastructure to a reviewed action. Each stage connects to independent projects you can inspect.</p>
   </div>
-  <div class="journey-stage" aria-live="polite"><div class="journey-graphic" aria-hidden="true"><span class="journey-node">HW</span><span class="journey-connector"></span><span class="journey-node">OTel</span><span class="journey-connector"></span><span class="journey-node">AI</span><span class="journey-connector"></span><span class="journey-node">RCA</span></div><div><p class="journey-count" id="journey-count">STAGE 01 / 04</p><h3 id="journey-stage-title">Infrastructure signals</h3><p id="journey-stage-description">Hardware health, Linux, GPU and application signals provide the raw evidence for understanding a complex fleet.</p></div></div>
-  <p class="journey-disclaimer">Illustrative architecture · No production systems or confidential telemetry connected</p>
+  <div class="journey-steps" aria-label="Observability workflow">
+    {stages.map((stage, index) => <a id={'journey-tab-' + stage.id} href={'#journey-panel-' + stage.id} class:list={['journey-step', { 'is-active': index === 0 }]} data-journey-step><span>{String(index + 1).padStart(2, '0')}</span>{stage.label}<Arrow size={16}/></a>)}
+  </div>
+  <div class="journey-panels">
+    {stages.map((stage, index) => <section class="journey-stage" id={'journey-panel-' + stage.id} aria-labelledby={'journey-title-' + stage.id} data-journey-panel>
+      <div class="journey-evidence">
+        <p class="journey-count">STAGE {String(index + 1).padStart(2, '0')} / 04</p>
+        <div class="journey-graphic" aria-hidden="true">{stages.map((node, nodeIndex) => <><span class:list={['journey-node', { 'is-active': nodeIndex === index }]}>{node.node}</span>{nodeIndex < stages.length - 1 && <span class="journey-connector"></span>}</>)}</div>
+        <p class="journey-label">WHAT ENTERS THIS STAGE</p>
+        <ul class="journey-inputs">{stage.inputs.map(input => <li>{input}</li>)}</ul>
+        <div class="journey-output"><span class="journey-label">WHAT LEAVES IT</span><strong>{stage.output}</strong></div>
+      </div>
+      <div class="journey-copy">
+        <h3 id={'journey-title-' + stage.id}>{stage.title}</h3>
+        <p>{stage.description}</p>
+        <p class="journey-label">EXPLORE THE WORK</p>
+        <div class="journey-projects">{stage.projects.map(slug => <a href={projectUrl(base, slug)}>{projects.find(project => project.slug === slug)!.title}<Arrow diagonal size={16}/></a>)}</div>
+      </div>
+    </section>)}
+  </div>
+  <p class="journey-disclaimer">Illustrative architecture · Independent projects, each with its own scope · No live production telemetry</p>
 </section>
+
 <script>
-  const stages = [
-    ['Infrastructure signals','Hardware health, Linux, GPU and application signals provide the raw evidence for understanding a complex fleet.'],
-    ['Trusted telemetry','Prometheus, OpenTelemetry, logs and traces transform raw signals into correlated evidence with quality and cardinality controls.'],
-    ['Evidence-led investigation','Engineers and AI-assisted tools correlate signals, test hypotheses and make uncertainty visible instead of guessing.'],
-    ['Human-owned action','Clear findings support diagnosis, remediation and long-term design improvements with humans accountable for decisions.']
-  ];
-  document.querySelectorAll<HTMLElement>('.signal-journey').forEach(root => {
-    const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-step]')];
-    const title = root.querySelector<HTMLElement>('#journey-stage-title');
-    const desc = root.querySelector<HTMLElement>('#journey-stage-description');
-    const count = root.querySelector<HTMLElement>('#journey-count');
-    const nodes = [...root.querySelectorAll<HTMLElement>('.journey-node')];
-    buttons.forEach((button, index) => button.addEventListener('click', () => {
-      buttons.forEach((b,i) => { b.classList.toggle('is-active',i===index); b.setAttribute('aria-pressed',String(i===index)); });
-      nodes.forEach((n,i) => n.classList.toggle('is-active',i===index));
-      if(title) title.textContent = stages[index][0];
-      if(desc) desc.textContent = stages[index][1];
-      if(count) count.textContent = 'STAGE 0'+(index+1)+' / 04';
-    }));
-    nodes[0]?.classList.add('is-active');
+  document.querySelectorAll<HTMLElement>('[data-signal-journey]').forEach(root => {
+    const tablist = root.querySelector<HTMLElement>('.journey-steps');
+    const tabs = [...root.querySelectorAll<HTMLAnchorElement>('[data-journey-step]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[data-journey-panel]')];
+
+    const selectStage = (index: number, focus = false) => {
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle('is-active', i === index);
+        tab.setAttribute('aria-selected', String(i === index));
+        tab.tabIndex = i === index ? 0 : -1;
+      });
+      panels.forEach((panel, i) => { panel.hidden = i !== index; });
+      if (focus) tabs[index].focus();
+    };
+
+    tablist?.setAttribute('role', 'tablist');
+    tablist?.setAttribute('aria-orientation', 'horizontal');
+    tabs.forEach((tab, index) => {
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-controls', panels[index].id);
+      panels[index].setAttribute('role', 'tabpanel');
+      panels[index].setAttribute('aria-labelledby', tab.id);
+      panels[index].tabIndex = 0;
+      tab.addEventListener('click', event => {
+        event.preventDefault();
+        selectStage(index);
+      });
+      tab.addEventListener('keydown', event => {
+        let next = index;
+        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = tabs.length - 1;
+        else if (event.key !== ' ') return;
+        event.preventDefault();
+        selectStage(next, true);
+      });
+    });
+
+    // Anchor links still expose every stage when JavaScript is unavailable.
+    const linkedStage = panels.findIndex(panel => '#' + panel.id === window.location.hash);
+    selectStage(linkedStage >= 0 ? linkedStage : 0);
   });
 </script>
+
+<style>
+  .signal-journey { padding-block: 76px 22px; }
+  .journey-heading { max-width: 740px; }
+  .journey-heading h2 { font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -.05em; margin: 14px 0 18px; }
+  .journey-heading > p:last-child { color: var(--muted); font-size: 15px; line-height: 1.8; }
+  .journey-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 30px 0 14px; }
+  .journey-step { display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 16px; border: 1px solid #3d496a; background: #171f34; border-radius: 12px; color: #c4cde2; font-size: 13px; }
+  .journey-step > span { color: #b8a1ec; font: 11px ui-monospace, monospace; }
+  .journey-step > :global(svg) { margin-left: auto; color: #b8a1ec; }
+  .journey-step:hover { border-color: #a18af3; }
+  .journey-step.is-active { background: #30264d; border-color: #b29cff; color: #fff; }
+  .journey-panels { display: grid; gap: 18px; }
+  .journey-stage { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 50px; padding: 38px; border: 1px solid #44426b; border-radius: 20px; background: radial-gradient(ellipse at 0 0, #242c4c, #11192d 70%); scroll-margin-top: 110px; }
+  .journey-evidence, .journey-copy { min-width: 0; }
+  .journey-count, .journey-label { color: #bca4ff; font-size: 10px; font-weight: 600; line-height: 1.6; letter-spacing: .1em; }
+  .journey-graphic { display: flex; align-items: center; margin: 25px 0 30px; }
+  .journey-node { display: grid; place-items: center; flex-shrink: 0; width: 62px; height: 62px; border: 1px solid #6c7fae; border-radius: 14px; background: #202c4a; color: #d6dff1; font-size: 11px; }
+  .journey-node.is-active { border-color: #d5b6ff; box-shadow: 0 0 28px #9065eb44; background: #4b367b; color: #fff; }
+  .journey-connector { height: 2px; flex: 1; min-width: 8px; background: linear-gradient(90deg, #57b8ce, #a684f4); }
+  .journey-inputs { display: flex; flex-wrap: wrap; gap: 7px; list-style: none; padding: 0; margin: 12px 0 20px; }
+  .journey-inputs li { border: 1px solid #46536f; border-radius: 6px; padding: 6px 9px; color: #d1dbee; font-size: 11px; }
+  .journey-output { border-top: 1px solid #414763; padding-top: 16px; }
+  .journey-output strong { display: block; color: #a5f0e7; font-size: 17px; font-weight: 500; margin-top: 6px; }
+  .journey-copy h3 { font-size: clamp(1.6rem, 2.7vw, 2.35rem); line-height: 1.2; }
+  .journey-copy > p:not(.journey-label) { color: #c0cce0; font-size: 14px; line-height: 1.85; margin-top: 18px; }
+  .journey-copy > .journey-label { margin-top: 25px; }
+  .journey-projects { display: grid; margin-top: 9px; }
+  .journey-projects > a { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 44px; padding-block: 11px; border-bottom: 1px solid #3b435f; color: #d7c8ff; font-size: 12px; }
+  .journey-projects > a:hover { color: #fff; }
+  .journey-disclaimer { color: #a0afc9; font-size: 11px; margin-top: 16px; line-height: 1.8; }
+  @media (max-width: 1100px) {
+    .journey-step { gap: 8px; padding: 13px; font-size: 12px; }
+    .journey-step > :global(svg) { display: none; }
+    .journey-stage { gap: 28px; padding: 28px; }
+    .journey-node { width: 52px; height: 52px; font-size: 10px; }
+  }
+  @media (max-width: 760px) {
+    .signal-journey { padding-block: 46px 6px; }
+    .journey-heading > p:last-child { font-size: 13px; }
+    .journey-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 23px; }
+    .journey-step { min-height: 54px; font-size: 12px; }
+    .journey-stage { grid-template-columns: 1fr; gap: 29px; padding: 24px; }
+    .journey-graphic { margin-block: 21px; }
+    .journey-node { width: 48px; height: 48px; }
+    .journey-copy > p:not(.journey-label) { font-size: 13px; }
+  }
+  @media (max-width: 360px) {
+    .journey-stage { padding: 19px; }
+    .journey-node { width: 44px; height: 44px; font-size: 9px; }
+    .journey-step { padding: 12px; gap: 7px; font-size: 11px; }
+  }
+  @media print {
+    .journey-steps, .journey-graphic { display: none; }
+    .journey-stage[hidden] { display: grid !important; }
+    .journey-stage { background: #fff; border-color: #aaa; break-inside: avoid; }
+  }
+</style>

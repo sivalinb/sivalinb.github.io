@@ -27,6 +27,8 @@ jobs:
         env:
           ASTRO_TELEMETRY_DISABLED: '1'
           PORTFOLIO_SITE_URL: https://sivalinb.github.io
+      - name: Verify generated routes and assets
+        run: npm run check:built
 
   deploy:
     needs: build

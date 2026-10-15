@@ -1,8 +1,8 @@
 # Siva Babu — AI infrastructure & observability portfolio
 
-A static Astro portfolio shaped around Siva's supplied engineering résumé: production infrastructure, observability, fleet systems and reliability. The homepage presents six selected independent projects with explicit skill connections, a four-area skills section, production experience, personal projects, and technical academies. The shared design uses navy, blue and neutral surfaces across the homepage, directories and project pages. No portrait is included.
+A static Astro portfolio shaped around Siva's supplied engineering résumé: production infrastructure, observability, fleet systems and reliability. The homepage presents six selected independent projects with explicit skill connections, a four-area skills section, production experience, personal projects, and technical academies. Its midnight-blue theme uses violet and mint accents consistently across navigation, categories, experience and community sections. Directories and case studies retain their light reading surfaces. No portrait is included.
 
-The catalog contains 44 original public projects, five category pages, 44 project detail pages, six academies and three attributed upstream forks. The project directory supports category selection, search, format filters and sorting. Everything is prerendered and stays on free GitHub Pages hosting.
+The catalog contains 45 original public projects, five category pages, 45 project detail pages, six academies and three attributed upstream forks. The project directory supports category selection, search, format filters and sorting. Everything is prerendered and stays on free GitHub Pages hosting.
 
 Public website: https://sivalinb.github.io/
 Project directory: https://sivalinb.github.io/projects/
@@ -17,6 +17,7 @@ Use Node.js 24 or a version supported by the installed Astro release.
 npm ci
 npm run dev
 npm run build
+npm run check:built
 npm run preview
 ```
 
@@ -36,13 +37,13 @@ CirclePath adds a restorative-justice volunteer case study grounded in the worki
 
 | Area | Projects |
 | --- | ---: |
-| Observability & Reliability | 17 |
+| Observability & Reliability | 18 |
 | AI & GPU Infrastructure | 8 |
 | Systems & Robotics | 5 |
 | Sports & Race Tools | 6 |
 | Community & Everyday Apps | 8 |
 
-Formats are independent of category: 11 tools, 12 labs, six academies and 15 apps. Tags connect cross-cutting topics. Forks stay in References with attribution.
+Formats are independent of category: 11 tools, 13 labs, six academies and 15 apps. Tags connect cross-cutting topics. Forks stay in References with attribution. AI Incident Investigator brings the current catalog to 45 projects and is included in the featured selection.
 
 The featured selection follows the Staff/Principal engineering résumé's strongest themes:
 
@@ -50,10 +51,10 @@ The featured selection follows the Staff/Principal engineering résumé's strong
 | --- | --- |
 | GPU FleetOps | Inventory provenance, ownership, SLO policy, telemetry delivery and reviewed recovery |
 | AI Factory Observability Lab | GPU/fabric correlation, source contracts, data coverage and alert ownership |
+| AI Incident Investigator | OpenInference traces, measured local inference, reviewed repair and recovery verification |
 | LLM Serving Observatory | Inference architecture, serving telemetry and bounded measurements |
 | Telemetry Cardinality Governor | Durable Temporal execution, measured canaries, idempotent changes and rollback |
 | Fleet Kernel Workbench | Linux/eBPF, package boundaries, provenance and telemetry recovery |
-| Data Center Explorer | Grafana dashboards as code, hierarchy modeling and contextual visualization |
 
 Résumé summaries omit personal phone/address details and unverified employer-scale claims. Employer experience and independent projects have separate sections. Public project pages keep real measurements, simulations and planned integration limits explicit.
 
@@ -66,6 +67,8 @@ Résumé summaries omit personal phone/address details and unverified employer-s
 - `src/pages/index.astro`: homepage headline and section copy.
 - `src/styles/global.css`: layout, typography, colors, and mobile behavior.
 - `src/styles/home.css`: the professional homepage layout and responsive styles.
+- `src/styles/redesign.css`: the scoped homepage theme, contrast, focus and reduced-motion treatment.
+- `src/components/SignalJourney.astro`: four evidence-to-action stages with supporting project links. Arrow keys, Home and End change stages; all four stages remain readable without JavaScript.
 - `src/components/PortfolioIcon.astro`: the homepage's small SVG icons.
 - `public/images`: public repository screenshots and illustrations. Image captions retain their source context. Homepage diagrams are labeled concept views rather than presented as working application screenshots.
 - `public/social-card.svg`: editable share-image artwork; `public/social-card.png` is its raster version.
@@ -90,3 +93,5 @@ The `.openai` hosting manifest belongs only to the private Sites backup and is e
 ## Accessibility and verification
 
 Semantic headings, a skip link, focus indicators, native form controls, an announced result count, keyboard-operable navigation, and reduced-motion styles are included. All portfolio routes and assets were checked, along with search, empty results/reset, format filtering, sorting, category selection, and desktop/phone layouts. Project screenshots and illustrations are not evidence that every underlying app or external demo was tested during this portfolio update.
+
+Run `npm run check` to build and verify the generated routes, catalog coverage, local links/assets, fragment targets, unique IDs and ARIA references. Separately deployed GitHub Pages project demos are external to this build. The pull-request workflow runs this check for the portfolio's current root deployment. Browser checks cover visual contrast, narrow layouts, navigation and the system explorer; static checks do not replace those checks.

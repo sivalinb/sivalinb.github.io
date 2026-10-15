@@ -2,9 +2,9 @@
 import { profile, categories, categoryUrl } from '../data/portfolio';
 import Arrow from '../components/Arrow.astro';
 import '../styles/global.css';
-const { title = 'Siva Babu — AI Infrastructure & Observability', description = profile.introduction, active = '', pageClass = '', themeColor = '#f7f9fc' } = Astro.props;
+const { title = 'Siva Babu — AI Infrastructure & Observability', description = profile.introduction, active = '', pageClass = '', themeColor = '#f7f9fc', canonicalPath = Astro.url.pathname } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const canonical = new URL(Astro.url.pathname, Astro.site || 'https://sivalinb.github.io');
+const canonical = new URL(canonicalPath, Astro.site || 'https://sivalinb.github.io');
 const contactHref = profile.email ? 'mailto:' + profile.email : profile.github;
 ---
 <!doctype html>
