@@ -1,0 +1,3980 @@
+{
+  "experiment": {
+    "origin": "synthetic",
+    "seed": 2026,
+    "assets": 1000,
+    "phases": {
+      "before": {
+        "canary": {
+          "status": "observed",
+          "interruptions": 233,
+          "operating_hours": 27305.55,
+          "per_1000_hours": 8.533063791060792,
+          "rate_ci95": [
+            7.472494211615681,
+            9.701958518377307
+          ],
+          "mtbi_hours": 117.19120171673819,
+          "mtbi_ci95": [
+            103.07197233484504,
+            133.82412507533854
+          ],
+          "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+        },
+        "control": {
+          "status": "observed",
+          "interruptions": 201,
+          "operating_hours": 28033.09567,
+          "per_1000_hours": 7.170096459066337,
+          "rate_ci95": [
+            6.213072129087212,
+            8.23280642551385
+          ],
+          "mtbi_hours": 139.46813766159795,
+          "mtbi_ci95": [
+            121.46526327898995,
+            160.9509722764017
+          ],
+          "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+        }
+      },
+      "after": {
+        "canary": {
+          "status": "observed",
+          "interruptions": 27,
+          "operating_hours": 27378.85,
+          "per_1000_hours": 0.9861626766646517,
+          "rate_ci95": [
+            0.6498874179070624,
+            1.4348149190036141
+          ],
+          "mtbi_hours": 1014.0314814814815,
+          "mtbi_ci95": [
+            696.954002049571,
+            1538.7280511145482
+          ],
+          "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+        },
+        "control": {
+          "status": "observed",
+          "interruptions": 233,
+          "operating_hours": 28019.732251,
+          "per_1000_hours": 8.315568397057355,
+          "rate_ci95": [
+            7.282031194751053,
+            9.45466969665655
+          ],
+          "mtbi_hours": 120.25636159205565,
+          "mtbi_ci95": [
+            105.767840874825,
+            137.3243224666228
+          ],
+          "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+        }
+      }
+    },
+    "contemporaneous_canary_to_control": {
+      "ratio": 0.11859233543378982,
+      "ci95": [
+        0.07961746960545149,
+        0.17664643316769682
+      ],
+      "status": "approximate",
+      "assumption": "Independent Poisson counts; exploratory, no multiple-comparison correction"
+    },
+    "relative_rate_reduction": 0.8814076645662102,
+    "acceptance": {
+      "min_relative_reduction": 0.3,
+      "ci_upper_below_one": true,
+      "passed": true
+    },
+    "method": "Randomized assignment fixed before outcomes; compare concurrent eligible canary/control cohorts",
+    "limits": "Synthetic independent driver outcomes; no production effectiveness, rare-event or long-term reliability claim"
+  },
+  "prediction": {
+    "origin": "synthetic",
+    "seed": 2026,
+    "features": [
+      "memory_warning_trend",
+      "temperature_c",
+      "link_retry_trend",
+      "load"
+    ],
+    "split": {
+      "train": 1120,
+      "validation": 480,
+      "test": 400,
+      "train_days": [
+        0,
+        6
+      ],
+      "validation_days": [
+        7,
+        9
+      ],
+      "test_days": [
+        14,
+        18
+      ],
+      "held_out_provider": "csp-cirrus",
+      "device_overlap": 0
+    },
+    "preprocessing": "Mean/scale fit on training only; threshold maximizes validation F1; test untouched",
+    "logistic": {
+      "tp": 20,
+      "fp": 26,
+      "fn": 16,
+      "tn": 338,
+      "precision": 0.43478260869565216,
+      "recall": 0.5555555555555556,
+      "roc_auc": 0.8477564102564102,
+      "false_alerts_per_1000_operating_hours": 10.833333333333334,
+      "median_warning_hours": 3.7434454261712724,
+      "observed_hours": 2400,
+      "threshold": 0.2
+    },
+    "rules": {
+      "tp": 16,
+      "fp": 40,
+      "fn": 20,
+      "tn": 324,
+      "precision": 0.2857142857142857,
+      "recall": 0.4444444444444444,
+      "roc_auc": 0.6672771672771672,
+      "false_alerts_per_1000_operating_hours": 16.666666666666668,
+      "median_warning_hours": 4.053891285713997,
+      "observed_hours": 2400,
+      "threshold": 0.5
+    },
+    "coefficients": {
+      "intercept": -3.121264568391123,
+      "memory_warning_trend": 1.0913102552366785,
+      "temperature_c": 0.780576698051898,
+      "link_retry_trend": 0.5990607923832013,
+      "load": 0.14574872446037998
+    },
+    "limits": "Independent synthetic snapshot benchmark; no real failure prediction or calibrated production-risk claim"
+  },
+  "readiness": {
+    "pass": {
+      "status": "pass",
+      "policy": {
+        "name": "fleetops-lab-readiness-v1",
+        "minimum_duration_seconds": 120,
+        "minimum_coverage_ratio": 0.95,
+        "required_checks": [
+          "software",
+          "memory",
+          "targeted_stress"
+        ]
+      },
+      "evidence": {
+        "schema_version": "1.0",
+        "origin": "synthetic",
+        "hardware_id": "LAB-GPU-0000",
+        "driver_version": "illustrative-driver",
+        "dcgm_version": "illustrative-dcgm",
+        "captured_at": "2026-10-01T00:00:00Z",
+        "duration_seconds": 180.0,
+        "coverage_ratio": 0.99,
+        "checks": [
+          {
+            "name": "software",
+            "result": "pass"
+          },
+          {
+            "name": "memory",
+            "result": "pass"
+          },
+          {
+            "name": "targeted_stress",
+            "result": "pass"
+          }
+        ],
+        "raw_sha256": null,
+        "source": "Authored policy fixture; no physical GPU execution"
+      },
+      "reasons": [],
+      "physical_gpu_validated": false,
+      "scope": "Lab readiness only; a finite test establishes no long-term MTBI or NVIDIA certification"
+    },
+    "fail": {
+      "status": "fail",
+      "policy": {
+        "name": "fleetops-lab-readiness-v1",
+        "minimum_duration_seconds": 120,
+        "minimum_coverage_ratio": 0.95,
+        "required_checks": [
+          "software",
+          "memory",
+          "targeted_stress"
+        ]
+      },
+      "evidence": {
+        "schema_version": "1.0",
+        "origin": "synthetic",
+        "hardware_id": "LAB-GPU-0000",
+        "driver_version": "illustrative-driver",
+        "dcgm_version": "illustrative-dcgm",
+        "captured_at": "2026-10-01T00:00:00Z",
+        "duration_seconds": 180.0,
+        "coverage_ratio": 0.99,
+        "checks": [
+          {
+            "name": "software",
+            "result": "pass"
+          },
+          {
+            "name": "memory",
+            "result": "fail"
+          },
+          {
+            "name": "targeted_stress",
+            "result": "pass"
+          }
+        ],
+        "raw_sha256": null,
+        "source": "Authored policy fixture; no physical GPU execution"
+      },
+      "reasons": [
+        "Failed diagnostics: memory",
+        "Required checks absent, skipped or unsuccessful: memory"
+      ],
+      "physical_gpu_validated": false,
+      "scope": "Lab readiness only; a finite test establishes no long-term MTBI or NVIDIA certification"
+    },
+    "incomplete": {
+      "status": "insufficient_data",
+      "policy": {
+        "name": "fleetops-lab-readiness-v1",
+        "minimum_duration_seconds": 120,
+        "minimum_coverage_ratio": 0.95,
+        "required_checks": [
+          "software",
+          "memory",
+          "targeted_stress"
+        ]
+      },
+      "evidence": {
+        "schema_version": "1.0",
+        "origin": "synthetic",
+        "hardware_id": "LAB-GPU-0000",
+        "driver_version": "illustrative-driver",
+        "dcgm_version": "illustrative-dcgm",
+        "captured_at": "2026-10-01T00:00:00Z",
+        "duration_seconds": 20.0,
+        "coverage_ratio": 0.5,
+        "checks": [
+          {
+            "name": "software",
+            "result": "pass"
+          },
+          {
+            "name": "memory",
+            "result": "pass"
+          },
+          {
+            "name": "targeted_stress",
+            "result": "pass"
+          }
+        ],
+        "raw_sha256": null,
+        "source": "Authored policy fixture; no physical GPU execution"
+      },
+      "reasons": [
+        "Observation duration below policy minimum",
+        "Telemetry/diagnostic coverage below policy minimum"
+      ],
+      "physical_gpu_validated": false,
+      "scope": "Lab readiness only; a finite test establishes no long-term MTBI or NVIDIA certification"
+    }
+  },
+  "ground_truth": {
+    "seed": 2026,
+    "phase": "before",
+    "assets": 1000,
+    "expected_patterns": {
+      "software": "systemic_candidate",
+      "thermal": "environmental_candidate",
+      "interconnect": "configuration_candidate",
+      "memory": "unresolved"
+    },
+    "intervention": "Randomized driver mitigation in eligible canary GPUs; concurrent controls retain regression",
+    "caution": "Generator assumptions demonstrate methodology; they establish no real hardware failure rates"
+  },
+  "unit_summaries": {
+    "node": {
+      "status": "observed",
+      "interruptions": 545,
+      "operating_hours": 21316.830357,
+      "per_1000_hours": 25.56665277467023,
+      "rate_ci95": [
+        23.464959983351985,
+        27.806078113879238
+      ],
+      "mtbi_hours": 39.11345019676313,
+      "mtbi_ci95": [
+        35.963360093592485,
+        42.61673579283681
+      ],
+      "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption",
+      "unit": "node",
+      "entities": 132,
+      "unique_incidents": 545,
+      "raw_records": 2301,
+      "lost_hours": 283.16964276409095,
+      "unknown_hours": 448.0,
+      "coverage_ratio": 0.9797979797979798,
+      "origins": [
+        "synthetic"
+      ]
+    },
+    "job": {
+      "status": "observed",
+      "interruptions": 545,
+      "operating_hours": 21316.830357,
+      "per_1000_hours": 25.56665277467023,
+      "rate_ci95": [
+        23.464959983351985,
+        27.806078113879238
+      ],
+      "mtbi_hours": 39.11345019676313,
+      "mtbi_ci95": [
+        35.963360093592485,
+        42.61673579283681
+      ],
+      "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption",
+      "unit": "job",
+      "entities": 132,
+      "unique_incidents": 545,
+      "raw_records": 2301,
+      "lost_hours": 283.16964276409095,
+      "unknown_hours": 448.0,
+      "coverage_ratio": 0.9797979797979798,
+      "origins": [
+        "synthetic"
+      ]
+    }
+  },
+  "execution": {
+    "elapsed_seconds": 0.2554152909433469,
+    "python": "3.12.14",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "dataset_sha256": "a08e6481db74f23aed8a2fc8024e4b4389a2465574c06a68ad64349252689616"
+  },
+  "analysis": {
+    "schema_version": "1.0",
+    "description": "Synthetic before fleet, seed 2026; fictional CSPs and GPU models",
+    "summary": {
+      "status": "observed",
+      "interruptions": 636,
+      "operating_hours": 166598.966425,
+      "per_1000_hours": 3.817550694629313,
+      "rate_ci95": [
+        3.526585212598497,
+        4.1261209718263565
+      ],
+      "mtbi_hours": 261.94806041654954,
+      "mtbi_ci95": [
+        242.35838135336277,
+        283.56042452272663
+      ],
+      "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption",
+      "unit": "gpu",
+      "entities": 1000,
+      "unique_incidents": 555,
+      "raw_records": 2301,
+      "lost_hours": 655.0335750744977,
+      "unknown_hours": 568.0,
+      "coverage_ratio": 0.9966190476190476,
+      "origins": [
+        "synthetic"
+      ]
+    },
+    "cohorts": [
+      {
+        "provider": "csp-aurora",
+        "driver": "candidate",
+        "entities": 161,
+        "status": "observed",
+        "interruptions": 195,
+        "operating_hours": 26890.95,
+        "per_1000_hours": 7.251510266465112,
+        "rate_ci95": [
+          6.269384208462126,
+          8.343849147436588
+        ],
+        "mtbi_hours": 137.9023076923077,
+        "mtbi_ci95": [
+          119.84876312238,
+          159.50529856668317
+        ],
+        "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+      },
+      {
+        "provider": "csp-aurora",
+        "driver": "stable",
+        "entities": 173,
+        "status": "observed",
+        "interruptions": 37,
+        "operating_hours": 28923.8,
+        "per_1000_hours": 1.279223338565472,
+        "rate_ci95": [
+          0.900691284240177,
+          1.7632408653749105
+        ],
+        "mtbi_hours": 781.7243243243244,
+        "mtbi_ci95": [
+          567.1374907632794,
+          1110.2583287941993
+        ],
+        "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+      },
+      {
+        "provider": "csp-borealis",
+        "driver": "candidate",
+        "entities": 171,
+        "status": "observed",
+        "interruptions": 239,
+        "operating_hours": 28447.69567,
+        "per_1000_hours": 8.401383464327466,
+        "rate_ci95": [
+          7.369935198642165,
+          9.536779800751026
+        ],
+        "mtbi_hours": 119.02801535556983,
+        "mtbi_ci95": [
+          104.85719717689713,
+          135.6864033464283
+        ],
+        "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+      },
+      {
+        "provider": "csp-borealis",
+        "driver": "stable",
+        "entities": 162,
+        "status": "observed",
+        "interruptions": 26,
+        "operating_hours": 27092.6,
+        "per_1000_hours": 0.9596716446557363,
+        "rate_ci95": [
+          0.6268893799633973,
+          1.4061413110268126
+        ],
+        "mtbi_hours": 1042.0230769230768,
+        "mtbi_ci95": [
+          711.1660770920425,
+          1595.1777649485587
+        ],
+        "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+      },
+      {
+        "provider": "csp-cirrus",
+        "driver": "candidate",
+        "entities": 154,
+        "status": "observed",
+        "interruptions": 63,
+        "operating_hours": 25580.020755,
+        "per_1000_hours": 2.4628596123333035,
+        "rate_ci95": [
+          1.892528949028706,
+          3.1510673137867036
+        ],
+        "mtbi_hours": 406.0320754753065,
+        "mtbi_ci95": [
+          317.3527888867214,
+          528.393502521177
+        ],
+        "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+      },
+      {
+        "provider": "csp-cirrus",
+        "driver": "stable",
+        "entities": 179,
+        "status": "observed",
+        "interruptions": 76,
+        "operating_hours": 29663.9,
+        "per_1000_hours": 2.5620366843199984,
+        "rate_ci95": [
+          2.018593505117452,
+          3.2067709560553936
+        ],
+        "mtbi_hours": 390.31447368421055,
+        "mtbi_ci95": [
+          311.8401699727525,
+          495.3944404680004
+        ],
+        "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+      }
+    ],
+    "driver_comparison": {
+      "status": "exploratory_matched_comparison",
+      "matched_strata": 80,
+      "matched_exposure_hours": 163433.9164249255,
+      "standardized_per_1000_hours": {
+        "candidate": 5.9612825542711345,
+        "stable": 1.6961329944176347
+      },
+      "standardized_ratio": 3.5146315612579273,
+      "by_provider": [
+        {
+          "provider": "csp-aurora",
+          "suspect": {
+            "status": "observed",
+            "interruptions": 193,
+            "operating_hours": 26388.25,
+            "per_1000_hours": 7.313861282957377,
+            "rate_ci95": [
+              6.318360435876871,
+              8.421687958915703
+            ],
+            "mtbi_hours": 136.72668393782382,
+            "mtbi_ci95": [
+              118.74104156772279,
+              158.2689069654537
+            ],
+            "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+          },
+          "baseline": {
+            "status": "observed",
+            "interruptions": 35,
+            "operating_hours": 28757.4,
+            "per_1000_hours": 1.2170780390438634,
+            "rate_ci95": [
+              0.8477394480210227,
+              1.6926609279379594
+            ],
+            "mtbi_hours": 821.64,
+            "mtbi_ci95": [
+              590.7857761082867,
+              1179.6077230267117
+            ],
+            "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+          },
+          "standardized_suspect": 7.189550068222308,
+          "standardized_baseline": 1.187215249964499,
+          "raw_rate_ratio": {
+            "ratio": 6.009360984529099,
+            "ci95": [
+              4.192212421099543,
+              8.614167369149891
+            ],
+            "status": "approximate",
+            "assumption": "Independent Poisson counts; exploratory, no multiple-comparison correction"
+          }
+        },
+        {
+          "provider": "csp-borealis",
+          "suspect": {
+            "status": "observed",
+            "interruptions": 226,
+            "operating_hours": 27453.59567,
+            "per_1000_hours": 8.232072866401142,
+            "rate_ci95": [
+              7.19372291398129,
+              9.378199019750634
+            ],
+            "mtbi_hours": 121.47608703531499,
+            "mtbi_ci95": [
+              106.63028134655539,
+              139.01008030994075
+            ],
+            "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+          },
+          "baseline": {
+            "status": "observed",
+            "interruptions": 26,
+            "operating_hours": 26758.6,
+            "per_1000_hours": 0.971650235812038,
+            "rate_ci95": [
+              0.6347141934031055,
+              1.4236927224565197
+            ],
+            "mtbi_hours": 1029.176923076923,
+            "mtbi_ci95": [
+              702.3987579809664,
+              1575.5122705518297
+            ],
+            "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+          },
+          "standardized_suspect": 8.358244690947403,
+          "standardized_baseline": 1.053902283531354,
+          "raw_rate_ratio": {
+            "ratio": 8.472259423187753,
+            "ci95": [
+              5.645736150427968,
+              12.713874297571016
+            ],
+            "status": "approximate",
+            "assumption": "Independent Poisson counts; exploratory, no multiple-comparison correction"
+          }
+        },
+        {
+          "provider": "csp-cirrus",
+          "suspect": {
+            "status": "observed",
+            "interruptions": 62,
+            "operating_hours": 25412.820755,
+            "per_1000_hours": 2.4397134264576783,
+            "rate_ci95": [
+              1.8705142945190047,
+              3.127602505923409
+            ],
+            "mtbi_hours": 409.88420572490827,
+            "mtbi_ci95": [
+              319.7337251476447,
+              534.6123271713067
+            ],
+            "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+          },
+          "baseline": {
+            "status": "observed",
+            "interruptions": 74,
+            "operating_hours": 28663.25,
+            "per_1000_hours": 2.5817030518172226,
+            "rate_ci95": [
+              2.0271921796495853,
+              3.241091763910116
+            ],
+            "mtbi_hours": 387.3412162162162,
+            "mtbi_ci95": [
+              308.53800905457257,
+              493.2931421296511
+            ],
+            "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+          },
+          "standardized_suspect": 2.305724965895922,
+          "standardized_baseline": 2.858964093282022,
+          "raw_rate_ratio": {
+            "ratio": 0.9450015658231495,
+            "ci95": [
+              0.674339150207454,
+              1.3243009235537828
+            ],
+            "status": "approximate",
+            "assumption": "Independent Poisson counts; exploratory, no multiple-comparison correction"
+          }
+        }
+      ],
+      "limits": "Measured strata only; residual confounding and correlated events remain. No causal or significance claim."
+    },
+    "software_driver_comparison": {
+      "status": "exploratory_matched_comparison",
+      "matched_strata": 80,
+      "matched_exposure_hours": 163433.9164249255,
+      "standardized_per_1000_hours": {
+        "candidate": 4.794742218881042,
+        "stable": 0.2613480240481454
+      },
+      "standardized_ratio": 18.34619655665641,
+      "by_provider": [
+        {
+          "provider": "csp-aurora",
+          "suspect": {
+            "status": "observed",
+            "interruptions": 177,
+            "operating_hours": 26388.25,
+            "per_1000_hours": 6.707530813903915,
+            "rate_ci95": [
+              5.7557455819075924,
+              7.771757357900036
+            ],
+            "mtbi_hours": 149.0861581920904,
+            "mtbi_ci95": [
+              128.6710268924562,
+              173.73943753583632
+            ],
+            "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+          },
+          "baseline": {
+            "status": "observed",
+            "interruptions": 6,
+            "operating_hours": 28757.4,
+            "per_1000_hours": 0.2086419495503766,
+            "rate_ci95": [
+              0.07656791829201703,
+              0.45412568669346615
+            ],
+            "mtbi_hours": 4792.900000000001,
+            "mtbi_ci95": [
+              2202.0335543692727,
+              13060.300218508877
+            ],
+            "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+          },
+          "standardized_suspect": 6.516564361665875,
+          "standardized_baseline": 0.23061634582350435,
+          "raw_rate_ratio": {
+            "ratio": 32.14852443796008,
+            "ci95": [
+              14.249912741397143,
+              72.5286984063864
+            ],
+            "status": "approximate",
+            "assumption": "Independent Poisson counts; exploratory, no multiple-comparison correction"
+          }
+        },
+        {
+          "provider": "csp-borealis",
+          "suspect": {
+            "status": "observed",
+            "interruptions": 206,
+            "operating_hours": 27453.59567,
+            "per_1000_hours": 7.50357084282582,
+            "rate_ci95": [
+              6.513828576242702,
+              8.601199523154548
+            ],
+            "mtbi_hours": 133.26988189311257,
+            "mtbi_ci95": [
+              116.26285349014242,
+              153.51954511778365
+            ],
+            "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+          },
+          "baseline": {
+            "status": "observed",
+            "interruptions": 4,
+            "operating_hours": 26758.6,
+            "per_1000_hours": 0.14948465166339048,
+            "rate_ci95": [
+              0.04072953643413052,
+              0.3827400789056115
+            ],
+            "mtbi_hours": 6689.65,
+            "mtbi_ci95": [
+              2612.7391802273537,
+              24552.206765653744
+            ],
+            "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+          },
+          "standardized_suspect": 7.549436198843946,
+          "standardized_baseline": 0.16424258694623495,
+          "raw_rate_ratio": {
+            "ratio": 50.19626268870974,
+            "ci95": [
+              18.66167128529067,
+              135.01817438505523
+            ],
+            "status": "approximate",
+            "assumption": "Independent Poisson counts; exploratory, no multiple-comparison correction"
+          }
+        },
+        {
+          "provider": "csp-cirrus",
+          "suspect": {
+            "status": "observed",
+            "interruptions": 7,
+            "operating_hours": 25412.820755,
+            "per_1000_hours": 0.2754515158903831,
+            "rate_ci95": [
+              0.1107457955438616,
+              0.5675353987965427
+            ],
+            "mtbi_hours": 3630.402964992045,
+            "mtbi_ci95": [
+              1762.0046293508694,
+              9029.688170906167
+            ],
+            "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+          },
+          "baseline": {
+            "status": "observed",
+            "interruptions": 9,
+            "operating_hours": 28663.25,
+            "per_1000_hours": 0.31399091170750004,
+            "rate_ci95": [
+              0.14357663898470457,
+              0.5960525568949497
+            ],
+            "mtbi_hours": 3184.8055555555557,
+            "mtbi_ci95": [
+              1677.704404472915,
+              6964.921362357085
+            ],
+            "assumption": "Poisson independent episodes, constant intensity; correlated rack failures violate this assumption"
+          },
+          "standardized_suspect": 0.2772355492864358,
+          "standardized_baseline": 0.3900374282693315,
+          "raw_rate_ratio": {
+            "ratio": 0.8772595180938914,
+            "ci95": [
+              0.32670437440783257,
+              2.355598278967752
+            ],
+            "status": "approximate",
+            "assumption": "Independent Poisson counts; exploratory, no multiple-comparison correction"
+          }
+        }
+      ],
+      "limits": "Measured strata only; residual confounding and correlated events remain. No causal or significance claim."
+    },
+    "pareto": [
+      {
+        "domain": "thermal",
+        "lost_hours": 415.0,
+        "share": 0.6335553104324488,
+        "cumulative_share": 0.6335553104324488
+      },
+      {
+        "domain": "software",
+        "lost_hours": 147.2043300188102,
+        "share": 0.2247279156676336,
+        "cumulative_share": 0.8582832261000825
+      },
+      {
+        "domain": "interconnect",
+        "lost_hours": 57.60000000000002,
+        "share": 0.08793442380941945,
+        "cumulative_share": 0.9462176499095019
+      },
+      {
+        "domain": "memory",
+        "lost_hours": 29.999999999999993,
+        "share": 0.04579917906740593,
+        "cumulative_share": 0.9920168289769078
+      },
+      {
+        "domain": "unknown",
+        "lost_hours": 5.229245055687272,
+        "share": 0.007983171023092284,
+        "cumulative_share": 1.0000000000000002
+      }
+    ],
+    "survival": [
+      {
+        "hours": 0.0,
+        "survival": 1.0,
+        "lower": 1.0,
+        "upper": 1.0,
+        "at_risk": 1000,
+        "failures": 0,
+        "censored": 0
+      },
+      {
+        "hours": 1.1113965459715587,
+        "survival": 0.999,
+        "lower": 0.9929222861537584,
+        "upper": 0.9998590810444101,
+        "at_risk": 1000,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 1.1739590503750281,
+        "survival": 0.998,
+        "lower": 0.9920268658195154,
+        "upper": 0.9994994420180517,
+        "at_risk": 999,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 1.2882478256334664,
+        "survival": 0.997,
+        "lower": 0.9907273723821313,
+        "upper": 0.9990314713803107,
+        "at_risk": 998,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 1.7090735599808184,
+        "survival": 0.996,
+        "lower": 0.9893776156253358,
+        "upper": 0.9984968768946494,
+        "at_risk": 997,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 2.473909706084941,
+        "survival": 0.995,
+        "lower": 0.9880292371270543,
+        "upper": 0.9979158510570518,
+        "at_risk": 996,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 3.151808859396281,
+        "survival": 0.994,
+        "lower": 0.9866936086465338,
+        "upper": 0.9973000112024683,
+        "at_risk": 995,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 3.2689109790641337,
+        "survival": 0.993,
+        "lower": 0.9853729319489323,
+        "upper": 0.9966567794908227,
+        "at_risk": 994,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 3.506540870181586,
+        "survival": 0.992,
+        "lower": 0.9840668558740386,
+        "upper": 0.995991245087225,
+        "at_risk": 993,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 4.0082400359581385,
+        "survival": 0.991,
+        "lower": 0.9827743113838359,
+        "upper": 0.9953070803066684,
+        "at_risk": 992,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 4.210924636574802,
+        "survival": 0.99,
+        "lower": 0.9814940929986526,
+        "upper": 0.9946070396554476,
+        "at_risk": 991,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 4.429766228891465,
+        "survival": 0.989,
+        "lower": 0.9802250502371312,
+        "upper": 0.9938932529754594,
+        "at_risk": 990,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 4.818316040147525,
+        "survival": 0.988,
+        "lower": 0.9789661448871437,
+        "upper": 0.993167407986098,
+        "at_risk": 989,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 5.237777308495691,
+        "survival": 0.987,
+        "lower": 0.9777164600004081,
+        "upper": 0.9924308693696375,
+        "at_risk": 988,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 5.394063383305244,
+        "survival": 0.986,
+        "lower": 0.9764751918945074,
+        "upper": 0.9916847594726108,
+        "at_risk": 987,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 5.585465624887335,
+        "survival": 0.985,
+        "lower": 0.9752416370822476,
+        "upper": 0.9909300147579237,
+        "at_risk": 986,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 5.662480045839352,
+        "survival": 0.984,
+        "lower": 0.9740151786939483,
+        "upper": 0.9901674263695358,
+        "at_risk": 985,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 6.523740193029922,
+        "survival": 0.983,
+        "lower": 0.9727952740413085,
+        "upper": 0.9893976699609366,
+        "at_risk": 984,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 6.975342150497081,
+        "survival": 0.982,
+        "lower": 0.9715814437948215,
+        "upper": 0.9886213280724285,
+        "at_risk": 983,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 7.809264941579112,
+        "survival": 0.981,
+        "lower": 0.9703732627810956,
+        "upper": 0.9878389072156486,
+        "at_risk": 982,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 8.538556829405755,
+        "survival": 0.98,
+        "lower": 0.9691703522378915,
+        "upper": 0.9870508511210259,
+        "at_risk": 981,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 8.691074560648602,
+        "survival": 0.979,
+        "lower": 0.9679723733201201,
+        "upper": 0.9862575511527578,
+        "at_risk": 980,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 8.875164978772611,
+        "survival": 0.978,
+        "lower": 0.966779021655301,
+        "upper": 0.9854593545988756,
+        "at_risk": 979,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 9.638804663564514,
+        "survival": 0.977,
+        "lower": 0.9655900227700206,
+        "upper": 0.9846565713439477,
+        "at_risk": 978,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 9.960780167651421,
+        "survival": 0.976,
+        "lower": 0.9644051282361091,
+        "upper": 0.9838494792945269,
+        "at_risk": 977,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 10.029843262460092,
+        "survival": 0.975,
+        "lower": 0.9632241124110691,
+        "upper": 0.9830383288312625,
+        "at_risk": 976,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 10.276797196295325,
+        "survival": 0.974,
+        "lower": 0.9620467696698144,
+        "upper": 0.9822233464931651,
+        "at_risk": 975,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 10.496533198122544,
+        "survival": 0.973,
+        "lower": 0.9608729120436807,
+        "upper": 0.9814047380500985,
+        "at_risk": 974,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 10.778047877181564,
+        "survival": 0.972,
+        "lower": 0.959702367198177,
+        "upper": 0.9805826910833781,
+        "at_risk": 973,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 11.035271199536261,
+        "survival": 0.971,
+        "lower": 0.9585349766935546,
+        "upper": 0.9797573771675299,
+        "at_risk": 972,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 11.472787670529197,
+        "survival": 0.97,
+        "lower": 0.9573705944824554,
+        "upper": 0.9789289537261318,
+        "at_risk": 971,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 11.603922241211508,
+        "survival": 0.969,
+        "lower": 0.9562090856071245,
+        "upper": 0.9780975656193984,
+        "at_risk": 970,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 11.78350449387004,
+        "survival": 0.968,
+        "lower": 0.9550503250652969,
+        "upper": 0.977263346509477,
+        "at_risk": 969,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 13.390900965303093,
+        "survival": 0.967,
+        "lower": 0.9538941968192469,
+        "upper": 0.976426420040391,
+        "at_risk": 968,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 13.654344301400748,
+        "survival": 0.966,
+        "lower": 0.9527405929268251,
+        "upper": 0.9755869008625179,
+        "at_risk": 967,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 14.67584957804305,
+        "survival": 0.965,
+        "lower": 0.951589412776855,
+        "upper": 0.9747448955259523,
+        "at_risk": 966,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 14.79043595039524,
+        "survival": 0.964,
+        "lower": 0.950440562414145,
+        "upper": 0.9739005032627194,
+        "at_risk": 965,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 15.048920781484176,
+        "survival": 0.963,
+        "lower": 0.9492939539417368,
+        "upper": 0.9730538166743027,
+        "at_risk": 964,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 15.112879740589214,
+        "survival": 0.962,
+        "lower": 0.9481495049899612,
+        "upper": 0.972204922338144,
+        "at_risk": 963,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 15.128704133130702,
+        "survival": 0.961,
+        "lower": 0.9470071382434728,
+        "upper": 0.9713539013445023,
+        "at_risk": 962,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 15.19151333615693,
+        "survival": 0.96,
+        "lower": 0.945866781018772,
+        "upper": 0.9705008297732097,
+        "at_risk": 961,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 15.747792999877259,
+        "survival": 0.959,
+        "lower": 0.9447283648858273,
+        "upper": 0.9696457791183617,
+        "at_risk": 960,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 16.31462124400677,
+        "survival": 0.958,
+        "lower": 0.9435918253283367,
+        "upper": 0.9687888166677303,
+        "at_risk": 959,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 17.161266009334188,
+        "survival": 0.957,
+        "lower": 0.942457101437943,
+        "upper": 0.9679300058426727,
+        "at_risk": 958,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 17.69590494258526,
+        "survival": 0.956,
+        "lower": 0.9413241356383689,
+        "upper": 0.9670694065034522,
+        "at_risk": 957,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 18.029892479846154,
+        "survival": 0.955,
+        "lower": 0.9401928734359892,
+        "upper": 0.9662070752241839,
+        "at_risk": 956,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 18.16196334830672,
+        "survival": 0.954,
+        "lower": 0.9390632631938236,
+        "upper": 0.9653430655410227,
+        "at_risk": 955,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 18.43162729794449,
+        "survival": 0.953,
+        "lower": 0.9379352559263292,
+        "upper": 0.9644774281767114,
+        "at_risk": 954,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 18.44910597991209,
+        "survival": 0.952,
+        "lower": 0.9368088051127104,
+        "upper": 0.963610211244189,
+        "at_risk": 953,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 18.607710610927352,
+        "survival": 0.951,
+        "lower": 0.9356838665267516,
+        "upper": 0.9627414604315971,
+        "at_risk": 952,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 18.750594805719285,
+        "survival": 0.95,
+        "lower": 0.9345603980814273,
+        "upper": 0.9618712191707259,
+        "at_risk": 951,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 19.154153302185954,
+        "survival": 0.949,
+        "lower": 0.9334383596867557,
+        "upper": 0.9609995287906756,
+        "at_risk": 950,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 21.438321255037152,
+        "survival": 0.948,
+        "lower": 0.9323177131195465,
+        "upper": 0.9601264286582913,
+        "at_risk": 949,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 21.82481079346632,
+        "survival": 0.947,
+        "lower": 0.9311984219038523,
+        "upper": 0.9592519563067402,
+        "at_risk": 948,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 22.96473743330138,
+        "survival": 0.946,
+        "lower": 0.9300804512010721,
+        "upper": 0.9583761475534303,
+        "at_risk": 947,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 23.47500890104633,
+        "survival": 0.945,
+        "lower": 0.9289637677087712,
+        "upper": 0.9574990366083351,
+        "at_risk": 946,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 23.71045862634284,
+        "survival": 0.944,
+        "lower": 0.927848339567392,
+        "upper": 0.9566206561736619,
+        "at_risk": 945,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 24.01179532266939,
+        "survival": 0.943,
+        "lower": 0.9267341362741162,
+        "upper": 0.9557410375356931,
+        "at_risk": 944,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 24.68798784609117,
+        "survival": 0.942,
+        "lower": 0.9256211286032219,
+        "upper": 0.9548602106495435,
+        "at_risk": 943,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 25.31340413473578,
+        "survival": 0.941,
+        "lower": 0.9245092885323485,
+        "upper": 0.9539782042174884,
+        "at_risk": 942,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 25.400997597927088,
+        "survival": 0.94,
+        "lower": 0.923398589174142,
+        "upper": 0.9530950457614493,
+        "at_risk": 941,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 25.972998056579563,
+        "survival": 0.939,
+        "lower": 0.9222890047128111,
+        "upper": 0.9522107616901634,
+        "at_risk": 940,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 26.04194229810887,
+        "survival": 0.938,
+        "lower": 0.9211805103451692,
+        "upper": 0.9513253773615054,
+        "at_risk": 939,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 26.529462043864257,
+        "survival": 0.9369999999999999,
+        "lower": 0.9200730822257821,
+        "upper": 0.9504389171403822,
+        "at_risk": 938,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 27.00548220749307,
+        "survival": 0.9359999999999999,
+        "lower": 0.9189666974158766,
+        "upper": 0.9495514044525813,
+        "at_risk": 937,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 27.950221515011318,
+        "survival": 0.9349999999999999,
+        "lower": 0.9178613338357011,
+        "upper": 0.9486628618349124,
+        "at_risk": 936,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 27.969952946979127,
+        "survival": 0.9339999999999999,
+        "lower": 0.9167569702200578,
+        "upper": 0.9477733109819488,
+        "at_risk": 935,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 28.25638567042215,
+        "survival": 0.9329999999999999,
+        "lower": 0.915653586076751,
+        "upper": 0.9468827727896492,
+        "at_risk": 934,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 28.27616861304751,
+        "survival": 0.9319999999999999,
+        "lower": 0.914551161647723,
+        "upper": 0.945991267396109,
+        "at_risk": 933,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 28.590148283655388,
+        "survival": 0.9309999999999999,
+        "lower": 0.913449677872668,
+        "upper": 0.945098814219669,
+        "at_risk": 932,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 29.310794548977768,
+        "survival": 0.9299999999999999,
+        "lower": 0.9123491163549327,
+        "upper": 0.9442054319945896,
+        "at_risk": 931,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 29.543092809521113,
+        "survival": 0.9289999999999999,
+        "lower": 0.9112494593295317,
+        "upper": 0.9433111388044763,
+        "at_risk": 930,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 29.589292515054314,
+        "survival": 0.9279999999999999,
+        "lower": 0.91015068963312,
+        "upper": 0.9424159521136289,
+        "at_risk": 929,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 29.80263329171113,
+        "survival": 0.9269999999999999,
+        "lower": 0.9090527906757762,
+        "upper": 0.9415198887964703,
+        "at_risk": 928,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 29.877300235199503,
+        "survival": 0.9259999999999999,
+        "lower": 0.9079557464144673,
+        "upper": 0.9406229651651954,
+        "at_risk": 927,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 30.233621060972233,
+        "survival": 0.9249999999999999,
+        "lower": 0.9068595413280731,
+        "upper": 0.9397251969957716,
+        "at_risk": 926,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 30.292096124444235,
+        "survival": 0.9239999999999999,
+        "lower": 0.9057641603938592,
+        "upper": 0.9388265995524093,
+        "at_risk": 925,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 30.296842677875702,
+        "survival": 0.9229999999999999,
+        "lower": 0.9046695890652982,
+        "upper": 0.9379271876106103,
+        "at_risk": 924,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 30.570064009683776,
+        "survival": 0.9219999999999999,
+        "lower": 0.9035758132511456,
+        "upper": 0.9370269754788951,
+        "at_risk": 923,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 30.652017940584685,
+        "survival": 0.9209999999999999,
+        "lower": 0.9024828192956844,
+        "upper": 0.9361259770193001,
+        "at_risk": 922,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 31.216166499728324,
+        "survival": 0.9199999999999999,
+        "lower": 0.90139059396006,
+        "upper": 0.9352242056667287,
+        "at_risk": 921,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 31.35014646070749,
+        "survival": 0.9189999999999999,
+        "lower": 0.9002991244046328,
+        "upper": 0.934321674447234,
+        "at_risk": 920,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 31.64478609107603,
+        "survival": 0.9179999999999999,
+        "lower": 0.8992083981722809,
+        "upper": 0.9334183959953044,
+        "at_risk": 919,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 31.875628687351302,
+        "survival": 0.9169999999999999,
+        "lower": 0.8981184031725921,
+        "upper": 0.9325143825702183,
+        "at_risk": 918,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 31.92093269660625,
+        "survival": 0.9159999999999999,
+        "lower": 0.8970291276668869,
+        "upper": 0.9316096460715272,
+        "at_risk": 917,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 32.394271526771774,
+        "survival": 0.9149999999999999,
+        "lower": 0.895940560254021,
+        "upper": 0.9307041980537251,
+        "at_risk": 916,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 32.427089773131314,
+        "survival": 0.9139999999999999,
+        "lower": 0.894852689856917,
+        "upper": 0.9297980497401546,
+        "at_risk": 915,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 32.678960130899306,
+        "survival": 0.9129999999999999,
+        "lower": 0.8937655057097804,
+        "upper": 0.9288912120361988,
+        "at_risk": 914,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 33.48745198924294,
+        "survival": 0.9119999999999999,
+        "lower": 0.8926789973459592,
+        "upper": 0.9279836955418025,
+        "at_risk": 913,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 33.82843406953311,
+        "survival": 0.9109999999999999,
+        "lower": 0.8915931545864054,
+        "upper": 0.9270755105633639,
+        "at_risk": 912,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 34.41468708911175,
+        "survival": 0.9099999999999999,
+        "lower": 0.8905079675287044,
+        "upper": 0.9261666671250367,
+        "at_risk": 911,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 34.641276691004144,
+        "survival": 0.9089999999999999,
+        "lower": 0.8894234265366385,
+        "upper": 0.9252571749794761,
+        "at_risk": 910,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 35.196090832850416,
+        "survival": 0.9079999999999999,
+        "lower": 0.8883395222302509,
+        "upper": 0.9243470436180623,
+        "at_risk": 909,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 35.53607685128893,
+        "survival": 0.9069999999999999,
+        "lower": 0.8872562454763838,
+        "upper": 0.9234362822806333,
+        "at_risk": 908,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 35.645350927549615,
+        "survival": 0.9059999999999999,
+        "lower": 0.8861735873796616,
+        "upper": 0.9225248999647544,
+        "at_risk": 907,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 35.666655558098654,
+        "survival": 0.9049999999999999,
+        "lower": 0.8850915392738948,
+        "upper": 0.9216129054345513,
+        "at_risk": 906,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 35.896549952439464,
+        "survival": 0.9039999999999999,
+        "lower": 0.8840100927138795,
+        "upper": 0.9207003072291323,
+        "at_risk": 905,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 36.23735756453316,
+        "survival": 0.9029999999999999,
+        "lower": 0.8829292394675723,
+        "upper": 0.9197871136706218,
+        "at_risk": 904,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 36.887439706086354,
+        "survival": 0.9019999999999999,
+        "lower": 0.8818489715086182,
+        "upper": 0.918873332871828,
+        "at_risk": 903,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 37.382062807446474,
+        "survival": 0.9009999999999999,
+        "lower": 0.8807692810092133,
+        "upper": 0.9179589727435639,
+        "at_risk": 902,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 37.598406348990586,
+        "survival": 0.8999999999999999,
+        "lower": 0.8796901603332834,
+        "upper": 0.9170440410016409,
+        "at_risk": 901,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 37.894979795919966,
+        "survival": 0.8989999999999999,
+        "lower": 0.8786116020299619,
+        "upper": 0.9161285451735541,
+        "at_risk": 900,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 38.06247980625156,
+        "survival": 0.8979999999999999,
+        "lower": 0.8775335988273516,
+        "upper": 0.9152124926048723,
+        "at_risk": 899,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 38.22478015060042,
+        "survival": 0.8969999999999999,
+        "lower": 0.8764561436265537,
+        "upper": 0.9142958904653535,
+        "at_risk": 898,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 38.50815271514451,
+        "survival": 0.8959999999999999,
+        "lower": 0.8753792294959527,
+        "upper": 0.9133787457547953,
+        "at_risk": 897,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 38.78598647880649,
+        "survival": 0.8949999999999999,
+        "lower": 0.874302849665742,
+        "upper": 0.9124610653086375,
+        "at_risk": 896,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 38.82951839060178,
+        "survival": 0.8939999999999999,
+        "lower": 0.8732269975226777,
+        "upper": 0.9115428558033281,
+        "at_risk": 895,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 39.5416230958386,
+        "survival": 0.8929999999999999,
+        "lower": 0.8721516666050514,
+        "upper": 0.9106241237614653,
+        "at_risk": 894,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 40.22787931845748,
+        "survival": 0.8919999999999999,
+        "lower": 0.8710768505978679,
+        "upper": 0.9097048755567264,
+        "at_risk": 893,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 40.4572689574709,
+        "survival": 0.8909999999999999,
+        "lower": 0.8700025433282199,
+        "upper": 0.9087851174185951,
+        "at_risk": 892,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 40.8239524490033,
+        "survival": 0.8899999999999999,
+        "lower": 0.8689287387608493,
+        "upper": 0.9078648554368964,
+        "at_risk": 891,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 40.92255283573714,
+        "survival": 0.8889999999999999,
+        "lower": 0.867855430993885,
+        "upper": 0.906944095566149,
+        "at_risk": 890,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 42.0570202458251,
+        "survival": 0.8879999999999999,
+        "lower": 0.8667826142547507,
+        "upper": 0.9060228436297436,
+        "at_risk": 889,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 42.40172042346321,
+        "survival": 0.8869999999999999,
+        "lower": 0.8657102828962322,
+        "upper": 0.9051011053239576,
+        "at_risk": 888,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 43.20443024584544,
+        "survival": 0.8859999999999999,
+        "lower": 0.8646384313926989,
+        "upper": 0.9041788862218102,
+        "at_risk": 887,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 43.32940921654457,
+        "survival": 0.8849999999999999,
+        "lower": 0.8635670543364699,
+        "upper": 0.903256191776769,
+        "at_risk": 886,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 43.64961813499025,
+        "survival": 0.8839999999999999,
+        "lower": 0.86249614643432,
+        "upper": 0.9023330273263139,
+        "at_risk": 885,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 43.80628511214046,
+        "survival": 0.8829999999999999,
+        "lower": 0.8614257025041181,
+        "upper": 0.9014093980953646,
+        "at_risk": 884,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 44.427496411147764,
+        "survival": 0.8819999999999999,
+        "lower": 0.8603557174715912,
+        "upper": 0.9004853091995778,
+        "at_risk": 883,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 45.42669710798408,
+        "survival": 0.8809999999999999,
+        "lower": 0.8592861863672105,
+        "upper": 0.8995607656485217,
+        "at_risk": 882,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 45.52250414563872,
+        "survival": 0.8799999999999999,
+        "lower": 0.8582171043231915,
+        "upper": 0.8986357723487315,
+        "at_risk": 881,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 46.73167800784548,
+        "survival": 0.8789999999999999,
+        "lower": 0.8571484665706044,
+        "upper": 0.8977103341066522,
+        "at_risk": 880,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 46.89296793549032,
+        "survival": 0.8779999999999999,
+        "lower": 0.8560802684365902,
+        "upper": 0.8967844556314741,
+        "at_risk": 879,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 47.11630741734404,
+        "survival": 0.8769999999999999,
+        "lower": 0.855012505341677,
+        "upper": 0.8958581415378646,
+        "at_risk": 878,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 47.19795859039091,
+        "survival": 0.8759999999999999,
+        "lower": 0.8539451727971915,
+        "upper": 0.894931396348602,
+        "at_risk": 877,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 47.260774105217926,
+        "survival": 0.8749999999999999,
+        "lower": 0.8528782664027639,
+        "upper": 0.8940042244971153,
+        "at_risk": 876,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 47.405655706297026,
+        "survival": 0.8739999999999999,
+        "lower": 0.85181178184392,
+        "upper": 0.8930766303299336,
+        "at_risk": 875,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 47.521962511560346,
+        "survival": 0.8729999999999999,
+        "lower": 0.8507457148897571,
+        "upper": 0.8921486181090497,
+        "at_risk": 874,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 48.03379645943694,
+        "survival": 0.8719999999999999,
+        "lower": 0.8496800613907017,
+        "upper": 0.8912201920142008,
+        "at_risk": 873,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 48.60750464828428,
+        "survival": 0.8709999999999999,
+        "lower": 0.8486148172763428,
+        "upper": 0.8902913561450706,
+        "at_risk": 872,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 49.214214861357675,
+        "survival": 0.8699999999999999,
+        "lower": 0.8475499785533404,
+        "upper": 0.8893621145234155,
+        "at_risk": 871,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 50.43417872440828,
+        "survival": 0.8689999999999999,
+        "lower": 0.846485541303405,
+        "upper": 0.8884324710951186,
+        "at_risk": 870,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 51.807463489951736,
+        "survival": 0.8679999999999999,
+        "lower": 0.8454215016813443,
+        "upper": 0.8875024297321737,
+        "at_risk": 869,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 53.11113341996444,
+        "survival": 0.8669999999999999,
+        "lower": 0.8443578559131754,
+        "upper": 0.8865719942346032,
+        "at_risk": 868,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 53.18187719715448,
+        "survival": 0.8659999999999999,
+        "lower": 0.8432946002942997,
+        "upper": 0.8856411683323115,
+        "at_risk": 867,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 53.83246640581364,
+        "survival": 0.8649999999999999,
+        "lower": 0.8422317311877383,
+        "upper": 0.8847099556868783,
+        "at_risk": 866,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 54.70787565979842,
+        "survival": 0.8639999999999999,
+        "lower": 0.841169245022424,
+        "upper": 0.8837783598932906,
+        "at_risk": 865,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 54.798670650298035,
+        "survival": 0.8629999999999999,
+        "lower": 0.8401071382915497,
+        "upper": 0.8828463844816212,
+        "at_risk": 864,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 55.008981064679816,
+        "survival": 0.8619999999999999,
+        "lower": 0.8390454075509692,
+        "upper": 0.881914032918651,
+        "at_risk": 863,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 55.286226302510535,
+        "survival": 0.8609999999999999,
+        "lower": 0.8379840494176499,
+        "upper": 0.8809813086094392,
+        "at_risk": 862,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 55.492056559136415,
+        "survival": 0.8599999999999999,
+        "lower": 0.8369230605681734,
+        "upper": 0.8800482148988443,
+        "at_risk": 861,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 56.11499229014932,
+        "survival": 0.8589999999999999,
+        "lower": 0.8358624377372851,
+        "upper": 0.8791147550729965,
+        "at_risk": 860,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 57.659856885252246,
+        "survival": 0.8579999999999999,
+        "lower": 0.8348021777164875,
+        "upper": 0.8781809323607233,
+        "at_risk": 859,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 57.80088792147556,
+        "survival": 0.8569999999999999,
+        "lower": 0.8337422773526779,
+        "upper": 0.8772467499349313,
+        "at_risk": 858,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 57.83121657920481,
+        "survival": 0.8559999999999999,
+        "lower": 0.832682733546829,
+        "upper": 0.8763122109139452,
+        "at_risk": 857,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 58.0,
+        "survival": 0.8529999999999999,
+        "lower": 0.8295062112712858,
+        "upper": 0.8735064846713042,
+        "at_risk": 856,
+        "failures": 3,
+        "censored": 0
+      },
+      {
+        "hours": 59.28595296810406,
+        "survival": 0.8519999999999999,
+        "lower": 0.8284480637445131,
+        "upper": 0.8725705494057304,
+        "at_risk": 853,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 59.34199742978761,
+        "survival": 0.8509999999999999,
+        "lower": 0.8273902580482254,
+        "upper": 0.8716342723619047,
+        "at_risk": 852,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 59.44960897604514,
+        "survival": 0.8499999999999999,
+        "lower": 0.8263327913822824,
+        "upper": 0.8706976563565664,
+        "at_risk": 851,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 59.513202597363296,
+        "survival": 0.8489999999999999,
+        "lower": 0.8252756609924301,
+        "upper": 0.8697607041601709,
+        "at_risk": 850,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 60.0,
+        "survival": 0.7729999999999999,
+        "lower": 0.7457588080668865,
+        "upper": 0.7977283776540789,
+        "at_risk": 849,
+        "failures": 76,
+        "censored": 0
+      },
+      {
+        "hours": 60.20557391877713,
+        "survival": 0.7719999999999999,
+        "lower": 0.7447217925724486,
+        "upper": 0.7967713473537025,
+        "at_risk": 773,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 61.20867007532268,
+        "survival": 0.7709999999999999,
+        "lower": 0.7436849856582413,
+        "upper": 0.7958141092057567,
+        "at_risk": 772,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 61.39083182113775,
+        "survival": 0.7699999999999999,
+        "lower": 0.7426483863744129,
+        "upper": 0.7948566641646363,
+        "at_risk": 771,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 61.44838422944417,
+        "survival": 0.7689999999999999,
+        "lower": 0.7416119937817987,
+        "upper": 0.7938990131740084,
+        "at_risk": 770,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 61.7871240999503,
+        "survival": 0.7679999999999999,
+        "lower": 0.7405758069517665,
+        "upper": 0.7929411571669674,
+        "at_risk": 769,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 62.244181360270474,
+        "survival": 0.7669999999999999,
+        "lower": 0.7395398249660652,
+        "upper": 0.7919830970661891,
+        "at_risk": 768,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 62.36668426170271,
+        "survival": 0.7659999999999999,
+        "lower": 0.7385040469166748,
+        "upper": 0.7910248337840788,
+        "at_risk": 767,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 62.40323394858016,
+        "survival": 0.7649999999999999,
+        "lower": 0.7374684719056618,
+        "upper": 0.79006636822292,
+        "at_risk": 766,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 62.77439957979394,
+        "survival": 0.7639999999999999,
+        "lower": 0.7364330990450348,
+        "upper": 0.7891077012750175,
+        "at_risk": 765,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 62.814101665598606,
+        "survival": 0.7629999999999999,
+        "lower": 0.7353979274566047,
+        "upper": 0.7881488338228393,
+        "at_risk": 764,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 63.970979777817014,
+        "survival": 0.7619999999999999,
+        "lower": 0.7343629562718464,
+        "upper": 0.7871897667391554,
+        "at_risk": 763,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 64.08045661151694,
+        "survival": 0.7609999999999999,
+        "lower": 0.7333281846317635,
+        "upper": 0.7862305008871737,
+        "at_risk": 762,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 64.08141537209069,
+        "survival": 0.7599999999999999,
+        "lower": 0.7322936116867554,
+        "upper": 0.7852710371206741,
+        "at_risk": 761,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 64.30713373101342,
+        "survival": 0.7589999999999999,
+        "lower": 0.7312592365964876,
+        "upper": 0.7843113762841396,
+        "at_risk": 760,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 65.02351697266262,
+        "survival": 0.7579999999999999,
+        "lower": 0.7302250585297627,
+        "upper": 0.7833515192128845,
+        "at_risk": 759,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 65.7765962371482,
+        "survival": 0.7569999999999999,
+        "lower": 0.7291910766643958,
+        "upper": 0.7823914667331814,
+        "at_risk": 758,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 65.94985593423729,
+        "survival": 0.7559999999999999,
+        "lower": 0.7281572901870903,
+        "upper": 0.7814312196623849,
+        "at_risk": 757,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 66.56334644654612,
+        "survival": 0.7549999999999999,
+        "lower": 0.7271236982933182,
+        "upper": 0.780470778809054,
+        "at_risk": 756,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 68.38261762335806,
+        "survival": 0.7539999999999999,
+        "lower": 0.7260903001871999,
+        "upper": 0.7795101449730705,
+        "at_risk": 755,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 69.24568287916391,
+        "survival": 0.7529999999999999,
+        "lower": 0.7250570950813882,
+        "upper": 0.7785493189457574,
+        "at_risk": 754,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 70.2391397647251,
+        "survival": 0.7519999999999999,
+        "lower": 0.7240240821969537,
+        "upper": 0.7775883015099935,
+        "at_risk": 753,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 70.31455167306697,
+        "survival": 0.7509999999999999,
+        "lower": 0.7229912607632726,
+        "upper": 0.7766270934403272,
+        "at_risk": 752,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 70.73060555184692,
+        "survival": 0.7499999999999999,
+        "lower": 0.7219586300179155,
+        "upper": 0.775665695503087,
+        "at_risk": 751,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 70.7450279045026,
+        "survival": 0.7489999999999999,
+        "lower": 0.7209261892065395,
+        "upper": 0.7747041084564911,
+        "at_risk": 750,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 71.1828812056795,
+        "survival": 0.7479999999999999,
+        "lower": 0.7198939375827818,
+        "upper": 0.7737423330507545,
+        "at_risk": 749,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 71.65839752244592,
+        "survival": 0.7469999999999999,
+        "lower": 0.7188618744081539,
+        "upper": 0.7727803700281942,
+        "at_risk": 748,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 71.70264984075773,
+        "survival": 0.7459999999999999,
+        "lower": 0.7178299989519402,
+        "upper": 0.7718182201233326,
+        "at_risk": 747,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 71.84581667414537,
+        "survival": 0.7449999999999999,
+        "lower": 0.7167983104910964,
+        "upper": 0.7708558840629994,
+        "at_risk": 746,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 71.9118137674671,
+        "survival": 0.7439999999999999,
+        "lower": 0.7157668083101498,
+        "upper": 0.7698933625664313,
+        "at_risk": 745,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 71.9798429736767,
+        "survival": 0.7429999999999999,
+        "lower": 0.7147354917011025,
+        "upper": 0.7689306563453697,
+        "at_risk": 744,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 72.61855224464576,
+        "survival": 0.7419999999999999,
+        "lower": 0.7137043599633349,
+        "upper": 0.7679677661041578,
+        "at_risk": 743,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 72.70003713095896,
+        "survival": 0.7409999999999999,
+        "lower": 0.7126734124035126,
+        "upper": 0.7670046925398347,
+        "at_risk": 742,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 74.08184938637756,
+        "survival": 0.7399999999999999,
+        "lower": 0.7116426483354924,
+        "upper": 0.7660414363422287,
+        "at_risk": 741,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 74.1647154088369,
+        "survival": 0.7389999999999999,
+        "lower": 0.710612067080233,
+        "upper": 0.7650779981940486,
+        "at_risk": 740,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 74.63799389383055,
+        "survival": 0.7379999999999999,
+        "lower": 0.7095816679657041,
+        "upper": 0.7641143787709741,
+        "at_risk": 739,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 75.47967312670146,
+        "survival": 0.7369999999999999,
+        "lower": 0.7085514503268,
+        "upper": 0.7631505787417434,
+        "at_risk": 738,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 75.65726538124414,
+        "survival": 0.7359999999999999,
+        "lower": 0.7075214135052518,
+        "upper": 0.7621865987682404,
+        "at_risk": 737,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 76.09946417763636,
+        "survival": 0.7349999999999999,
+        "lower": 0.7064915568495438,
+        "upper": 0.76122243950558,
+        "at_risk": 736,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 76.95863569911127,
+        "survival": 0.7339999999999999,
+        "lower": 0.7054618797148297,
+        "upper": 0.7602581016021924,
+        "at_risk": 735,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 77.55464165323116,
+        "survival": 0.7329999999999999,
+        "lower": 0.7044323814628496,
+        "upper": 0.7592935856999049,
+        "at_risk": 734,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 77.59635243156583,
+        "survival": 0.7319999999999999,
+        "lower": 0.7034030614618512,
+        "upper": 0.7583288924340235,
+        "at_risk": 733,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 77.73313436200449,
+        "survival": 0.7309999999999999,
+        "lower": 0.7023739190865085,
+        "upper": 0.7573640224334123,
+        "at_risk": 732,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 77.96059584196848,
+        "survival": 0.7299999999999999,
+        "lower": 0.7013449537178456,
+        "upper": 0.7563989763205723,
+        "at_risk": 731,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 78.0,
+        "survival": 0.7299999999999999,
+        "lower": 0.7013449537178456,
+        "upper": 0.7563989763205723,
+        "at_risk": 730,
+        "failures": 0,
+        "censored": 5
+      },
+      {
+        "hours": 78.01424649962482,
+        "survival": 0.7289931034482757,
+        "lower": 0.7003085468055922,
+        "upper": 0.7554275419667301,
+        "at_risk": 725,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 78.77136657933256,
+        "survival": 0.7279862068965516,
+        "lower": 0.6992723211082175,
+        "upper": 0.7544559283184282,
+        "at_risk": 724,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 79.29096301800111,
+        "survival": 0.7269793103448274,
+        "lower": 0.6982362759888356,
+        "upper": 0.7534841360050571,
+        "at_risk": 723,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 79.31085927314503,
+        "survival": 0.7259724137931033,
+        "lower": 0.6972004108170918,
+        "upper": 0.7525121656496264,
+        "at_risk": 722,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 79.3979644404282,
+        "survival": 0.7249655172413791,
+        "lower": 0.6961647249690832,
+        "upper": 0.7515400178688421,
+        "at_risk": 721,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 80.0,
+        "survival": 0.7249655172413791,
+        "lower": 0.6961647249690832,
+        "upper": 0.7515400178688421,
+        "at_risk": 720,
+        "failures": 0,
+        "censored": 47
+      },
+      {
+        "hours": 80.2130112381203,
+        "survival": 0.7238883025055078,
+        "lower": 0.69505124202562,
+        "upper": 0.7505046102012526,
+        "at_risk": 673,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 80.44791831962287,
+        "survival": 0.7228110877696365,
+        "lower": 0.6939379982357594,
+        "upper": 0.7494689769319243,
+        "at_risk": 672,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 80.8529395831987,
+        "survival": 0.7217338730337652,
+        "lower": 0.692824992550117,
+        "upper": 0.7484331189706741,
+        "at_risk": 671,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 81.09487028211066,
+        "survival": 0.7206566582978939,
+        "lower": 0.6917122239317195,
+        "upper": 0.7473970372171211,
+        "at_risk": 670,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 81.4715691224764,
+        "survival": 0.7195794435620226,
+        "lower": 0.6905996913558251,
+        "upper": 0.7463607325608262,
+        "at_risk": 669,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 81.6041932945358,
+        "survival": 0.7185022288261513,
+        "lower": 0.6894873938097442,
+        "upper": 0.7453242058814274,
+        "at_risk": 668,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 81.64385056907972,
+        "survival": 0.71742501409028,
+        "lower": 0.6883753302926661,
+        "upper": 0.7442874580487744,
+        "at_risk": 667,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 81.94467664018053,
+        "survival": 0.7163477993544087,
+        "lower": 0.6872634998154878,
+        "upper": 0.7432504899230593,
+        "at_risk": 666,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 83.31689198765561,
+        "survival": 0.7152705846185374,
+        "lower": 0.6861519014006473,
+        "upper": 0.7422133023549462,
+        "at_risk": 665,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 83.5420210984167,
+        "survival": 0.7141933698826661,
+        "lower": 0.6850405340819581,
+        "upper": 0.7411758961856969,
+        "at_risk": 664,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 85.40297039946843,
+        "survival": 0.7131161551467948,
+        "lower": 0.6839293969044489,
+        "upper": 0.7401382722472959,
+        "at_risk": 663,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 85.90289252702833,
+        "survival": 0.7120389404109235,
+        "lower": 0.6828184889242053,
+        "upper": 0.7391004313625719,
+        "at_risk": 662,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 87.19457418253693,
+        "survival": 0.7109617256750522,
+        "lower": 0.6817078092082154,
+        "upper": 0.7380623743453175,
+        "at_risk": 661,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 87.26963088150175,
+        "survival": 0.7098845109391809,
+        "lower": 0.680597356834217,
+        "upper": 0.7370241020004076,
+        "at_risk": 660,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 87.32105470384727,
+        "survival": 0.7088072962033096,
+        "lower": 0.6794871308905487,
+        "upper": 0.7359856151239137,
+        "at_risk": 659,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 87.49288489639098,
+        "survival": 0.7077300814674383,
+        "lower": 0.6783771304760037,
+        "upper": 0.7349469145032181,
+        "at_risk": 658,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 87.93220714856481,
+        "survival": 0.706652866731567,
+        "lower": 0.6772673546996862,
+        "upper": 0.7339080009171254,
+        "at_risk": 657,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 88.52042588112043,
+        "survival": 0.7055756519956957,
+        "lower": 0.6761578026808703,
+        "upper": 0.732868875135971,
+        "at_risk": 656,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 88.52379101545809,
+        "survival": 0.7044984372598244,
+        "lower": 0.6750484735488621,
+        "upper": 0.7318295379217298,
+        "at_risk": 655,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 88.83920805524798,
+        "survival": 0.7034212225239531,
+        "lower": 0.6739393664428636,
+        "upper": 0.730789990028121,
+        "at_risk": 654,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 90.74365759987975,
+        "survival": 0.7023440077880818,
+        "lower": 0.6728304805118395,
+        "upper": 0.7297502322007116,
+        "at_risk": 653,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 90.78517405346328,
+        "survival": 0.7012667930522105,
+        "lower": 0.6717218149143872,
+        "upper": 0.7287102651770192,
+        "at_risk": 652,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 92.46515794028761,
+        "survival": 0.7001895783163392,
+        "lower": 0.6706133688186078,
+        "upper": 0.7276700896866115,
+        "at_risk": 651,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 93.96958376492867,
+        "survival": 0.6991123635804679,
+        "lower": 0.6695051414019803,
+        "upper": 0.7266297064512044,
+        "at_risk": 650,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 94.35275446483229,
+        "survival": 0.6980351488445966,
+        "lower": 0.6683971318512376,
+        "upper": 0.7255891161847594,
+        "at_risk": 649,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 94.88024700022234,
+        "survival": 0.6969579341087253,
+        "lower": 0.6672893393622464,
+        "upper": 0.724548319593578,
+        "at_risk": 648,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 96.77419174169172,
+        "survival": 0.695880719372854,
+        "lower": 0.6661817631398863,
+        "upper": 0.7235073173763955,
+        "at_risk": 647,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 96.83664356705962,
+        "survival": 0.6948035046369827,
+        "lower": 0.6650744023979339,
+        "upper": 0.722466110224472,
+        "at_risk": 646,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 97.31256532553557,
+        "survival": 0.6937262899011114,
+        "lower": 0.6639672563589477,
+        "upper": 0.7214246988216837,
+        "at_risk": 645,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 98.12817968274673,
+        "survival": 0.6926490751652401,
+        "lower": 0.6628603242541544,
+        "upper": 0.7203830838446103,
+        "at_risk": 644,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 98.58618078336231,
+        "survival": 0.6915718604293688,
+        "lower": 0.6617536053233395,
+        "upper": 0.719341265962623,
+        "at_risk": 643,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 99.40261796243466,
+        "survival": 0.6904946456934975,
+        "lower": 0.6606470988147373,
+        "upper": 0.71829924583797,
+        "at_risk": 642,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 99.66517035505575,
+        "survival": 0.6894174309576262,
+        "lower": 0.6595408039849243,
+        "upper": 0.7172570241258603,
+        "at_risk": 641,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 99.7722703838243,
+        "survival": 0.6883402162217549,
+        "lower": 0.6584347200987142,
+        "upper": 0.7162146014745465,
+        "at_risk": 640,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 99.92460611342366,
+        "survival": 0.6872630014858836,
+        "lower": 0.6573288464290549,
+        "upper": 0.7151719785254069,
+        "at_risk": 639,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 100.18478658412182,
+        "survival": 0.6861857867500123,
+        "lower": 0.6562231822569267,
+        "upper": 0.7141291559130244,
+        "at_risk": 638,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 100.48298394365959,
+        "survival": 0.685108572014141,
+        "lower": 0.6551177268712431,
+        "upper": 0.7130861342652662,
+        "at_risk": 637,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 101.07710925235696,
+        "survival": 0.6840313572782697,
+        "lower": 0.6540124795687531,
+        "upper": 0.7120429142033606,
+        "at_risk": 636,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 101.19627853851551,
+        "survival": 0.6829541425423984,
+        "lower": 0.6529074396539444,
+        "upper": 0.7109994963419728,
+        "at_risk": 635,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 101.81547419464529,
+        "survival": 0.6818769278065271,
+        "lower": 0.6518026064389495,
+        "upper": 0.7099558812892807,
+        "at_risk": 634,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 101.82887791389741,
+        "survival": 0.6807997130706558,
+        "lower": 0.650697979243453,
+        "upper": 0.7089120696470472,
+        "at_risk": 633,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 102.11924133216026,
+        "survival": 0.6797224983347845,
+        "lower": 0.6495935573945996,
+        "upper": 0.7078680620106936,
+        "at_risk": 632,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 102.54265654335296,
+        "survival": 0.6786452835989132,
+        "lower": 0.6484893402269054,
+        "upper": 0.7068238589693705,
+        "at_risk": 631,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 102.76830262425614,
+        "survival": 0.6775680688630419,
+        "lower": 0.6473853270821693,
+        "upper": 0.7057794611060273,
+        "at_risk": 630,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 102.81431696649254,
+        "survival": 0.6764908541271706,
+        "lower": 0.6462815173093865,
+        "upper": 0.7047348689974814,
+        "at_risk": 629,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 102.93177266141701,
+        "survival": 0.6754136393912993,
+        "lower": 0.6451779102646633,
+        "upper": 0.7036900832144863,
+        "at_risk": 628,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 104.29608979832776,
+        "survival": 0.674336424655428,
+        "lower": 0.6440745053111334,
+        "upper": 0.7026451043217978,
+        "at_risk": 627,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 104.40891963589074,
+        "survival": 0.6732592099195567,
+        "lower": 0.6429713018188761,
+        "upper": 0.7015999328782393,
+        "at_risk": 626,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 106.41746327035804,
+        "survival": 0.6721819951836854,
+        "lower": 0.6418682991648348,
+        "upper": 0.700554569436767,
+        "at_risk": 625,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 106.99379312040425,
+        "survival": 0.6711047804478141,
+        "lower": 0.640765496732738,
+        "upper": 0.6995090145445326,
+        "at_risk": 624,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 108.06405817807217,
+        "survival": 0.6700275657119428,
+        "lower": 0.6396628939130209,
+        "upper": 0.6984632687429464,
+        "at_risk": 623,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 108.10611841803268,
+        "survival": 0.6689503509760715,
+        "lower": 0.638560490102749,
+        "upper": 0.6974173325677384,
+        "at_risk": 622,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 108.43577669028316,
+        "survival": 0.6678731362402002,
+        "lower": 0.6374582847055416,
+        "upper": 0.6963712065490183,
+        "at_risk": 621,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 108.77284411043897,
+        "survival": 0.6667959215043289,
+        "lower": 0.6363562771314988,
+        "upper": 0.6953248912113359,
+        "at_risk": 620,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 109.0799569252213,
+        "survival": 0.6657187067684576,
+        "lower": 0.6352544667971274,
+        "upper": 0.6942783870737389,
+        "at_risk": 619,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 109.64111798138902,
+        "survival": 0.6646414920325863,
+        "lower": 0.6341528531252696,
+        "upper": 0.6932316946498305,
+        "at_risk": 618,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 109.67041358156222,
+        "survival": 0.663564277296715,
+        "lower": 0.6330514355450322,
+        "upper": 0.6921848144478265,
+        "at_risk": 617,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 110.2529842065778,
+        "survival": 0.6624870625608437,
+        "lower": 0.6319502134917172,
+        "upper": 0.691137746970611,
+        "at_risk": 616,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 110.32078804296358,
+        "survival": 0.6614098478249724,
+        "lower": 0.6308491864067536,
+        "upper": 0.6900904927157908,
+        "at_risk": 615,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 111.19921474517471,
+        "survival": 0.6603326330891011,
+        "lower": 0.6297483537376297,
+        "upper": 0.68904305217575,
+        "at_risk": 614,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 111.99004424337397,
+        "survival": 0.6592554183532298,
+        "lower": 0.6286477149378276,
+        "upper": 0.6879954258377026,
+        "at_risk": 613,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 113.46602922109763,
+        "survival": 0.6581782036173585,
+        "lower": 0.6275472694667579,
+        "upper": 0.6869476141837455,
+        "at_risk": 612,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 115.7704945691071,
+        "survival": 0.6571009888814872,
+        "lower": 0.6264470167896958,
+        "upper": 0.6858996176909097,
+        "at_risk": 611,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 115.8365331966509,
+        "survival": 0.6560237741456159,
+        "lower": 0.6253469563777184,
+        "upper": 0.6848514368312106,
+        "at_risk": 610,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 115.92055289854711,
+        "survival": 0.6549465594097446,
+        "lower": 0.6242470877076421,
+        "upper": 0.6838030720716988,
+        "at_risk": 609,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 117.91657234383638,
+        "survival": 0.6538693446738733,
+        "lower": 0.6231474102619629,
+        "upper": 0.6827545238745085,
+        "at_risk": 608,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 119.71081241476885,
+        "survival": 0.652792129938002,
+        "lower": 0.6220479235287952,
+        "upper": 0.681705792696906,
+        "at_risk": 607,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 120.30299544498588,
+        "survival": 0.6517149152021307,
+        "lower": 0.6209486270018141,
+        "upper": 0.6806568789913376,
+        "at_risk": 606,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 120.45688233807384,
+        "survival": 0.6506377004662593,
+        "lower": 0.6198495201801962,
+        "upper": 0.6796077832054764,
+        "at_risk": 605,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 121.84316666818529,
+        "survival": 0.649560485730388,
+        "lower": 0.6187506025685643,
+        "upper": 0.6785585057822683,
+        "at_risk": 604,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 121.9255899422169,
+        "survival": 0.6484832709945167,
+        "lower": 0.6176518736769289,
+        "upper": 0.6775090471599774,
+        "at_risk": 603,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 122.09022803336414,
+        "survival": 0.6474060562586454,
+        "lower": 0.6165533330206351,
+        "upper": 0.676459407772231,
+        "at_risk": 602,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 122.09838317731355,
+        "survival": 0.6463288415227741,
+        "lower": 0.6154549801203074,
+        "upper": 0.6754095880480634,
+        "at_risk": 601,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 122.70342472387387,
+        "survival": 0.6452516267869028,
+        "lower": 0.614356814501796,
+        "upper": 0.6743595884119596,
+        "at_risk": 600,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 122.72184041975946,
+        "survival": 0.6441744120510315,
+        "lower": 0.6132588356961247,
+        "upper": 0.6733094092838976,
+        "at_risk": 599,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 122.93502621489037,
+        "survival": 0.6430971973151602,
+        "lower": 0.6121610432394389,
+        "upper": 0.6722590510793907,
+        "at_risk": 598,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 123.46524470392558,
+        "survival": 0.6420199825792889,
+        "lower": 0.6110634366729543,
+        "upper": 0.6712085142095287,
+        "at_risk": 597,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 123.79608511730633,
+        "survival": 0.6409427678434176,
+        "lower": 0.6099660155429074,
+        "upper": 0.6701577990810189,
+        "at_risk": 596,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 123.91387780509969,
+        "survival": 0.6398655531075463,
+        "lower": 0.6088687794005059,
+        "upper": 0.6691069060962266,
+        "at_risk": 595,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 124.06400754179175,
+        "survival": 0.638788338371675,
+        "lower": 0.6077717278018798,
+        "upper": 0.6680558356532134,
+        "at_risk": 594,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 124.48060007060377,
+        "survival": 0.6377111236358037,
+        "lower": 0.6066748603080343,
+        "upper": 0.6670045881457773,
+        "at_risk": 593,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 125.5224592251599,
+        "survival": 0.6366339088999324,
+        "lower": 0.6055781764848018,
+        "upper": 0.6659531639634909,
+        "at_risk": 592,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 126.36666816135379,
+        "survival": 0.6355566941640611,
+        "lower": 0.6044816759027966,
+        "upper": 0.6649015634917387,
+        "at_risk": 591,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 127.4287021176721,
+        "survival": 0.6344794794281898,
+        "lower": 0.6033853581373685,
+        "upper": 0.6638497871117544,
+        "at_risk": 590,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 128.07398726486724,
+        "survival": 0.6334022646923185,
+        "lower": 0.6022892227685585,
+        "upper": 0.6627978352006575,
+        "at_risk": 589,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 128.42788723877302,
+        "survival": 0.6323250499564472,
+        "lower": 0.6011932693810543,
+        "upper": 0.6617457081314899,
+        "at_risk": 588,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 128.80475718772718,
+        "survival": 0.6312478352205759,
+        "lower": 0.6000974975641471,
+        "upper": 0.6606934062732507,
+        "at_risk": 587,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 129.13208496406128,
+        "survival": 0.6301706204847046,
+        "lower": 0.5990019069116886,
+        "upper": 0.6596409299909313,
+        "at_risk": 586,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 129.74699204925042,
+        "survival": 0.6290934057488333,
+        "lower": 0.5979064970220492,
+        "upper": 0.6585882796455502,
+        "at_risk": 585,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 130.86086904173587,
+        "survival": 0.628016191012962,
+        "lower": 0.5968112674980759,
+        "upper": 0.6575354555941868,
+        "at_risk": 584,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 130.95962462517576,
+        "survival": 0.6269389762770907,
+        "lower": 0.5957162179470522,
+        "upper": 0.6564824581900144,
+        "at_risk": 583,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 133.47977751948366,
+        "survival": 0.6258617615412194,
+        "lower": 0.5946213479806575,
+        "upper": 0.6554292877823334,
+        "at_risk": 582,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 135.12682829651033,
+        "survival": 0.6247845468053481,
+        "lower": 0.5935266572149278,
+        "upper": 0.654375944716604,
+        "at_risk": 581,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 139.41890849438323,
+        "survival": 0.6237073320694768,
+        "lower": 0.5924321452702168,
+        "upper": 0.6533224293344777,
+        "at_risk": 580,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 139.43462421895433,
+        "survival": 0.6226301173336055,
+        "lower": 0.591337811771157,
+        "upper": 0.6522687419738287,
+        "at_risk": 579,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 139.62601660478197,
+        "survival": 0.6215529025977342,
+        "lower": 0.5902436563466228,
+        "upper": 0.651214882968785,
+        "at_risk": 578,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 139.80267771231382,
+        "survival": 0.6204756878618629,
+        "lower": 0.5891496786296928,
+        "upper": 0.6501608526497591,
+        "at_risk": 577,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 139.8678451195848,
+        "survival": 0.6193984731259916,
+        "lower": 0.5880558782576136,
+        "upper": 0.6491066513434777,
+        "at_risk": 576,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 141.39538834674497,
+        "survival": 0.6183212583901203,
+        "lower": 0.5869622548717635,
+        "upper": 0.648052279373011,
+        "at_risk": 575,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 141.7363697519042,
+        "survival": 0.617244043654249,
+        "lower": 0.5858688081176171,
+        "upper": 0.6469977370578028,
+        "at_risk": 574,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 144.44547143777572,
+        "survival": 0.6161668289183777,
+        "lower": 0.5847755376447107,
+        "upper": 0.6459430247136982,
+        "at_risk": 573,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 144.95832960363057,
+        "survival": 0.6150896141825064,
+        "lower": 0.5836824431066074,
+        "upper": 0.6448881426529722,
+        "at_risk": 572,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 144.97678328033007,
+        "survival": 0.6140123994466351,
+        "lower": 0.5825895241608642,
+        "upper": 0.6438330911843577,
+        "at_risk": 571,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 145.50832269973466,
+        "survival": 0.6129351847107638,
+        "lower": 0.5814967804689977,
+        "upper": 0.6427778706130725,
+        "at_risk": 570,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 146.01505985028942,
+        "survival": 0.6118579699748925,
+        "lower": 0.5804042116964521,
+        "upper": 0.6417224812408466,
+        "at_risk": 569,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 146.3158027150367,
+        "survival": 0.6107807552390212,
+        "lower": 0.5793118175125662,
+        "upper": 0.6406669233659488,
+        "at_risk": 568,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 147.487739653436,
+        "survival": 0.6097035405031499,
+        "lower": 0.5782195975905428,
+        "upper": 0.6396111972832125,
+        "at_risk": 567,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 147.8035958886444,
+        "survival": 0.6086263257672786,
+        "lower": 0.5771275516074158,
+        "upper": 0.638555303284062,
+        "at_risk": 566,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 149.68101133810652,
+        "survival": 0.6075491110314073,
+        "lower": 0.5760356792440212,
+        "upper": 0.6374992416565373,
+        "at_risk": 565,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 150.33008394665256,
+        "survival": 0.606471896295536,
+        "lower": 0.5749439801849655,
+        "upper": 0.6364430126853194,
+        "at_risk": 564,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 151.87396585513778,
+        "survival": 0.6053946815596647,
+        "lower": 0.5738524541185963,
+        "upper": 0.6353866166517552,
+        "at_risk": 563,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 153.3995216845308,
+        "survival": 0.6043174668237934,
+        "lower": 0.5727611007369733,
+        "upper": 0.6343300538338812,
+        "at_risk": 562,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 154.25189225845446,
+        "survival": 0.6032402520879221,
+        "lower": 0.5716699197358383,
+        "upper": 0.6332733245064472,
+        "at_risk": 561,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 155.15057625865308,
+        "survival": 0.6021630373520508,
+        "lower": 0.5705789108145882,
+        "upper": 0.6322164289409409,
+        "at_risk": 560,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 156.16663015767233,
+        "survival": 0.6010858226161795,
+        "lower": 0.5694880736762462,
+        "upper": 0.6311593674056097,
+        "at_risk": 559,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 156.4335486217795,
+        "survival": 0.6000086078803082,
+        "lower": 0.5683974080274339,
+        "upper": 0.6301021401654845,
+        "at_risk": 558,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 157.18517163611125,
+        "survival": 0.5989313931444369,
+        "lower": 0.567306913578345,
+        "upper": 0.6290447474824014,
+        "at_risk": 557,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 158.57841960691994,
+        "survival": 0.5978541784085656,
+        "lower": 0.5662165900427177,
+        "upper": 0.6279871896150242,
+        "at_risk": 556,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 159.35531846763524,
+        "survival": 0.5967769636726943,
+        "lower": 0.5651264371378094,
+        "upper": 0.6269294668188662,
+        "at_risk": 555,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 159.75316492421913,
+        "survival": 0.595699748936823,
+        "lower": 0.5640364545843699,
+        "upper": 0.6258715793463112,
+        "at_risk": 554,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 159.78126284446114,
+        "survival": 0.5946225342009517,
+        "lower": 0.5629466421066163,
+        "upper": 0.624813527446635,
+        "at_risk": 553,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 161.33622874237878,
+        "survival": 0.5935453194650804,
+        "lower": 0.561856999432208,
+        "upper": 0.6237553113660258,
+        "at_risk": 552,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 162.13367602851824,
+        "survival": 0.5924681047292091,
+        "lower": 0.560767526292222,
+        "upper": 0.6226969313476048,
+        "at_risk": 551,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 162.88610783134487,
+        "survival": 0.5913908899933378,
+        "lower": 0.5596782224211285,
+        "upper": 0.6216383876314466,
+        "at_risk": 550,
+        "failures": 1,
+        "censored": 0
+      },
+      {
+        "hours": 166.0,
+        "survival": 0.5913908899933378,
+        "lower": 0.5596782224211285,
+        "upper": 0.6216383876314466,
+        "at_risk": 549,
+        "failures": 0,
+        "censored": 44
+      },
+      {
+        "hours": 168.0,
+        "survival": 0.5913908899933378,
+        "lower": 0.5596782224211285,
+        "upper": 0.6216383876314466,
+        "at_risk": 505,
+        "failures": 0,
+        "censored": 505
+      }
+    ],
+    "weibull": {
+      "status": "descriptive_fit",
+      "shape": 1.0051848189065833,
+      "scale_hours": 307.54121342275346,
+      "failures": 399,
+      "right_censored": 601,
+      "km_max_abs_gap": 0.0536854853123202,
+      "review_required": false,
+      "interpretation": "First-interruption fit, not recurrent MTBI; inspect cohort homogeneity and censoring assumptions"
+    },
+    "patterns": [
+      {
+        "domain": "software",
+        "classification": "systemic_candidate",
+        "episodes": 420,
+        "providers": [
+          "csp-aurora",
+          "csp-borealis",
+          "csp-cirrus"
+        ],
+        "racks": [
+          "csp-aurora-rack-0",
+          "csp-aurora-rack-1",
+          "csp-aurora-rack-2",
+          "csp-aurora-rack-3",
+          "csp-borealis-rack-0",
+          "csp-borealis-rack-1",
+          "csp-borealis-rack-2",
+          "csp-borealis-rack-3",
+          "csp-cirrus-rack-0",
+          "csp-cirrus-rack-1",
+          "csp-cirrus-rack-2",
+          "csp-cirrus-rack-3"
+        ],
+        "firmware": [
+          "fabric-profile-b",
+          "fw-a"
+        ],
+        "explanation": "Candidate driver has higher matched software-interruption rates in \u22652 providers; reproduce on hardware",
+        "evidence_ids": [
+          "software-100-0",
+          "software-102-0",
+          "software-102-1",
+          "software-112-0",
+          "software-112-1",
+          "software-121-0",
+          "software-124-0",
+          "software-129-0",
+          "software-13-0",
+          "software-132-0",
+          "software-133-0",
+          "software-135-0"
+        ],
+        "confidence": "hypothesis_for_validation"
+      },
+      {
+        "domain": "thermal",
+        "classification": "environmental_candidate",
+        "episodes": 83,
+        "providers": [
+          "csp-cirrus"
+        ],
+        "racks": [
+          "csp-cirrus-rack-0"
+        ],
+        "firmware": [
+          "fabric-profile-b",
+          "fw-a"
+        ],
+        "explanation": "Observed interruptions concentrate in one rack; compare cooling, power and placement",
+        "evidence_ids": [
+          "shared-cooling-episode"
+        ],
+        "confidence": "hypothesis_for_validation"
+      },
+      {
+        "domain": "interconnect",
+        "classification": "configuration_candidate",
+        "episodes": 72,
+        "providers": [
+          "csp-aurora",
+          "csp-borealis",
+          "csp-cirrus"
+        ],
+        "racks": [
+          "csp-aurora-rack-0",
+          "csp-aurora-rack-1",
+          "csp-aurora-rack-2",
+          "csp-aurora-rack-3",
+          "csp-borealis-rack-0",
+          "csp-borealis-rack-1",
+          "csp-borealis-rack-2",
+          "csp-borealis-rack-3",
+          "csp-cirrus-rack-0",
+          "csp-cirrus-rack-1",
+          "csp-cirrus-rack-2",
+          "csp-cirrus-rack-3"
+        ],
+        "firmware": [
+          "fabric-profile-b"
+        ],
+        "explanation": "Episodes concentrate in one firmware/configuration cohort; validate a matched configuration experiment",
+        "evidence_ids": [
+          "interconnect-120-0",
+          "interconnect-132-0",
+          "interconnect-163-0",
+          "interconnect-171-0",
+          "interconnect-172-0",
+          "interconnect-175-0",
+          "interconnect-204-0",
+          "interconnect-204-1",
+          "interconnect-246-0",
+          "interconnect-263-0",
+          "interconnect-275-0",
+          "interconnect-280-0"
+        ],
+        "confidence": "hypothesis_for_validation"
+      },
+      {
+        "domain": "memory",
+        "classification": "unresolved",
+        "episodes": 60,
+        "providers": [
+          "csp-aurora",
+          "csp-borealis",
+          "csp-cirrus"
+        ],
+        "racks": [
+          "csp-aurora-rack-0",
+          "csp-aurora-rack-1",
+          "csp-aurora-rack-2",
+          "csp-aurora-rack-3",
+          "csp-borealis-rack-0",
+          "csp-borealis-rack-1",
+          "csp-borealis-rack-2",
+          "csp-borealis-rack-3",
+          "csp-cirrus-rack-0",
+          "csp-cirrus-rack-1",
+          "csp-cirrus-rack-2",
+          "csp-cirrus-rack-3"
+        ],
+        "firmware": [
+          "fabric-profile-b",
+          "fw-a"
+        ],
+        "explanation": "Observed pattern does not distinguish the competing causes",
+        "evidence_ids": [
+          "memory-103-0",
+          "memory-115-0",
+          "memory-154-0",
+          "memory-16-0",
+          "memory-247-0",
+          "memory-274-0",
+          "memory-277-0",
+          "memory-289-0",
+          "memory-329-0",
+          "memory-340-0",
+          "memory-381-0",
+          "memory-42-0"
+        ],
+        "confidence": "hypothesis_for_validation"
+      },
+      {
+        "domain": "unknown",
+        "classification": "insufficient_evidence",
+        "episodes": 1,
+        "providers": [
+          "csp-cirrus"
+        ],
+        "racks": [
+          "csp-cirrus-rack-0"
+        ],
+        "firmware": [
+          "fabric-profile-b"
+        ],
+        "explanation": "Fewer than five interruption episodes",
+        "evidence_ids": [
+          "shared-cooling-episode"
+        ],
+        "confidence": "hypothesis_for_validation"
+      }
+    ],
+    "methodology": "docs/reliability/MEASUREMENT.md",
+    "limitations": [
+      "MTBI here is operating entity-hours / interruption episodes, an inverse rate estimator.",
+      "GPU, node and job denominators are distinct; no unit is inferred from GPU-hours.",
+      "Correlated failures make naive Poisson intervals optimistic.",
+      "Survival is time to FIRST interruption, censored at first unknown coverage.",
+      "The pooled Weibull fit may mix cohorts; review fit gap and homogeneous subcohorts."
+    ]
+  }
+}

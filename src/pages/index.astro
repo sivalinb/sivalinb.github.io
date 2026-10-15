@@ -24,9 +24,9 @@ const learning = ['promql-zero-to-hero', 'opentelemetry-zero-to-hero', 'gpu-infr
         <div class="pro-career-line"><span>EXPERIENCE ACROSS</span><strong>Apple</strong><i aria-hidden="true"></i><strong>Oracle</strong><span class="pro-career-more">Production systems since 2005</span></div>
       </div>
       <figure class="hero-system">
-        <div class="system-label"><span>FROM THE WORKBENCH</span><span>01 / DATA CENTER → GPU</span></div>
-        <a href={projectUrl(base,'grafana-data-center-explorer')} aria-label="Explore Data Center Explorer"><img src={base+'images/grafana-data-center-explorer.jpg'} width="1280" height="1127" alt="Data Center Explorer’s Grafana campus view showing a cooling incident across synthetic infrastructure" fetchpriority="high"/></a>
-        <figcaption><span>Data Center Explorer</span><span>Actual Grafana capture · synthetic telemetry <Arrow diagonal size={14}/></span></figcaption>
+        <div class="system-label"><span>FROM THE WORKBENCH</span><span>01 / FLEET RELIABILITY</span></div>
+        <a href={projectUrl(base,'gpu-fleetops')} aria-label="Explore GPU Fleet Reliability Intelligence"><img src={base+'images/gpu-fleet-reliability-results.png'} width="2250" height="1500" alt="Recorded synthetic fleet experiment comparing driver cohorts, lost GPU-hours, survival and a mitigation trial" fetchpriority="high"/></a>
+        <figcaption><span>GPU Fleet Reliability Intelligence</span><span>Calculated figures · synthetic fleet <Arrow diagonal size={14}/></span></figcaption>
       </figure>
     </div>
     <div class="container hero-bottom"><span>AI systems. Clear signals. Recoverable operations.</span><a href={base+'projects/'}>Explore all {projects.length} projects <Arrow size={17}/></a></div>
@@ -43,9 +43,7 @@ const learning = ['promql-zero-to-hero', 'opentelemetry-zero-to-hero', 'gpu-infr
     <div class="pro-section-heading"><div><p class="pro-eyebrow">SELECTED INDEPENDENT PROJECTS</p><h2 id="work-title">The work behind the skills.</h2></div><p>Systems you can inspect, experiments you can reproduce, and engineering decisions you can follow.</p></div>
     <div class="systems-grid">{work.map((item,index)=><article class:list={['system-card',{'flagship':index<2}]}>
       <a class={'system-visual visual-'+item.project.slug} href={projectUrl(base,item.project.slug)} aria-label={'Explore '+item.project.title}>
-        {item.project.slug==='gpu-fleetops' ?
-          <div class="fleet-flow" aria-hidden="true"><div class="flow-top"><span>GPU FLEETOPS</span><span>REFERENCE ARCHITECTURE</span></div><div class="flow-owner"><PortfolioIcon name="ai-infrastructure" size={37}/><div><strong>A fleet is more than its GPUs.</strong><span>Assets · services · ownership · evidence</span></div></div><div class="flow-steps">{['Inventory','Signals','SLO policy','Investigation','Review & verify'].map((step,i)=><div><span>0{i+1}</span><strong>{step}</strong></div>)}</div><div class="flow-foot"><span>Trace the evidence</span><span>Preserve the error budget</span><span>Verify the outcome</span></div></div>
-          : <img src={base+'images/'+item.project.image} width={item.project.imageWidth} height={item.project.imageHeight} alt={item.project.imageKind+' for '+item.project.title} loading="lazy"/>}
+        <img src={base+'images/'+item.project.image} width={item.project.imageWidth} height={item.project.imageHeight} alt={item.project.imageKind+' for '+item.project.title} loading="lazy"/>
         <span class="visual-caption">{item.caption}<Arrow diagonal size={16}/></span>
       </a>
       <div class="system-copy"><p class="system-kicker"><span>{String(index+1).padStart(2,'0')} / {item.focus}</span><span>{item.project.format}</span></p><h3><a href={projectUrl(base,item.project.slug)}>{item.project.title}</a></h3><p class="system-summary">{item.summary}</p><div class="demonstrates"><span>WHAT THIS DEMONSTRATES</span><p>{item.demonstrates}</p></div><ul class="system-stack" aria-label="Project technologies">{item.stack.map(tool=><li>{tool}</li>)}</ul><div class="system-actions"><a href={projectUrl(base,item.project.slug)}>Explore the project <Arrow size={16}/></a><a href={item.project.repository} target="_blank" rel="noopener noreferrer" aria-label={'View '+item.project.title+' source on GitHub'}>Source <Arrow diagonal size={15}/></a></div></div>
