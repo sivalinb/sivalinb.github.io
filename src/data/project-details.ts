@@ -1,5 +1,81 @@
 export const details = [
 {
+  "slug": "model-quality-lab",
+  "overview": "A serving feature defect can reduce recommendation relevance while latency stays healthy. Model Quality Lab connects frozen model comparisons, production-style telemetry, delayed outcomes and statistical release decisions. The recorded public-data experiment trained on 8,000 MIND impressions and evaluated 1,800 later impressions; a controlled feature fault reduced NDCG@10 from 0.3954 to 0.3020.",
+  "capabilities": [
+    {
+      "title": "Measure model quality with uncertainty",
+      "text": "Compare NDCG, MRR and recall on identical offered sets, resample user clusters and protect declared cohorts. Small samples or immature labels produce insufficient evidence."
+    },
+    {
+      "title": "Diagnose silent model failures",
+      "text": "Inspect feature distributions, missingness, paired training-serving skew and score shifts. A monotonic score change demonstrates why drift alone does not prove a ranking regression."
+    },
+    {
+      "title": "Follow outcomes through a durable system",
+      "text": "Join delayed labels to predictions, reject conflicting identities and recover a consumer after a real process crash. A separate Kafka/ClickHouse integration path exercises transport and analytical visibility."
+    },
+    {
+      "title": "Evaluate different model families",
+      "text": "Run a taxonomy-token autoregressive baseline, actual local Qwen3 ranking and a digit-image classifier. The six-case language-model run retains two invalid outputs; its small conditional result is not a promotion decision."
+    },
+    {
+      "title": "Learn and review the architecture",
+      "text": "Use eight experiments, an illustrated handbook, actual Grafana screens, a requirement map and design decisions covering ownership, scale, sampling, retention and rollout."
+    }
+  ],
+  "notes": [
+    {
+      "title": "Illustrated hands-on learning guide",
+      "url": "https://github.com/sivalinb/model-quality-lab/blob/main/docs/LEARNING_GUIDE.md"
+    },
+    {
+      "title": "Evaluation assumptions and release decisions",
+      "url": "https://github.com/sivalinb/model-quality-lab/blob/main/docs/EVALUATION.md"
+    },
+    {
+      "title": "Platform architecture and distributed guarantees",
+      "url": "https://github.com/sivalinb/model-quality-lab/blob/main/docs/ARCHITECTURE.md"
+    },
+    {
+      "title": "Aggregate public MIND experiment",
+      "url": "https://github.com/sivalinb/model-quality-lab/blob/main/docs/evidence/public-mind.json"
+    }
+  ],
+  "evidence": [
+    {
+      "title": "A silent feature regression, measured",
+      "image": "model-quality-evaluation.jpg",
+      "width": 1280,
+      "height": 2126,
+      "alt": "A silent feature regression, measured in the Model Quality Lab application",
+      "caption": "Actual local UI capture. Synthetic click traffic is labeled; model execution, user-cluster intervals and cohort comparisons are real.",
+      "url": "https://github.com/sivalinb/model-quality-lab",
+      "linkLabel": "Inspect the reproducible project"
+    },
+    {
+      "title": "The model lifecycle in Grafana",
+      "image": "model-quality-grafana.jpg",
+      "width": 1280,
+      "height": 943,
+      "alt": "The model lifecycle in Grafana in the Model Quality Lab application",
+      "caption": "Actual Prometheus measurements show outcome coverage, feature skew, durable delivery and API prediction duration.",
+      "url": "https://github.com/sivalinb/model-quality-lab",
+      "linkLabel": "Inspect the reproducible project"
+    },
+    {
+      "title": "An illustrated learning path",
+      "image": "model-quality-learning.jpg",
+      "width": 1280,
+      "height": 2094,
+      "alt": "An illustrated learning path in the Model Quality Lab application",
+      "caption": "Editable workflow illustrations connect exercises to the implementation and architectural decisions.",
+      "url": "https://github.com/sivalinb/model-quality-lab",
+      "linkLabel": "Inspect the reproducible project"
+    }
+  ]
+},
+{
   "slug": "fleet-reliability-lab",
   "overview": "A hardware symptom is only the beginning of an operational decision. This lab connects asset identity, telemetry trust, workload progress, a versioned repair procedure, physical intervention, requalification and capacity exposure. Original illustrated scenes animate the story; recorded engine snapshots keep each phase inspectable. A local native stack exercises the actual telemetry and durable workflow boundaries.",
   "capabilities": [

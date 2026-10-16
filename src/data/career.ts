@@ -1,6 +1,7 @@
 // Professional background is summarized from Siva's supplied résumé.
 // Project descriptions refer to independent public implementations.
 export const featuredWork = [
+  { slug: 'model-quality-lab', focus: 'Model quality & ML platforms', summary: 'Find silent model regressions. Make release decisions from evidence.', demonstrates: 'Paired ranking evaluation, user-cluster uncertainty, training-serving skew, delayed-label joins and durable telemetry.', stack: ['Python / scikit-learn', 'OpenTelemetry', 'Grafana / Kafka'], caption: 'Actual application capture · synthetic fault replay' },
   { slug: 'fleet-reliability-lab', focus: 'Fleet observability & operations', summary: 'Take a signal all the way to verified, useful capacity.', demonstrates: 'Qualification gates, tenant boundaries, durable repair, correlated telemetry and explicit capacity economics.', stack: ['Temporal / Python', 'Mimir / Loki / Tempo', 'OpenTelemetry'], caption: 'Actual animated walkthrough · synthetic hardware' },
   { slug: 'gpu-fleetops', focus: 'Fleet reliability', summary: 'Understand fleet failures. Measure whether a fix helps.', demonstrates: 'Explicit MTBI contracts, matched cohorts, censored statistics, controlled experiments and predictive-health evaluation.', stack: ['Python / SciPy', 'Prometheus', 'Gradio'], caption: 'Calculated reliability figures · synthetic fleet' },
   { slug: 'ai-factory-observability-lab', focus: 'Infrastructure observability', summary: 'Find the connection between a slow workload and its infrastructure.', demonstrates: 'Source contracts, GPU and fabric correlation, coverage checks and owned alert rules.', stack: ['Prometheus', 'Grafana', 'Python'], caption: 'Actual Grafana capture · simulated feeds' },
@@ -24,7 +25,7 @@ export const experience = [
 
 export const categoryPicks: Record<string,string[]> = {
   observability: ['fleet-reliability-lab', 'ai-incident-investigator', 'telemetry-cardinality-governor'],
-  'ai-infrastructure': ['gpu-fleetops', 'ai-factory-observability-lab', 'llm-serving-observatory'],
+  'ai-infrastructure': ['model-quality-lab', 'gpu-fleetops', 'ai-factory-observability-lab', 'llm-serving-observatory'],
   systems: ['fleet-kernel-workbench', 'fleet-infrastructure-catalog', 'robotreplay'],
   sports: ['racetime-copilot', 'athlete-living-atlas', 'burro-race-replay'],
   community: ['circlepath-rj', 'badaga-care-circle', 'nanga-hatti'],
