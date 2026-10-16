@@ -134,7 +134,7 @@ export const details = [
       "image": "fleet-reliability-lab.jpg",
       "width": 1280,
       "height": 720,
-      "alt": "Actual browser capture of the Fleet Reliability Observatory with original robot and GPU rack concept artwork",
+      "alt": "Actual browser capture of the Fleet Reliability Lab with original robot and GPU rack concept artwork",
       "caption": "Actual local website capture. The original artwork is conceptual; the six operating stories replay synthetic-hardware executions of the transactional state engine.",
       "url": "https://sivalinb.github.io/labs/fleet-reliability/",
       "linkLabel": "Explore the animated operation"
