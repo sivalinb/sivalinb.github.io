@@ -27,7 +27,8 @@ for (const file of htmlFiles) {
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
   const name = path.relative(root, file);
   if (new Set(ids).size !== ids.length) errors.push(`${name}: duplicate element IDs`);
-  if ((html.match(/<h1\b/g) || []).length !== 1) errors.push(`${name}: expected one h1`);
+  // Copied app shells may render headings in JavaScript; check the Astro pages here.
+  if (!copiedHtml.has(name) && (html.match(/<h1\b/g) || []).length !== 1) errors.push(`${name}: expected one h1`);
   if (!copiedHtml.has(name) && !html.includes('rel="canonical"')) errors.push(`${name}: missing canonical link`);
   pages.set(file, { html, ids: new Set(ids) });
 }
