@@ -1,4 +1,4 @@
-/* Fleet Reliability Observatory. No framework or build step.
+/* Fleet Reliability Lab. No framework or build step.
  * Hardware telemetry is synthetic. Replay data is a checked-in execution record.
  * Local credentials are deliberately kept in memory, never browser storage. */
 "use strict";

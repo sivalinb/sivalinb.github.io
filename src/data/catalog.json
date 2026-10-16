@@ -4,7 +4,7 @@
   "projects": [
     {
       "slug": "fleet-reliability-lab",
-      "title": "Fleet Reliability Observatory",
+      "title": "Fleet Reliability Lab",
       "categoryId": "observability",
       "format": "Lab",
       "description": "Follow a GPU fleet signal through qualification, workload impact, durable repair and verified recovery in an animated operating story.",
