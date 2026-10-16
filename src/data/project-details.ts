@@ -1,4 +1,70 @@
 export const details = [
+{
+  "slug": "fleet-reliability-lab",
+  "overview": "A hardware symptom is only the beginning of an operational decision. This lab connects asset identity, telemetry trust, workload progress, a versioned repair procedure, physical intervention, requalification and capacity exposure. Original illustrated scenes animate the story; recorded engine snapshots keep each phase inspectable. A local native stack exercises the actual telemetry and durable workflow boundaries.",
+  "capabilities": [
+    {
+      "title": "Operate the full lifecycle",
+      "text": "Qualify fictional GPU capacity, allocate a synthetic workload, inject a fault, isolate it, follow a bounded repair and rerun the baseline before returning capacity."
+    },
+    {
+      "title": "Review safe automation",
+      "text": "Inspect token-derived tenancy, compare-and-swap transitions, one-ticket semantics, a durable effect ledger, worker restart recovery and separate technician completion from verified health."
+    },
+    {
+      "title": "Follow the telemetry across real services",
+      "text": "Run Prometheus remote write into Mimir, structured OTLP events into Loki, event-derived spans into Tempo, Alertmanager notifications and a provisioned Grafana dashboard."
+    },
+    {
+      "title": "Reason about useful capacity",
+      "text": "Distinguish device utilization from workload progress, unknown health from healthy capacity, and illustrative exposure from cash savings. Physical GPU burn-in remains explicitly unmeasured."
+    }
+  ],
+  "notes": [
+    {
+      "title": "Animated operating story",
+      "url": "https://sivalinb.github.io/labs/fleet-reliability/"
+    },
+    {
+      "title": "Architecture, invariants and proposed production scale design",
+      "url": "https://github.com/sivalinb/fleet-reliability-lab/blob/main/docs/architecture.md"
+    },
+    {
+      "title": "Live backend verification and execution provenance",
+      "url": "https://github.com/sivalinb/fleet-reliability-lab/tree/main/evidence"
+    },
+    {
+      "title": "Public research map and source inventory",
+      "url": "https://github.com/sivalinb/fleet-reliability-lab/blob/main/docs/research-map.md"
+    },
+    {
+      "title": "Principal system design and code review exercises",
+      "url": "https://github.com/sivalinb/fleet-reliability-lab/blob/main/docs/principal-interview.md"
+    }
+  ],
+  "evidence": [
+{
+    "title": "A real telemetry stack behind the story",
+    "image": "fleet-reliability-lab-grafana.jpg",
+    "width": 1280,
+    "height": 720,
+    "alt": "Actual Grafana dashboard showing fleet lifecycle, telemetry freshness, fabric error rates and synthetic GPU temperature from Mimir",
+    "caption": "Actual local Grafana capture. Prometheus remote writes to Mimir; the synthetic hardware source stays explicit. The recorded native verification also retrieves incident events from Loki and Tempo and restarts a real Temporal worker with one repair ticket.",
+    "url": "https://github.com/sivalinb/fleet-reliability-lab/blob/main/evidence/stack-verification.json",
+    "linkLabel": "Inspect the recorded native verification"
+},
+    {
+      "title": "An illustrated operation with inspectable state",
+      "image": "fleet-reliability-lab.jpg",
+      "width": 1280,
+      "height": 720,
+      "alt": "Actual browser capture of the Fleet Reliability Observatory with original robot and GPU rack concept artwork",
+      "caption": "Actual local website capture. The original artwork is conceptual; the six operating stories replay synthetic-hardware executions of the transactional state engine.",
+      "url": "https://sivalinb.github.io/labs/fleet-reliability/",
+      "linkLabel": "Explore the animated operation"
+    }
+  ]
+},
   {
   "slug": "ai-incident-investigator",
   "overview": "A dashboard panel stops showing data after a metric-label migration. This project follows the investigation from actual Grafana queries and a failing screenshot through a real local model call, a tested repair proposal, exact review and verified recovery. OpenInference and Phoenix expose the execution; Gradio makes the evidence and decision inspectable.",
